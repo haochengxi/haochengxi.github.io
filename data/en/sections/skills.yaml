@@ -5,23 +5,44 @@ section:
   enable: true
   weight: 7
   showOnNavbar: true
+  filter: true
   # Can optionally hide the title in sections
   # hideTitle: true
 
+# filter buttons
+buttons:
+- name: All
+  filter: "all"
+- name: Basic
+  filter: "basic"
+- name: Language
+  filter: "language"
+- name: Package
+  filter: "package"
+  
 # Your Skills.
 # Give a summary of you each skill in the summary section.
 skills:
 - name: Pytorch
   logo: images/pytorch_logo.png
   summary: "Familiar with Pytorch model training and inference."
+  categories: ["package"]
   url: "https://pytorch.org/"
+
+- name: Python
+  logo: images/python_logo.png
+  summary: "Familiar with python customized kernels."
+  categories: ["language"]
+  url: "https://www.python.org/"
 
 - name: CUDA
   logo: images/cuda_logo.png
   summary: "Familiar with CUDA customized kernels."
+  categories: ["language"]
   url: "https://developer.nvidia.com/cuda-toolkit"
 
 - name: LaTeX
   logo: images/latex_logo.png
   summary: "Familiar with Latex writing."
+  categories: ["basic"]
   url: "https://www.overleaf.com"
