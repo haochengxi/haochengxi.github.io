@@ -1,0 +1,38 @@
+# some information about you
+name: "Haocheng Xi"
+nickname: "Haocheng"
+image: "images/avatar1.png"
+
+# greeting message before your name. it will default to "Hi! I am" if not provided
+greeting: "Hi, I am"
+
+# give your contact information. they will be used in the footer
+contactInfo:
+  email: "xihc@berkeley.edu"
+
+  google scholar:
+    icon: google-scholar
+    url: "https://scholar.google.com/citations?user=klZ2MMcAAAAJ&hl=en"
+    text: "Google Scholar"
+
+  twitter:
+    icon: twitter
+    url: "https://x.com/HaochengXiUCB"
+    text: "Twitter / X"
+
+  github-repo:
+    icon: github
+    url: "https://github.com/haochengxi/"
+    text: "Github"
+
+  linkedin:
+    icon: linkedin
+    url: "https://www.linkedin.com/in/haocheng-xi-412511323/"
+    text: "LinkedIn"
+
+
+# a summary of what you do
+summary:
+- I am a MLsys researcher in UC Berkeley
+- I am interested in efficient training and inference of LLMs of Diffusion models
+- Welcome to contact me!

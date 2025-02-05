@@ -1,0 +1,58 @@
+# Use Hugo modules to add theme
+module:
+  imports:
+  - path: github.com/hugo-toha/toha/v4
+
+params:
+  background: "images/snow_mountain_background.jpg"
+  # Optional, for a different background image in dark mode
+  # darkBackground: "images/name-of-your-dark-background-image.jpg"
+
+  # The inverted logo will be used in the initial transparent navbar and
+  # the main logo will be used in the non-transparent navbar.
+  logo:
+    main: images/main-logo.png
+    inverted: images/main-logo.png
+    favicon: images/main-logo.png
+
+  # Configure the number of section title visible in the top navbar
+  topNavbar:
+    maxVisibleSections: 6
+
+  # Configure various features of this theme
+  features:
+
+    # Enable dark theme
+    darkMode:
+
+    # Configure theme color settings
+    theme:
+      enable: true
+      services:
+        light: true # enable light theme. default "true"
+        dark: true # enable dark theme. default "true"
+        default: system # can be either light, dark or system. default "system"
+
+    # Enable and configure portfolio
+    portfolio:
+      enable: true
+
+    # Enable and configure blog posts
+    blog:
+      enable: true
+      showAuthor: true # shows the post author (defaults true)
+
+    toc:
+      enable: true
+
+
+# Allow raw html in markdown file
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  tableOfContents:
+    startLevel: 2
+    endLevel: 8
+    ordered: false
+

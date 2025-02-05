@@ -1,0 +1,33 @@
+section:
+  name: Experiences # Titre de la section (par défaut: "" )
+  id: experiences # url id/slug of section *Required*
+  enable: true
+  weight: 3
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true
+
+# Your experiences
+experiences:
+- company:
+    name: Nvidia.
+    url: "https://www.nvidia.com/en-us/"
+    location: Beijing, China
+    logo: images/nvidia_logo.png
+    # darkLogo: /images/experiences/company-dark.png #(optional), Can optionally show a different logo for dark theme
+    # company overview
+    overview: Conduct Research about FP8 Training for Large Language Models.
+
+  positions:
+  - designation: Research Intern
+    start: Feb 2024
+    # don't provide end date if you are currently working there. It will be replaced by "Present"
+    end: Aug 2025
+    # give some points about what was your responsibilities at the company.
+    responsibilities:
+    - Advised by Prof.Song Han.
+    - Propose a Memory Efficient FP8 Training method, [COAT](https://arxiv.org/abs/2410.19313) that Compress Optimizer
+      states and Activations for FP8 Training.
+    - Publish a first author paper and is accepted by ICLR 2025. Code is open-sourced at [code](https://github.com/NVlabs/COAT)
+    - Participate in [NVILA Project](https://arxiv.org/abs/2412.04468), responsible for the FP8 training of vision language models.
+

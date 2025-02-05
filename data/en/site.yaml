@@ -1,0 +1,12 @@
+copyright: © 2024 Copyright.
+
+# Meta description for your site.  This will help the search engines to find your site.
+description: "Haocheng Xi's personal website. MLsys Researcher@UC Berkeley."
+
+customMenus:
+- name: Notes
+  url: https://hossainemruz.gitbook.io/notes/
+  hideFromNavbar: false
+  showOnFooter: true
+
+navBarTitle: "Haocheng Xi's Website"

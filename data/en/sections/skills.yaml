@@ -1,0 +1,27 @@
+# section information
+section:
+  name: Skills
+  id: skills
+  enable: true
+  weight: 6
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true
+
+# Your Skills.
+# Give a summary of you each skill in the summary section.
+skills:
+- name: Pytorch
+  logo: images/pytorch_logo.png
+  summary: "Familiar with Pytorch model training and inference."
+  url: "https://pytorch.org/"
+
+- name: CUDA
+  logo: images/cuda_logo.png
+  summary: "Familiar with CUDA customized kernels."
+  url: "https://developer.nvidia.com/cuda-toolkit"
+
+- name: LaTeX
+  logo: images/latex_logo.png
+  summary: "Familiar with Latex writing."
+  url: "https://www.overleaf.com"

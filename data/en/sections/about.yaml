@@ -1,0 +1,91 @@
+section:
+  name: About # Title of section (default: "")
+  id: about # url id/slug of section *Required*
+  enable: true # Boolean to determine if this section is enabled (default: false)
+  weight: 1 # Order to display section in (default: alphabetical followed by weight)
+  showOnNavbar: true # Boolean to determine if a link should be shown for this section on the navbar
+  template: sections/about.html # allows you to point to a specific template.
+
+# your designation
+designation: MLsys Researcher
+# your company information
+company:
+  name: University of California, Berkeley
+  url: "https://bair.berkeley.edu/"
+
+# a summary about you
+summary: 'I am a first-year PhD student in UC Berkeley. My research interest is about efficient 
+          training and inference of large language models and diffusion models. 
+          I graduate from Yao Class, Tsinghua University, led by [Prof.Andrew Yao](https://iiis.tsinghua.edu.cn/yao/).
+          <br>
+          My advisor is [Prof.Kurt Keutzer](https://people.eecs.berkeley.edu/~keutzer/). 
+          Back in Yao Class, Tsinghua University, I was advised by [Prof.Jianfei Chen](https://ml.cs.tsinghua.edu.cn/~jianfei/) and 
+          [Prof.Jun Zhu](https://ml.cs.tsinghua.edu.cn/~jun/index.shtml). 
+          I also works closely with [Prof.Song Han](https://hanlab.mit.edu/songhan) in MIT 
+          and [Prof.Sheng Wang](https://homes.cs.washington.edu/~swang/) in University of Washington.'
+
+# your social links
+# give as many as you want. use font-awesome for the icons.
+socialLinks:
+- name: Email
+  icon: "fas fa-envelope"
+  url: "xihc@berkeley.edu"
+
+- name: google-scholar
+  icon: "fab fa-google-scholar"
+  url: "https://scholar.google.com/citations?user=klZ2MMcAAAAJ&hl=en"
+
+- name: twitter
+  icon: "fab fa-twitter"
+  url: "https://x.com/HaochengXiUCB"
+
+- name: github
+  icon: "fab fa-github"
+  url: "https://github.com/haochengxi/"
+
+- name: linkedin
+  icon: "fab fa-linkedin"
+  url: "https://www.linkedin.com/in/haocheng-xi-412511323/"
+
+# your resume. this file path should be relative to you "static" directory
+resourceLinks:
+- title: "My Resume"
+  url: "files/My_Resume.pdf"
+
+# Show your badges
+# You can show your verifiable certificates from https://www.credly.com.
+# You can also show a circular bar indicating the level of expertise on a certain skill
+badges:
+#- type: certification
+#  name: Tsinghua University
+#  badge: "assets/images/tsinghua_logo.png"
+
+- type: soft-skill-indicator
+  name: Large Language Models
+  percentage: 90
+  color: blue
+
+- type: soft-skill-indicator
+  name: Diffusion Models
+  percentage: 80
+  color: yellow
+
+- type: soft-skill-indicator
+  name: Efficiency
+  percentage: 95
+  color: orange
+
+- type: soft-skill-indicator
+  name: Quantization
+  percentage: 95
+  color: pink
+
+- type: soft-skill-indicator
+  name: Sparsity
+  percentage: 80
+  color: green
+
+- type: soft-skill-indicator
+  name: Reasoning
+  percentage: 75
+  color: "#c9184a"

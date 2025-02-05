@@ -1,0 +1,69 @@
+# section information
+section:
+  name: Education
+  id: education
+  template: sections/education.html # Use "sections/education-alt.html for alternate template.
+  enable: true
+  weight: 4
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true
+
+degrees:
+# ============================================ UC Berkeley ============================================
+- name: "Ph.D in Computer Science, advised by Prof.Kurt Keutzer"
+  timeframe: 2024-Present
+  institution:
+    name: University of California, Berkeley
+    url: "https://bair.berkeley.edu/"
+    logo: images/berkeley_logo.png # Path of the logo image
+#    darkLogo: /images/education/college-dark.png #(optional), Can optionally show a different logo for dark theme
+  grade: #(optional)
+    scale: GPA
+    achieved: 4
+    outOf: 4
+
+  publications: #(optional)
+  - title: "Sparse VideoGen: Accelerating Video Diffusion Transformers with Spatial-Temporal Sparsity"
+    url: "https://arxiv.org/abs/2502.01776"
+  - title: "QuantSpec: Self-Speculative Decoding with Hierarchical Quantized KV Cache"
+    url: "#"
+  - title: "COAT: Compressing Optimizer states and Activation for Memory-Efficient FP8 Training"
+    url: "https://arxiv.org/abs/2410.19313"
+  - title: "NVILA: Efficient Frontier Visual Language Models"
+    url: "https://arxiv.org/abs/2412.04468"
+
+  extracurricularActivities: #(optional), supports markdown
+  - "Sports - Soccer, Badminton, Pooling."
+  - "Photography"
+
+#  customSections: #(optional)
+#    - name: Advisor
+#      content: ""
+
+# ============================================ Tsinghua University ============================================
+- name: "B.E. in Yao Class, Computer Science. Advised by Prof.Jianfei Chen and Prof.Jun Zhu"
+  timeframe: 2020-2024
+  institution:
+    name: Tsinghua University
+    url: "https://www.tsinghua.edu.cn/en/"
+    logo: images/tsinghua_logo.png # Path of the logo image
+#    darkLogo: /images/education/college-dark.png #(optional), Can optionally show a different logo for dark theme
+  grade: #(optional)
+    scale: GPA
+    achieved: 3.83
+    outOf: 4
+
+  publications: #(optional)
+  - title: "Training Transformers with 4-bit Integers"
+    url: "https://arxiv.org/abs/2306.11987"
+  - title: "Jetfire: Efficient and Accurate Transformer Pretraining with INT8 Data Flow and Per-Block Quantization"
+    url: "https://arxiv.org/abs/2403.12422"
+
+#  extracurricularActivities: #(optional), supports markdown
+#  - "Sports - Soccer, Badminton, Pooling."
+#  - "Photography"
+
+#  customSections: #(optional)
+#    - name: Advisor
+#      content: ""

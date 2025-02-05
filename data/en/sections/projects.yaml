@@ -1,0 +1,84 @@
+# section information
+section:
+  name: Projects
+  id: projects
+  enable: true
+  weight: 5
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true
+
+buttons:
+- name: All
+  filter: "all"
+- name: Quantization
+  filter: "quantization"
+- name: Sparsity
+  filter: "sparsity"
+- name: Training
+  filter: "training"
+- name: Inference
+  filter: "inference"
+
+projects:
+- name: "Sparse VideoGen: Accelerating Video Diffusion Transformers with Spatial-Temporal Sparsity"
+#  logo: images/projects/kubernetes.png
+  image: images/svg_overview.png
+  role: Co-First Author
+  timeline: "Sep 2024 - Feb 2025"
+  repo: "#"
+  url: "https://arxiv.org/abs/2502.01776"
+  summary: We identify the spatial head and temporal head pattern in attention map and propose to 
+           use sparse attention to accelerate.
+           Achieves up to 2.28x and 2.33x end-to-end speedup on CogVideoX-v1.5 and HunyuanVideo.
+  tags: ["sparsity", "inference"]
+
+- name: "QuantSpec: Self-Speculative Decoding with Hierarchical Quantized KV Cache"
+#  logo: images/projects/kubernetes.png
+  image: images/quantspec_overview.png
+  role: Co-First Author
+  timeline: "Sep 2024 - Feb 2025"
+  repo: "#"
+  url: "#"
+  summary: We propose a self-speculative decoding framework, QuantSpec, to speedup long-context inference.
+           QuantSpec maintains high acceptance rates (>90%) and reliably provides consistent 
+           end-to-end speedups upto ∼ 2.5×.
+  tags: ["quantization", "inference"]
+
+
+- name: "COAT: Compressing Optimizer states and Activation for Memory-Efficient FP8 Training"
+#  logo: images/projects/kubernetes.png
+  image: images/coat8_overview.png
+  role: First Author
+  timeline: "Feb 2024 - Sep 2024"
+  repo: https://github.com/NVlabs/COAT
+  url: "https://arxiv.org/abs/2410.19313"
+  summary: We propose Dynamic range expansion for FP8 optimizer, and propose FP8 precision flow for FP8 activations. 
+           Achieve Lossless performance, end-to-End 1.54x memory reduction and 1.43x training speedup over BF16.
+  tags: ["quantization", "training"]
+
+
+- name: "Jetfire: Efficient and Accurate Transformer Pretraining with INT8 Data Flow and Per-Block Quantization"
+#  logo: images/projects/kubernetes.png
+  image: images/jetfire_overview.png
+  role: First Author
+  timeline: "Sep 2023 - Jan 2024"
+  repo: https://github.com/thu-ml/Jetfire-INT8Training/tree/main
+  url: "https://arxiv.org/abs/2403.12422"
+  summary: Propose to INT8 precision flow and per-block quantization to enable INT8 pretraining of transformers.
+           Demonstrate effectiveness on GPT2-774M model.
+           Achieve End-to-End 1.42x training speedup and 1.49x memory reduction.
+  tags: ["quantization", "training"]
+
+
+- name: "Training Transformers with 4-bit Integers"
+#  logo: images/projects/kubernetes.png
+  image: images/int4train_overview.png
+  role: First Author
+  timeline: "Apr 2022 - Dec 2022"
+  repo: https://github.com/haochengxi/Train_Transformers_with_INT4
+  url: "https://arxiv.org/abs/2306.11987"
+  summary: Propose Hadamard Quantizer and Leverage Score Sampling to enable INT4 Precision Matmul in training for speedup.
+           Both the forward and backward pass are quantized into INT4 precision for maximized speedup.
+           Outperforms all existing 4-bit training baselines.
+  tags: ["quantization", "training"]
