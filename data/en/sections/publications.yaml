@@ -1,0 +1,83 @@
+section:
+  name: Publications
+  id: publications
+  enable: true
+  weight: 6
+  showOnNavbar: true
+
+# filter buttons
+buttons:
+- name: All
+  filter: "all"
+- name: Quantization
+  filter: "quantization"
+- name: Sparsity
+  filter: "sparsity"
+- name: Training
+  filter: "training"
+- name: Inference
+  filter: "inference"
+
+# your publications
+publications:
+- title: "Sparse VideoGen: Accelerating Video Diffusion Transformers with Spatial-Temporal Sparsity"
+  publishedIn:
+    name: Arxiv
+    date: Feb 2025
+    url: "https://arxiv.org/abs/2502.01776"
+  authors:
+  - name: Haocheng Xi
+    url: "#"
+  - name: Shuo Yang
+    url: https://andy-yang-1.github.io/
+  - name: Yilong Zhao
+    url: https://happierpig.github.io/
+  - name: Chenfeng Xu
+  - name: Muyang Li
+  - name: Xiuyu Li
+  - name: Yujun Lin
+  - name: Han Cai
+  - name: Jintao Zhang
+  - name: Dacheng Li, 
+  - name: Jianfei Chen
+  - name: Ion Stoica
+  - name: Kurt Keutzer
+  - name: Song Han
+
+  paper:
+    summary: We identify the spatial head and temporal head pattern in attention map and propose to 
+            use sparse attention to accelerate.
+            Achieves up to 2.28x and 2.33x end-to-end speedup on CogVideoX-v1.5 and HunyuanVideo.
+    url: https://arxiv.org/abs/2502.01776
+
+  categories: ["sparsity", "inference"]
+  tags: ["efficient video generation", "sparse attention"]
+
+
+- title: "QuantSpec: Self-Speculative Decoding with Hierarchical Quantized KV Cache"
+  publishedIn:
+    name: Arxiv
+    date: Feb 2025
+    url: "#"
+  authors:
+  - name: Haocheng Xi
+    url: "#"
+  - name: Rishabh Tiwari
+    url: https://www.rishabhtiwari.org/
+  - name: Aditya Tomar
+  - name: Coleman Hooper 
+  - name: Sehoon Kim 
+  - name: Maxwell Horton 
+  - name: Mahyar Najibi 
+  - name: Michael W. Mahoney 
+  - name: Kurt Keutzer 
+  - name: Amir Gholami
+
+  paper:
+    summary: We propose a self-speculative decoding framework, QuantSpec, to speedup long-context inference.
+           QuantSpec maintains high acceptance rates (>90%) and reliably provides consistent 
+           end-to-end speedups upto ∼ 2.5×.
+    url: "#"
+
+  categories: ["quantization", "inference"]
+  tags: ["long context generation", "KV cache compression"]

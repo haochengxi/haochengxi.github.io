@@ -16,7 +16,7 @@ experiences:
     logo: images/nvidia_logo.png
     # darkLogo: /images/experiences/company-dark.png #(optional), Can optionally show a different logo for dark theme
     # company overview
-    overview: Conduct Research about FP8 Training for Large Language Models.
+    overview: Conduct Research about FP8 Training for Large Language Models. Advised by Prof.Song Han.
 
   positions:
   - designation: Research Intern
@@ -25,7 +25,6 @@ experiences:
     end: Aug 2025
     # give some points about what was your responsibilities at the company.
     responsibilities:
-    - Advised by Prof.Song Han.
     - Propose a Memory Efficient FP8 Training method, [COAT](https://arxiv.org/abs/2410.19313) that Compress Optimizer
       states and Activations for FP8 Training.
     - Publish a first author paper and is accepted by ICLR 2025. Code is open-sourced at [code](https://github.com/NVlabs/COAT)
