@@ -17,12 +17,11 @@ company:
 summary: 'I am a first-year PhD student in UC Berkeley. My research interest is about efficient 
           training and inference of large language models and diffusion models. 
           I graduate from Yao Class, Tsinghua University, led by [Prof.Andrew Yao](https://iiis.tsinghua.edu.cn/yao/).
-          <br>
-          My advisor is [Prof.Kurt Keutzer](https://people.eecs.berkeley.edu/~keutzer/). 
-          Back in Yao Class, Tsinghua University, I was advised by [Prof.Jianfei Chen](https://ml.cs.tsinghua.edu.cn/~jianfei/) and 
-          [Prof.Jun Zhu](https://ml.cs.tsinghua.edu.cn/~jun/index.shtml). 
-          I also works closely with [Prof.Song Han](https://hanlab.mit.edu/songhan) in MIT 
-          and [Prof.Sheng Wang](https://homes.cs.washington.edu/~swang/) in University of Washington.'
+          <br><br>
+          My advisor is [Prof.Kurt Keutzer](https://people.eecs.berkeley.edu/~keutzer/), and I also work closely with 
+          [Prof.Song Han](https://hanlab.mit.edu/songhan) in MIT. 
+          Back in Tsinghua University, I was fortunate to be advised by [Prof.Jianfei Chen](https://ml.cs.tsinghua.edu.cn/~jianfei/) and 
+          [Prof.Jun Zhu](https://ml.cs.tsinghua.edu.cn/~jun/index.shtml). I was also fortunate to be advised by [Prof.Sheng Wang](https://homes.cs.washington.edu/~swang/) in University of Washington.'
 
 # your social links
 # give as many as you want. use font-awesome for the icons.
