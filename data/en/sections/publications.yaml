@@ -1,5 +1,5 @@
 section:
-  name: Publications
+  name: Selected Publications
   id: publications
   enable: true
   weight: 6
@@ -26,23 +26,34 @@ publications:
     date: Feb 2025
     url: "https://arxiv.org/abs/2502.01776"
   authors:
-  - name: Haocheng Xi
+  - name: Haocheng Xi*
     url: "#"
-  - name: Shuo Yang
+  - name: Shuo Yang*
     url: https://andy-yang-1.github.io/
   - name: Yilong Zhao
     url: https://happierpig.github.io/
   - name: Chenfeng Xu
+    url: https://www.chenfengx.com/
   - name: Muyang Li
+    url: https://lmxyy.me/
   - name: Xiuyu Li
+    url: https://xiuyuli.com/
   - name: Yujun Lin
+    url: https://yujunlin.com/
   - name: Han Cai
+    url: https://han-cai.github.io/
   - name: Jintao Zhang
-  - name: Dacheng Li, 
+    url: https://jintaozhang.github.io/
+  - name: Dacheng Li
+    url: https://dachengli.github.io/
   - name: Jianfei Chen
+    url: https://ml.cs.tsinghua.edu.cn/~jianfei/
   - name: Ion Stoica
+    url: https://people.eecs.berkeley.edu/~istoica/
   - name: Kurt Keutzer
+    url: https://people.eecs.berkeley.edu/~keutzer/
   - name: Song Han
+    url: https://hanlab.mit.edu/songhan
 
   paper:
     summary: We identify the spatial head and temporal head pattern in attention map and propose to 
@@ -58,26 +69,113 @@ publications:
   publishedIn:
     name: Arxiv
     date: Feb 2025
-    url: "#"
+    url: "https://arxiv.org/abs/2502.10424"
   authors:
-  - name: Haocheng Xi
-    url: "#"
-  - name: Rishabh Tiwari
+  - name: Rishabh Tiwari*
     url: https://www.rishabhtiwari.org/
+  - name: Haocheng Xi*
+    url: "#"
   - name: Aditya Tomar
-  - name: Coleman Hooper 
-  - name: Sehoon Kim 
+  - name: Coleman Hooper
+    url: https://www.linkedin.com/in/coleman-hooper-165061193/
+  - name: Sehoon Kim
+    url: https://sehoonkim.org/
   - name: Maxwell Horton 
-  - name: Mahyar Najibi 
+    url: https://mchorton.com/
+  - name: Mahyar Najibi
+    url: https://www.mahyarnajibi.com/
   - name: Michael W. Mahoney 
+    url: https://www.stat.berkeley.edu/~mmahoney/
   - name: Kurt Keutzer 
+    url: https://people.eecs.berkeley.edu/~keutzer/
   - name: Amir Gholami
+    url: https://amirgholami.org/
 
   paper:
     summary: We propose a self-speculative decoding framework, QuantSpec, to speedup long-context inference.
            QuantSpec maintains high acceptance rates (>90%) and reliably provides consistent 
            end-to-end speedups upto ∼ 2.5×.
-    url: "#"
+    url: "https://arxiv.org/abs/2502.10424"
 
   categories: ["quantization", "inference"]
   tags: ["long context generation", "KV cache compression"]
+
+- title: "COAT: Compressing Optimizer states and Activation for Memory-Efficient FP8 Training"
+  publishedIn:
+    name: ICLR 2025
+    date: Oct 2024
+    url: "https://arxiv.org/abs/2410.19313"
+  authors:
+  - name: Haocheng Xi
+    url: "#"
+  - name: Han Cai
+    url: https://han-cai.github.io/
+  - name: Ligeng Zhu
+    url: https://lzhu.me/
+  - name: Yao Lu
+    url: https://scholar.google.com/citations?user=OI7zFmwAAAAJ&hl=en/
+  - name: Kurt Keutzer
+    url: https://people.eecs.berkeley.edu/~keutzer/
+  - name: Jianfei Chen
+    url: https://ml.cs.tsinghua.edu.cn/~jianfei/
+  - name: Song Han
+    url: https://hanlab.mit.edu/songhan
+
+  paper:
+    summary: We propose Dynamic range expansion for FP8 optimizer, and propose FP8 precision flow for FP8 activations. 
+            Achieve Lossless performance, end-to-End 1.54x memory reduction and 1.43x training speedup over BF16.
+    url: "https://arxiv.org/abs/2410.19313"
+
+  categories: ["quantization", "training"]
+  tags: ["FP8 training", "memory efficient training"]
+
+- title: "Jetfire: Efficient and Accurate Transformer Pretraining with INT8 Data Flow and Per-Block Quantization"
+  publishedIn:
+    name: ICML 2025 (Spotlight)
+    date: Mar 2024
+    url: "https://arxiv.org/abs/2403.12422"
+
+  authors:
+  - name: Haocheng Xi
+    url: "#"
+  - name: Yuxiang Chen
+  - name: Kang Zhao
+  - name: Kai Jun Teh
+  - name: Jianfei Chen
+  - name: Jun Zhu
+
+  paper:
+    summary: We propose a new method for efficient and accurate transformer pretraining with INT8 data flow and per-block quantization.
+            Demonstrate effectiveness on GPT2-774M model.
+            Achieve End-to-End 1.42x training speedup and 1.49x memory reduction.
+    url: "https://arxiv.org/abs/2403.12422"
+    
+  categories: ["quantization", "training"]
+  tags: ["INT8 training", "per-block quantization"]
+
+- title: "Training Transformers with 4-bit Integers"
+  publishedIn:
+    name: NeurIPS 2023
+    date: Jun 2023
+    url: "https://arxiv.org/abs/2306.11987"
+
+  authors:
+  - name: Haocheng Xi
+    url: "#"
+  - name: Changhao Li
+  - name: Jianfei Chen
+    url: https://ml.cs.tsinghua.edu.cn/~jianfei/
+  - name: Jun Zhu
+    url: https://ml.cs.tsinghua.edu.cn/~jun/index.shtml
+    
+  paper:
+    summary: Propose Hadamard Quantizer and Leverage Score Sampling to enable INT4 Precision Matmul in training for speedup. 
+            Both the forward and backward pass are quantized into INT4 precision for maximized speedup.
+            Outperforms all existing 4-bit training baselines.
+    url: "https://arxiv.org/abs/2306.11987"
+
+  categories: ["quantization", "training"]
+  tags: ["INT4 training", "Hadamard Quantizer"]
+
+
+

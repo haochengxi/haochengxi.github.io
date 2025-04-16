@@ -22,11 +22,10 @@ buttons:
 
 projects:
 - name: "Sparse VideoGen: Accelerating Video Diffusion Transformers with Spatial-Temporal Sparsity"
-#  logo: images/projects/kubernetes.png
   image: images/svg_overview.png
   role: Co-First Author
   timeline: "Sep 2024 - Feb 2025"
-  repo: "#"
+  repo: "https://github.com/svg-project/Sparse-VideoGen"
   url: "https://arxiv.org/abs/2502.01776"
   summary: We identify the spatial head and temporal head pattern in attention map and propose to 
            use sparse attention to accelerate.
@@ -34,20 +33,17 @@ projects:
   tags: ["sparsity", "inference"]
 
 - name: "QuantSpec: Self-Speculative Decoding with Hierarchical Quantized KV Cache"
-#  logo: images/projects/kubernetes.png
   image: images/quantspec_overview.png
   role: Co-First Author
   timeline: "Sep 2024 - Feb 2025"
   repo: "#"
-  url: "#"
+  url: "https://arxiv.org/abs/2502.10424"
   summary: We propose a self-speculative decoding framework, QuantSpec, to speedup long-context inference.
            QuantSpec maintains high acceptance rates (>90%) and reliably provides consistent 
            end-to-end speedups upto ∼ 2.5×.
   tags: ["quantization", "inference"]
 
-
 - name: "COAT: Compressing Optimizer states and Activation for Memory-Efficient FP8 Training"
-#  logo: images/projects/kubernetes.png
   image: images/coat8_overview.png
   role: First Author
   timeline: "Feb 2024 - Sep 2024"
@@ -57,9 +53,26 @@ projects:
            Achieve Lossless performance, end-to-End 1.54x memory reduction and 1.43x training speedup over BF16.
   tags: ["quantization", "training"]
 
+- name: "NVILA: Efficient Frontier Visual Language Models"
+  image: images/vila_overview.png
+  role: Contributor
+  timeline: "Mar 2024 - Nov 2024"
+  repo: "https://github.com/NVlabs/VILA"
+  url: "https://arxiv.org/abs/2412.04468"
+  summary: We propose a new frontier of visual language models, NVILA, to achieve reduces training costs by 4.5X, 
+           fine-tuning memory usage by 3.4X, pre-filling latency by 1.6-2.2X, and decoding latency by 1.2-2.8X.
+  tags: ["quantization", "training", "inference"]
+
+- name: "SpargeAttn: Accurate Sparse Attention Accelerating Any Model Inference"
+  image: images/sparge_overview.png
+  role: Contributor
+  timeline: "Sep 2024 - Feb 2025"
+  repo: "https://github.com/thu-ml/SpargeAttn"
+  summary: We propose SpargeAttn, a universal sparse and quantized attention for any model inference. 
+           Our method uses a two-stage online filter to select the most important tokens.
+  tags: ["sparsity", "inference"]
 
 - name: "Jetfire: Efficient and Accurate Transformer Pretraining with INT8 Data Flow and Per-Block Quantization"
-#  logo: images/projects/kubernetes.png
   image: images/jetfire_overview.png
   role: First Author
   timeline: "Sep 2023 - Jan 2024"
@@ -72,7 +85,6 @@ projects:
 
 
 - name: "Training Transformers with 4-bit Integers"
-#  logo: images/projects/kubernetes.png
   image: images/int4train_overview.png
   role: First Author
   timeline: "Apr 2022 - Dec 2022"
