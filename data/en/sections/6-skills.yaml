@@ -3,7 +3,7 @@ section:
   name: Skills
   id: skills
   enable: true
-  weight: 7
+  weight: 6
   showOnNavbar: true
   filter: true
   # Can optionally hide the title in sections
@@ -46,3 +46,7 @@ skills:
   summary: "Familiar with Latex writing."
   categories: ["basic"]
   url: "https://www.overleaf.com"
+
+- name: Reviewers
+  summary: "Reviewer of ICML, NeurIPS, ICLR"
+  categories: ["basic"]

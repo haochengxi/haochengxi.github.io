@@ -2,7 +2,7 @@ section:
   name: Selected Publications
   id: publications
   enable: true
-  weight: 6
+  weight: 4
   showOnNavbar: true
 
 # filter buttons
@@ -22,7 +22,7 @@ buttons:
 publications:
 - title: "Sparse VideoGen: Accelerating Video Diffusion Transformers with Spatial-Temporal Sparsity"
   publishedIn:
-    name: Arxiv
+    name: ICML 2025
     date: Feb 2025
     url: "https://arxiv.org/abs/2502.01776"
   authors:
@@ -67,7 +67,7 @@ publications:
 
 - title: "QuantSpec: Self-Speculative Decoding with Hierarchical Quantized KV Cache"
   publishedIn:
-    name: Arxiv
+    name: ICML 2025
     date: Feb 2025
     url: "https://arxiv.org/abs/2502.10424"
   authors:
@@ -131,7 +131,7 @@ publications:
 
 - title: "Jetfire: Efficient and Accurate Transformer Pretraining with INT8 Data Flow and Per-Block Quantization"
   publishedIn:
-    name: ICML 2025 (Spotlight)
+    name: ICML 2024 (Spotlight)
     date: Mar 2024
     url: "https://arxiv.org/abs/2403.12422"
 

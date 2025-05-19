@@ -2,7 +2,7 @@ section:
   name: Experiences # Titre de la section (par défaut: "" )
   id: experiences # url id/slug of section *Required*
   enable: true
-  weight: 3
+  weight: 2
   showOnNavbar: true
   # Can optionally hide the title in sections
   # hideTitle: true
@@ -22,7 +22,7 @@ experiences:
   - designation: Research Intern
     start: Feb 2024
     # don't provide end date if you are currently working there. It will be replaced by "Present"
-    end: Aug 2025
+    end: Aug 2024
     # give some points about what was your responsibilities at the company.
     responsibilities:
     - Propose a Memory Efficient FP8 Training method, [COAT](https://arxiv.org/abs/2410.19313) that Compress Optimizer
