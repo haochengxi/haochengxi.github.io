@@ -24,15 +24,15 @@ degrees:
     outOf: 4
 
   publications: #(optional)
-  - title: "Sparse VideoGen: Accelerating Video Diffusion Transformers with Spatial-Temporal Sparsity"
+  - title: "[ICML 2025] Sparse VideoGen: Accelerating Video Diffusion Transformers with Spatial-Temporal Sparsity"
     url: "https://arxiv.org/abs/2502.01776"
-  - title: "QuantSpec: Self-Speculative Decoding with Hierarchical Quantized KV Cache"
+  - title: "[ICML 2025] QuantSpec: Self-Speculative Decoding with Hierarchical Quantized KV Cache"
     url: "https://arxiv.org/pdf/2502.10424"
-  - title: "COAT: Compressing Optimizer states and Activation for Memory-Efficient FP8 Training"
+  - title: "[ICLR 2025] COAT: Compressing Optimizer states and Activation for Memory-Efficient FP8 Training"
     url: "https://arxiv.org/abs/2410.19313"
-  - title: "NVILA: Efficient Frontier Visual Language Models"
+  - title: "[CVPR 2025]NVILA: Efficient Frontier Visual Language Models"
     url: "https://arxiv.org/abs/2412.04468"
-  - title: "SpargeAttn: Accurate Sparse Attention Accelerating Any Model Inference"
+  - title: "[ICML 2025] SpargeAttn: Accurate Sparse Attention Accelerating Any Model Inference"
     url: "https://arxiv.org/abs/2502.18137"
 
   extracurricularActivities: #(optional), supports markdown
@@ -57,11 +57,11 @@ degrees:
     outOf: 4
 
   publications: #(optional)
-  - title: "Training Transformers with 4-bit Integers"
+  - title: "[NeurIPS 2023] Training Transformers with 4-bit Integers"
     url: "https://arxiv.org/abs/2306.11987"
-  - title: "Jetfire: Efficient and Accurate Transformer Pretraining with INT8 Data Flow and Per-Block Quantization"
+  - title: "[ICML 2024] Jetfire: Efficient and Accurate Transformer Pretraining with INT8 Data Flow and Per-Block Quantization"
     url: "https://arxiv.org/abs/2403.12422"
-  - title: "Oscillation-Reduced MXFP4 Training for Vision Transformers"
+  - title: "[ICML 2025] Oscillation-Reduced MXFP4 Training for Vision Transformers"
     url: "https://arxiv.org/abs/2502.20853"
 
 #  extracurricularActivities: #(optional), supports markdown
