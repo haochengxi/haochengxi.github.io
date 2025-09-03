@@ -20,6 +20,51 @@ buttons:
 
 # your publications
 publications:
+- title: "Sparse VideoGen 2: Accelerate Video Generation with Sparse Attention via Semantic-Aware Permutation"
+  publishedIn:
+    name: Arxiv 2025
+    date: May 2025
+    url: "https://arxiv.org/abs/2505.18875"
+  authors:
+    - name: Shuo Yang*
+      url: https://andy-yang-1.github.io/
+    - name: Haocheng Xi*
+      url: "#"
+    - name: Yilong Zhao
+      url: https://happierpig.github.io/
+    - name: Muyang Li
+      url: https://lmxyy.me/
+    - name: Jintao Zhang
+      url: https://jintaozhang.github.io/
+    - name: Han Cai
+      url: https://han-cai.github.io/
+    - name: Yujun Lin
+      url: https://yujunlin.com/
+    - name: Xiuyu Li
+      url: https://xiuyuli.com/
+    - name: Chenfeng Xu
+      url: https://www.chenfengx.com/
+    - name: Kelly Peng
+      url: https://www.linkedin.com/in/kelly-peng-182680256/
+    - name: Jianfei Chen
+      url: https://ml.cs.tsinghua.edu.cn/~jianfei/
+    - name: Song Han
+      url: https://hanlab.mit.edu/songhan
+    - name: Kurt Keutzer
+      url: https://people.eecs.berkeley.edu/~keutzer/
+    - name: Ion Stoica
+      url: https://people.eecs.berkeley.edu/~istoica/
+
+  paper:
+    summary: We propose a training-free sparse attention framework that uses semantic-aware permutation - 
+          clustering and reordering tokens via k-means based on semantic similarity - to achieve a new 
+          pareto-frontier in speed-quality tradeoff.
+    url: https://arxiv.org/abs/2505.18875
+
+  categories: ["sparsity", "inference"]
+  tags: ["efficient video generation", "sparse attention"]
+
+
 - title: "Sparse VideoGen: Accelerating Video Diffusion Transformers with Spatial-Temporal Sparsity"
   publishedIn:
     name: ICML 2025

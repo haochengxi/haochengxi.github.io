@@ -21,6 +21,17 @@ buttons:
   filter: "inference"
 
 projects:
+- name: "Sparse VideoGen 2: Accelerate Video Generation with Sparse Attention via Semantic-Aware Permutation"
+  image: images/svg_2_overview.png
+  role: Co-First Author
+  timeline: "Feb 2025 - Jun 2025"
+  repo: "https://github.com/svg-project/Sparse-VideoGen"
+  url: "https://arxiv.org/abs/2505.18875"
+  summary: We propose a training-free sparse attention framework that uses semantic-aware permutation - 
+           clustering and reordering tokens via k-means based on semantic similarity - to achieve a new 
+           pareto-frontier in speed-quality tradeoff.
+  tags: ["sparsity", "inference"]
+
 - name: "Sparse VideoGen: Accelerating Video Diffusion Transformers with Spatial-Temporal Sparsity"
   image: images/svg_overview.png
   role: Co-First Author
