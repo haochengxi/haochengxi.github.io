@@ -20,10 +20,88 @@ buttons:
 
 # your publications
 publications:
+- title: "Quant VideoGen: Auto-Regressive Long Video Generation via 2-Bit KV-Cache Quantization"
+  publishedIn:
+    name: Arxiv 2026
+    date: Feb 2026
+    url: "https://arxiv.org/abs/2602.02958"
+  authors:
+    - name: Haocheng Xi
+      url: "#"
+    - name: Shuo Yang
+      url: https://andy-yang-1.github.io/
+    - name: Yilong Zhao
+      url: https://happierpig.github.io/
+    - name: Muyang Li
+      url: https://lmxyy.me/
+    - name: Han Cai
+      url: https://han-cai.github.io/
+    - name: Xingyang Li
+    - name: Yujun Lin
+      url: https://yujunlin.com/
+    - name: Zhuoyang Zhang
+    - name: Jintao Zhang
+      url: https://jintaozhang.github.io/
+    - name: Xiuyu Li
+      url: https://xiuyuli.com/
+    - name: Zhiying Xu
+    - name: Jun Wu
+    - name: Chenfeng Xu
+      url: https://www.chenfengx.com/
+    - name: Ion Stoica
+      url: https://people.eecs.berkeley.edu/~istoica/
+    - name: Song Han
+      url: https://hanlab.mit.edu/songhan
+    - name: Kurt Keutzer
+      url: https://people.eecs.berkeley.edu/~keutzer/
+
+  paper:
+    summary: We present Quant VideoGen (QVG), a training-free KV cache quantization framework for autoregressive video diffusion with semantic-aware smoothing and progressive residual quantization.
+            Reduces KV cache memory by up to 7× with under 4% end-to-end latency overhead while improving quality over baselines.
+    url: https://arxiv.org/abs/2602.02958
+
+  categories: ["quantization", "inference"]
+  tags: ["autoregressive video diffusion", "KV cache compression"]
+
+
+- title: "Jet-RL: Enabling On-Policy FP8 Reinforcement Learning with Unified Training and Rollout Precision Flow"
+  publishedIn:
+    name: Arxiv 2026
+    date: Jan 2026
+    url: "https://arxiv.org/abs/2601.14243"
+  authors:
+    - name: Haocheng Xi
+      url: "#"
+    - name: Charlie Ruan
+    - name: Peiyuan Liao
+    - name: Yujun Lin
+      url: https://yujunlin.com/
+    - name: Han Cai
+      url: https://han-cai.github.io/
+    - name: Yilong Zhao
+      url: https://happierpig.github.io/
+    - name: Shuo Yang
+      url: https://andy-yang-1.github.io/
+    - name: Kurt Keutzer
+      url: https://people.eecs.berkeley.edu/~keutzer/
+    - name: Song Han
+      url: https://hanlab.mit.edu/songhan
+    - name: Ligeng Zhu
+      url: https://lzhu.me/
+
+  paper:
+    summary: We unify FP8 precision across RL training and rollout to avoid off-policy numerical mismatch from BF16-train + FP8-rollout, which can destabilize long-horizon RL.
+            Achieves up to 33% rollout speedup, 41% training speedup, and 16% end-to-end speedup over BF16 with stable convergence.
+    url: https://arxiv.org/abs/2601.14243
+
+  categories: ["quantization", "training"]
+  tags: ["FP8 reinforcement learning", "LLM reasoning"]
+
+
 - title: "Sparse VideoGen 2: Accelerate Video Generation with Sparse Attention via Semantic-Aware Permutation"
   publishedIn:
-    name: Arxiv 2025
-    date: May 2025
+    name: NeurIPS 2025 (Spotlight)
+    date: Sep 2025
     url: "https://arxiv.org/abs/2505.18875"
   authors:
     - name: Shuo Yang*

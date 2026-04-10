@@ -24,6 +24,12 @@ degrees:
     outOf: 4
 
   publications: #(optional)
+  - title: "[Arxiv 2026] Quant VideoGen: Auto-Regressive Long Video Generation via 2-Bit KV-Cache Quantization"
+    url: "https://arxiv.org/abs/2602.02958"
+  - title: "[Arxiv 2026] Jet-RL: Enabling On-Policy FP8 Reinforcement Learning with Unified Training and Rollout Precision Flow"
+    url: "https://arxiv.org/abs/2601.14243"
+  - title: "[NeurIPS 2025] Sparse VideoGen 2: Accelerate Video Generation with Sparse Attention via Semantic-Aware Permutation"
+    url: "https://arxiv.org/abs/2505.18875"
   - title: "[ICML 2025] Sparse VideoGen: Accelerating Video Diffusion Transformers with Spatial-Temporal Sparsity"
     url: "https://arxiv.org/abs/2502.01776"
   - title: "[ICML 2025] QuantSpec: Self-Speculative Decoding with Hierarchical Quantized KV Cache"

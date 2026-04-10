@@ -21,6 +21,26 @@ buttons:
   filter: "inference"
 
 projects:
+- name: "Quant VideoGen: Auto-Regressive Long Video Generation via 2-Bit KV-Cache Quantization"
+  image: images/qvg_overview.png
+  role: First Author
+  timeline: "Feb 2026"
+  repo: "#"
+  url: "https://arxiv.org/abs/2602.02958"
+  summary: We present Quant VideoGen (QVG), a training-free KV cache quantization framework for autoregressive video diffusion with semantic-aware smoothing and progressive residual quantization.
+           Reduces KV cache memory by up to 7× with under 4% end-to-end latency overhead while improving quality over baselines.
+  tags: ["quantization", "inference"]
+
+- name: "Jet-RL: Enabling On-Policy FP8 Reinforcement Learning with Unified Training and Rollout Precision Flow"
+  image: images/jetrl_overview.png
+  role: First Author
+  timeline: "Jan 2026"
+  repo: "#"
+  url: "https://arxiv.org/abs/2601.14243"
+  summary: We unify FP8 precision across RL training and rollout to avoid off-policy numerical mismatch from BF16-train + FP8-rollout, which can destabilize long-horizon RL.
+           Achieves up to 33% rollout speedup, 41% training speedup, and 16% end-to-end speedup over BF16 with stable convergence.
+  tags: ["quantization", "training"]
+
 - name: "Sparse VideoGen 2: Accelerate Video Generation with Sparse Attention via Semantic-Aware Permutation"
   image: images/svg_2_overview.png
   role: Co-First Author

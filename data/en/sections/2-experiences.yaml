@@ -12,6 +12,21 @@ experiences:
 - company:
     name: Nvidia.
     url: "https://www.nvidia.com/en-us/"
+    location: San Jose, CA, USA
+    logo: images/nvidia_logo.png
+    overview: Research internship at NVIDIA, advised by Prof.Song Han (MIT Han Lab).
+
+  positions:
+  - designation: Research Intern
+    start: May 2025
+    end: Aug 2025
+    responsibilities:
+    - Conducted research on efficient training and inference for large generative models, including video diffusion and low-precision (FP8) workflows.
+    - Collaborated with MIT Han Lab and NVIDIA researchers on systems for scalable model deployment.
+
+- company:
+    name: Nvidia.
+    url: "https://www.nvidia.com/en-us/"
     location: Beijing, China
     logo: images/nvidia_logo.png
     # darkLogo: /images/experiences/company-dark.png #(optional), Can optionally show a different logo for dark theme
