@@ -20,6 +20,84 @@ buttons:
 
 # your publications
 publications:
+- title: "LoSA: Locality Aware Sparse Attention for Block-Wise Diffusion Language Models"
+  publishedIn:
+    name: Arxiv 2026
+    date: Apr 2026
+    url: "https://arxiv.org/abs/2604.12056"
+  authors:
+    - name: Haocheng Xi
+      url: "#"
+    - name: Harman Singh
+    - name: Yuezhou Hu
+    - name: Coleman Hooper
+      url: https://www.linkedin.com/in/coleman-hooper-165061193/
+    - name: Rishabh Tiwari
+      url: https://www.rishabhtiwari.org/
+    - name: Aditya Tomar
+    - name: Minjae Lee
+    - name: Wonjun Kang
+    - name: Michael W. Mahoney
+      url: https://www.stat.berkeley.edu/~mmahoney/
+    - name: Chenfeng Xu
+      url: https://www.chenfengx.com/
+    - name: Kurt Keutzer
+      url: https://people.eecs.berkeley.edu/~keutzer/
+    - name: Amir Gholami
+      url: https://amirgholami.org/
+
+  paper:
+    summary: We propose LoSA, a locality-aware sparse attention for block-wise diffusion language models.
+            LoSA reuses cached prefix-attention for stable tokens and applies sparse attention only to active tokens,
+            achieving up to +9 accuracy points at aggressive sparsity, 1.54x lower attention density, and 4.14x attention speedup.
+    url: https://arxiv.org/abs/2604.12056
+
+  categories: ["sparsity", "inference"]
+  tags: ["sparse attention", "diffusion language models"]
+
+
+- title: "Flash-KMeans: Fast and Memory-Efficient Exact K-Means"
+  publishedIn:
+    name: Arxiv 2026
+    date: Mar 2026
+    url: "https://arxiv.org/abs/2603.09229"
+  authors:
+    - name: Shuo Yang*
+      url: https://andy-yang-1.github.io/
+    - name: Haocheng Xi*
+      url: "#"
+    - name: Yilong Zhao
+      url: https://happierpig.github.io/
+    - name: Muyang Li
+      url: https://lmxyy.me/
+    - name: Xiaoze Fan
+    - name: Jintao Zhang
+      url: https://jintaozhang.github.io/
+    - name: Han Cai
+      url: https://han-cai.github.io/
+    - name: Yujun Lin
+      url: https://yujunlin.com/
+    - name: Xiuyu Li
+      url: https://xiuyuli.com/
+    - name: Kurt Keutzer
+      url: https://people.eecs.berkeley.edu/~keutzer/
+    - name: Song Han
+      url: https://hanlab.mit.edu/songhan
+    - name: Chenfeng Xu
+      url: https://www.chenfengx.com/
+    - name: Ion Stoica
+      url: https://people.eecs.berkeley.edu/~istoica/
+
+  paper:
+    summary: We propose Flash-KMeans, an IO-aware and contention-free k-means for modern GPUs.
+            FlashAssign fuses distance computation with online argmin; Sort-Inverse Update transforms atomic scatters into localized reductions.
+            Achieves up to 17.9x end-to-end speedup, 33x over cuML, and 200x+ over FAISS on H200 GPUs.
+    url: https://arxiv.org/abs/2603.09229
+
+  categories: ["sparsity", "inference"]
+  tags: ["k-means", "GPU systems"]
+
+
 - title: "Quant VideoGen: Auto-Regressive Long Video Generation via 2-Bit KV-Cache Quantization"
   publishedIn:
     name: Arxiv 2026

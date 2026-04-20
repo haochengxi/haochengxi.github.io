@@ -21,6 +21,28 @@ buttons:
   filter: "inference"
 
 projects:
+- name: "LoSA: Locality Aware Sparse Attention for Block-Wise Diffusion Language Models"
+  image: images/losa_overview.png
+  role: First Author
+  timeline: "Apr 2026"
+  repo: "#"
+  url: "https://arxiv.org/abs/2604.12056"
+  summary: We propose LoSA, a locality-aware sparse attention for block-wise diffusion language models.
+           LoSA reuses cached prefix-attention for stable tokens and applies sparse attention only to active tokens,
+           achieving up to +9 accuracy points at aggressive sparsity, 1.54x lower attention density, and 4.14x attention speedup.
+  tags: ["sparsity", "inference"]
+
+- name: "Flash-KMeans: Fast and Memory-Efficient Exact K-Means"
+  image: images/flashkmeans_overview.png
+  role: Co-First Author
+  timeline: "Mar 2026"
+  repo: "https://github.com/svg-project/flash-kmeans"
+  url: "https://arxiv.org/abs/2603.09229"
+  summary: We propose Flash-KMeans, an IO-aware and contention-free k-means for modern GPUs.
+           FlashAssign fuses distance computation with online argmin; Sort-Inverse Update transforms atomic scatters into localized reductions.
+           Achieves up to 17.9x end-to-end speedup, 33x over cuML, and 200x+ over FAISS on H200 GPUs.
+  tags: ["sparsity", "inference"]
+
 - name: "Quant VideoGen: Auto-Regressive Long Video Generation via 2-Bit KV-Cache Quantization"
   image: images/qvg_overview.png
   role: First Author
