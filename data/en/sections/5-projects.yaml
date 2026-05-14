@@ -21,17 +21,6 @@ buttons:
   filter: "inference"
 
 projects:
-- name: "StreamDiffusionV2: A Streaming System for Dynamic and Interactive Video Generation [MLSys 2026 Best Paper]"
-  image: images/streamdiffusionv2_overview.png
-  role: Core Contributor
-  timeline: "May 2026"
-  repo: "#"
-  url: "https://arxiv.org/abs/2511.07399"
-  summary: We present StreamDiffusionV2, a training-free streaming system that adapts video diffusion models for interactive, low-latency live generation.
-           Combines SLO-aware batching, sink-token rolling KV cache, motion-aware noise control, and pipeline orchestration across denoising steps and network layers.
-           Achieves 0.5s time-to-first-frame and up to 58.28 FPS (14B) / 64.52 FPS (1.3B) on 4xH100 without TensorRT or quantization.
-  tags: ["inference"]
-
 - name: "LoSA: Locality Aware Sparse Attention for Block-Wise Diffusion Language Models [ICML 2026]"
   image: images/losa_overview.png
   role: First Author
@@ -74,6 +63,17 @@ projects:
            Achieves up to 33% rollout speedup, 41% training speedup, and 16% end-to-end speedup over BF16 with stable convergence.
   tags: ["quantization", "training"]
 
+- name: "StreamDiffusionV2: A Streaming System for Dynamic and Interactive Video Generation [MLSys 2026 Best Paper]"
+  image: images/streamdiffusionv2_overview.png
+  role: Core Contributor
+  timeline: "Nov 2025"
+  repo: "#"
+  url: "https://arxiv.org/abs/2511.07399"
+  summary: We present StreamDiffusionV2, a training-free streaming system that adapts video diffusion models for interactive, low-latency live generation.
+           Combines SLO-aware batching, sink-token rolling KV cache, motion-aware noise control, and pipeline orchestration across denoising steps and network layers.
+           Achieves 0.5s time-to-first-frame and up to 58.28 FPS (14B) / 64.52 FPS (1.3B) on 4xH100 without TensorRT or quantization.
+  tags: ["inference"]
+
 - name: "Sparse VideoGen 2: Accelerate Video Generation with Sparse Attention via Semantic-Aware Permutation"
   image: images/svg_2_overview.png
   role: Co-First Author
@@ -85,15 +85,13 @@ projects:
            pareto-frontier in speed-quality tradeoff.
   tags: ["sparsity", "inference"]
 
-- name: "Sparse VideoGen: Accelerating Video Diffusion Transformers with Spatial-Temporal Sparsity"
-  image: images/svg_overview.png
-  role: Co-First Author
+- name: "SpargeAttn: Accurate Sparse Attention Accelerating Any Model Inference"
+  image: images/sparge_overview.png
+  role: Contributor
   timeline: "Sep 2024 - Feb 2025"
-  repo: "https://github.com/svg-project/Sparse-VideoGen"
-  url: "https://arxiv.org/abs/2502.01776"
-  summary: We identify the spatial head and temporal head pattern in attention map and propose to 
-           use sparse attention to accelerate.
-           Achieves up to 2.28x and 2.33x end-to-end speedup on CogVideoX-v1.5 and HunyuanVideo.
+  repo: "https://github.com/thu-ml/SpargeAttn"
+  summary: We propose SpargeAttn, a universal sparse and quantized attention for any model inference. 
+           Our method uses a two-stage online filter to select the most important tokens.
   tags: ["sparsity", "inference"]
 
 - name: "QuantSpec: Self-Speculative Decoding with Hierarchical Quantized KV Cache"
@@ -107,15 +105,16 @@ projects:
            end-to-end speedups upto ∼ 2.5×.
   tags: ["quantization", "inference"]
 
-- name: "COAT: Compressing Optimizer states and Activation for Memory-Efficient FP8 Training"
-  image: images/coat8_overview.png
-  role: First Author
-  timeline: "Feb 2024 - Sep 2024"
-  repo: https://github.com/NVlabs/COAT
-  url: "https://arxiv.org/abs/2410.19313"
-  summary: We propose Dynamic range expansion for FP8 optimizer, and propose FP8 precision flow for FP8 activations. 
-           Achieve Lossless performance, end-to-End 1.54x memory reduction and 1.43x training speedup over BF16.
-  tags: ["quantization", "training"]
+- name: "Sparse VideoGen: Accelerating Video Diffusion Transformers with Spatial-Temporal Sparsity"
+  image: images/svg_overview.png
+  role: Co-First Author
+  timeline: "Sep 2024 - Feb 2025"
+  repo: "https://github.com/svg-project/Sparse-VideoGen"
+  url: "https://arxiv.org/abs/2502.01776"
+  summary: We identify the spatial head and temporal head pattern in attention map and propose to 
+           use sparse attention to accelerate.
+           Achieves up to 2.28x and 2.33x end-to-end speedup on CogVideoX-v1.5 and HunyuanVideo.
+  tags: ["sparsity", "inference"]
 
 - name: "NVILA: Efficient Frontier Visual Language Models"
   image: images/vila_overview.png
@@ -127,14 +126,15 @@ projects:
            fine-tuning memory usage by 3.4X, pre-filling latency by 1.6-2.2X, and decoding latency by 1.2-2.8X.
   tags: ["quantization", "training", "inference"]
 
-- name: "SpargeAttn: Accurate Sparse Attention Accelerating Any Model Inference"
-  image: images/sparge_overview.png
-  role: Contributor
-  timeline: "Sep 2024 - Feb 2025"
-  repo: "https://github.com/thu-ml/SpargeAttn"
-  summary: We propose SpargeAttn, a universal sparse and quantized attention for any model inference. 
-           Our method uses a two-stage online filter to select the most important tokens.
-  tags: ["sparsity", "inference"]
+- name: "COAT: Compressing Optimizer states and Activation for Memory-Efficient FP8 Training"
+  image: images/coat8_overview.png
+  role: First Author
+  timeline: "Feb 2024 - Sep 2024"
+  repo: https://github.com/NVlabs/COAT
+  url: "https://arxiv.org/abs/2410.19313"
+  summary: We propose Dynamic range expansion for FP8 optimizer, and propose FP8 precision flow for FP8 activations. 
+           Achieve Lossless performance, end-to-End 1.54x memory reduction and 1.43x training speedup over BF16.
+  tags: ["quantization", "training"]
 
 - name: "Jetfire: Efficient and Accurate Transformer Pretraining with INT8 Data Flow and Per-Block Quantization"
   image: images/jetfire_overview.png
