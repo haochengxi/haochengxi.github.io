@@ -24,6 +24,8 @@ degrees:
     outOf: 4
 
   publications: #(optional)
+  - title: "[MLSys 2026 Best Paper] StreamDiffusionV2: A Streaming System for Dynamic and Interactive Video Generation"
+    url: "https://arxiv.org/abs/2511.07399"
   - title: "[Arxiv 2026] Quant VideoGen: Auto-Regressive Long Video Generation via 2-Bit KV-Cache Quantization"
     url: "https://arxiv.org/abs/2602.02958"
   - title: "[Arxiv 2026] Jet-RL: Enabling On-Policy FP8 Reinforcement Learning with Unified Training and Rollout Precision Flow"

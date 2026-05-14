@@ -20,6 +20,46 @@ buttons:
 
 # your publications
 publications:
+- title: "StreamDiffusionV2: A Streaming System for Dynamic and Interactive Video Generation"
+  publishedIn:
+    name: MLSys 2026 (Best Paper Award)
+    date: May 2026
+    url: "https://arxiv.org/abs/2511.07399"
+  authors:
+    - name: Tianrui Feng
+    - name: Zhi Li
+    - name: Shuo Yang
+      url: https://andy-yang-1.github.io/
+    - name: Haocheng Xi
+      url: "#"
+    - name: Muyang Li
+      url: https://lmxyy.me/
+    - name: Xiuyu Li
+      url: https://xiuyuli.com/
+    - name: Lvmin Zhang
+    - name: Keting Yang
+    - name: Kelly Peng
+      url: https://www.linkedin.com/in/kelly-peng-182680256/
+    - name: Song Han
+      url: https://hanlab.mit.edu/songhan
+    - name: Maneesh Agrawala
+      url: https://graphics.stanford.edu/~maneesh/
+    - name: Kurt Keutzer
+      url: https://people.eecs.berkeley.edu/~keutzer/
+    - name: Akio Kodaira
+    - name: Chenfeng Xu
+      url: https://www.chenfengx.com/
+
+  paper:
+    summary: We present StreamDiffusionV2, a training-free streaming system that adapts video diffusion models for interactive, low-latency live generation.
+            It integrates an SLO-aware batching scheduler, sink-token-guided rolling KV cache, motion-aware noise controller, and scalable pipeline orchestration across denoising steps and network layers.
+            Achieves 0.5s time-to-first-frame and up to 58.28 FPS (14B) / 64.52 FPS (1.3B) on 4xH100 without TensorRT or quantization.
+    url: https://arxiv.org/abs/2511.07399
+
+  categories: ["inference"]
+  tags: ["streaming video generation", "real-time serving system"]
+
+
 - title: "LoSA: Locality Aware Sparse Attention for Block-Wise Diffusion Language Models"
   publishedIn:
     name: Arxiv 2026
