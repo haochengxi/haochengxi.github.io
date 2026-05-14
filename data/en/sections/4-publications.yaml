@@ -62,7 +62,7 @@ publications:
 
 - title: "LoSA: Locality Aware Sparse Attention for Block-Wise Diffusion Language Models"
   publishedIn:
-    name: Arxiv 2026
+    name: ICML 2026
     date: Apr 2026
     url: "https://arxiv.org/abs/2604.12056"
   authors:
@@ -140,7 +140,7 @@ publications:
 
 - title: "Quant VideoGen: Auto-Regressive Long Video Generation via 2-Bit KV-Cache Quantization"
   publishedIn:
-    name: Arxiv 2026
+    name: ICML 2026
     date: Feb 2026
     url: "https://arxiv.org/abs/2602.02958"
   authors:
