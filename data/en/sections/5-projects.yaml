@@ -21,7 +21,7 @@ buttons:
   filter: "inference"
 
 projects:
-- name: "LoSA: Locality Aware Sparse Attention for Block-Wise Diffusion Language Models [ICML 2026]"
+- name: "LoSA: Locality Aware Sparse Attention for Block-Wise Diffusion Language Models"
   image: images/losa_overview.png
   role: First Author
   timeline: "Apr 2026"
@@ -43,7 +43,7 @@ projects:
            Achieves up to 17.9x end-to-end speedup, 33x over cuML, and 200x+ over FAISS on H200 GPUs.
   tags: ["sparsity", "inference"]
 
-- name: "Quant VideoGen: Auto-Regressive Long Video Generation via 2-Bit KV-Cache Quantization [ICML 2026]"
+- name: "Quant VideoGen: Auto-Regressive Long Video Generation via 2-Bit KV-Cache Quantization"
   image: images/qvg_overview.png
   role: First Author
   timeline: "Feb 2026"
@@ -63,7 +63,7 @@ projects:
            Achieves up to 33% rollout speedup, 41% training speedup, and 16% end-to-end speedup over BF16 with stable convergence.
   tags: ["quantization", "training"]
 
-- name: "StreamDiffusionV2: A Streaming System for Dynamic and Interactive Video Generation [MLSys 2026 Best Paper]"
+- name: "StreamDiffusionV2: A Streaming System for Dynamic and Interactive Video Generation"
   image: images/streamdiffusionv2_overview.png
   role: Core Contributor
   timeline: "Nov 2025"
