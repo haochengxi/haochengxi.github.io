@@ -47,7 +47,7 @@ projects:
   image: images/qvg_overview.png
   role: First Author
   timeline: "Feb 2026"
-  repo: "#"
+  repo: "https://github.com/svg-project/Quant-VideoGen"
   url: "https://arxiv.org/abs/2602.02958"
   summary: We present Quant VideoGen (QVG), a training-free KV cache quantization framework for autoregressive video diffusion with semantic-aware smoothing and progressive residual quantization.
            Reduces KV cache memory by up to 7× with under 4% end-to-end latency overhead while improving quality over baselines.
@@ -64,10 +64,10 @@ projects:
   tags: ["quantization", "training"]
 
 - name: "StreamDiffusionV2: A Streaming System for Dynamic and Interactive Video Generation"
-  image: images/streamdiffusionv2_overview.png
+  image: images/streamdiffusion_overview.png
   role: Core Contributor
   timeline: "Nov 2025"
-  repo: "#"
+  repo: "https://github.com/chenfengxu714/StreamDiffusionV2"
   url: "https://arxiv.org/abs/2511.07399"
   summary: We present StreamDiffusionV2, a training-free streaming system that adapts video diffusion models for interactive, low-latency live generation.
            Combines SLO-aware batching, sink-token rolling KV cache, motion-aware noise control, and pipeline orchestration across denoising steps and network layers.
