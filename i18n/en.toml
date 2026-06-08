@@ -1,0 +1,4 @@
+# Project-level i18n overrides for the toha theme.
+# Rename the "Posts" section to "Blogs" everywhere (navbar, sidebar, listing).
+[posts]
+other = "Blogs"

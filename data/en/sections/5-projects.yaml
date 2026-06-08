@@ -25,6 +25,7 @@ projects:
   image: images/losa_overview.png
   role: First Author
   timeline: "Apr 2026"
+  repo: "#"
   url: "https://arxiv.org/abs/2604.12056"
   summary: We propose LoSA, a locality-aware sparse attention for block-wise diffusion language models.
            LoSA reuses cached prefix-attention for stable tokens and applies sparse attention only to active tokens,
@@ -35,7 +36,8 @@ projects:
   image: images/flashkmeans_overview.png
   role: Co-First Author
   timeline: "Mar 2026"
-  url: "https://github.com/svg-project/flash-kmeans"
+  repo: "https://github.com/svg-project/flash-kmeans"
+  url: "https://arxiv.org/abs/2603.09229"
   summary: We propose Flash-KMeans, an IO-aware and contention-free k-means for modern GPUs.
            FlashAssign fuses distance computation with online argmin; Sort-Inverse Update transforms atomic scatters into localized reductions.
            Achieves up to 17.9x end-to-end speedup, 33x over cuML, and 200x+ over FAISS on H200 GPUs.
@@ -45,7 +47,8 @@ projects:
   image: images/qvg_overview.png
   role: First Author
   timeline: "Feb 2026"
-  url: "https://github.com/svg-project/Quant-VideoGen"
+  repo: "https://github.com/svg-project/Quant-VideoGen"
+  url: "https://arxiv.org/abs/2602.02958"
   summary: We present Quant VideoGen (QVG), a training-free KV cache quantization framework for autoregressive video diffusion with semantic-aware smoothing and progressive residual quantization.
            Reduces KV cache memory by up to 7× with under 4% end-to-end latency overhead while improving quality over baselines.
   tags: ["quantization", "inference"]
@@ -54,6 +57,7 @@ projects:
   image: images/jetrl_overview.png
   role: First Author
   timeline: "Jan 2026"
+  repo: "#"
   url: "https://arxiv.org/abs/2601.14243"
   summary: We unify FP8 precision across RL training and rollout to avoid off-policy numerical mismatch from BF16-train + FP8-rollout, which can destabilize long-horizon RL.
            Achieves up to 33% rollout speedup, 41% training speedup, and 16% end-to-end speedup over BF16 with stable convergence.
@@ -63,7 +67,8 @@ projects:
   image: images/streamdiffusion_overview.png
   role: Core Contributor
   timeline: "Nov 2025"
-  url: "https://github.com/chenfengxu714/StreamDiffusionV2"
+  repo: "https://github.com/chenfengxu714/StreamDiffusionV2"
+  url: "https://arxiv.org/abs/2511.07399"
   summary: We present StreamDiffusionV2, a training-free streaming system that adapts video diffusion models for interactive, low-latency live generation.
            Combines SLO-aware batching, sink-token rolling KV cache, motion-aware noise control, and pipeline orchestration across denoising steps and network layers.
            Achieves 0.5s time-to-first-frame and up to 58.28 FPS (14B) / 64.52 FPS (1.3B) on 4xH100 without TensorRT or quantization.
@@ -73,7 +78,8 @@ projects:
   image: images/svg_2_overview.png
   role: Co-First Author
   timeline: "Feb 2025 - Jun 2025"
-  url: "https://github.com/svg-project/Sparse-VideoGen"
+  repo: "https://github.com/svg-project/Sparse-VideoGen"
+  url: "https://arxiv.org/abs/2505.18875"
   summary: We propose a training-free sparse attention framework that uses semantic-aware permutation - 
            clustering and reordering tokens via k-means based on semantic similarity - to achieve a new 
            pareto-frontier in speed-quality tradeoff.
@@ -83,7 +89,7 @@ projects:
   image: images/sparge_overview.png
   role: Contributor
   timeline: "Sep 2024 - Feb 2025"
-  url: "https://github.com/thu-ml/SpargeAttn"
+  repo: "https://github.com/thu-ml/SpargeAttn"
   summary: We propose SpargeAttn, a universal sparse and quantized attention for any model inference. 
            Our method uses a two-stage online filter to select the most important tokens.
   tags: ["sparsity", "inference"]
@@ -92,6 +98,7 @@ projects:
   image: images/quantspec_overview.png
   role: Co-First Author
   timeline: "Sep 2024 - Feb 2025"
+  repo: "#"
   url: "https://arxiv.org/abs/2502.10424"
   summary: We propose a self-speculative decoding framework, QuantSpec, to speedup long-context inference.
            QuantSpec maintains high acceptance rates (>90%) and reliably provides consistent 
@@ -102,7 +109,8 @@ projects:
   image: images/svg_overview.png
   role: Co-First Author
   timeline: "Sep 2024 - Feb 2025"
-  url: "https://github.com/svg-project/Sparse-VideoGen"
+  repo: "https://github.com/svg-project/Sparse-VideoGen"
+  url: "https://arxiv.org/abs/2502.01776"
   summary: We identify the spatial head and temporal head pattern in attention map and propose to 
            use sparse attention to accelerate.
            Achieves up to 2.28x and 2.33x end-to-end speedup on CogVideoX-v1.5 and HunyuanVideo.
@@ -112,7 +120,8 @@ projects:
   image: images/vila_overview.png
   role: Contributor
   timeline: "Mar 2024 - Nov 2024"
-  url: "https://github.com/NVlabs/VILA"
+  repo: "https://github.com/NVlabs/VILA"
+  url: "https://arxiv.org/abs/2412.04468"
   summary: We propose a new frontier of visual language models, NVILA, to achieve reduces training costs by 4.5X, 
            fine-tuning memory usage by 3.4X, pre-filling latency by 1.6-2.2X, and decoding latency by 1.2-2.8X.
   tags: ["quantization", "training", "inference"]
@@ -121,7 +130,8 @@ projects:
   image: images/coat8_overview.png
   role: First Author
   timeline: "Feb 2024 - Sep 2024"
-  url: "https://github.com/NVlabs/COAT"
+  repo: https://github.com/NVlabs/COAT
+  url: "https://arxiv.org/abs/2410.19313"
   summary: We propose Dynamic range expansion for FP8 optimizer, and propose FP8 precision flow for FP8 activations. 
            Achieve Lossless performance, end-to-End 1.54x memory reduction and 1.43x training speedup over BF16.
   tags: ["quantization", "training"]
@@ -130,7 +140,8 @@ projects:
   image: images/jetfire_overview.png
   role: First Author
   timeline: "Sep 2023 - Jan 2024"
-  url: "https://github.com/thu-ml/Jetfire-INT8Training/tree/main"
+  repo: https://github.com/thu-ml/Jetfire-INT8Training/tree/main
+  url: "https://arxiv.org/abs/2403.12422"
   summary: Propose to INT8 precision flow and per-block quantization to enable INT8 pretraining of transformers.
            Demonstrate effectiveness on GPT2-774M model.
            Achieve End-to-End 1.42x training speedup and 1.49x memory reduction.
@@ -141,7 +152,8 @@ projects:
   image: images/int4train_overview.png
   role: First Author
   timeline: "Apr 2022 - Dec 2022"
-  url: "https://github.com/haochengxi/Train_Transformers_with_INT4"
+  repo: https://github.com/haochengxi/Train_Transformers_with_INT4
+  url: "https://arxiv.org/abs/2306.11987"
   summary: Propose Hadamard Quantizer and Leverage Score Sampling to enable INT4 Precision Matmul in training for speedup.
            Both the forward and backward pass are quantized into INT4 precision for maximized speedup.
            Outperforms all existing 4-bit training baselines.

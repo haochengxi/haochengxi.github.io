@@ -1,0 +1,68 @@
+/* override this file for custom css */
+
+/* Featured/blog post cards.
+   On mobile they keep the theme's stacked layout (image on top).
+   On tablet/desktop they become a wide horizontal banner: image on the
+   left, title + summary + footer stacked on the right. This applies both
+   to the homepage "Recent/Featured posts" section and to the /posts list
+   (and tag/category list) pages, which the theme otherwise renders as a
+   multi-column grid of tiny cards. */
+
+/* Center a lone card instead of pinning it to the left of the row. */
+.recent-posts-section #recent-post-cards,
+body.kind-section .post-card-holder,
+body.kind-term .post-card-holder {
+  justify-content: center;
+}
+
+@include media('>=medium') {
+  .recent-posts-section .post-card,
+  body.kind-section .post-card,
+  body.kind-term .post-card {
+    width: 100%;
+    max-width: 920px;
+
+    .card {
+      display: grid;
+      grid-template-columns: 44% 1fr;
+      grid-template-rows: 1fr auto;
+      overflow: hidden;
+    }
+
+    /* Image fills the left column across the full card height.
+       The theme nests two <a> tags here (invalid HTML, so the browser
+       leaves an empty anchor in the flow); positioning the image
+       absolutely sidesteps that and pins it to the column. */
+    .card-head {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+    }
+    .card-img-top {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0;
+    }
+
+    /* Text and footer stack in the right column. */
+    .card-body {
+      grid-column: 2;
+      grid-row: 1;
+    }
+    .card-footer {
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    /* More vertical room here, so show a few more summary lines. */
+    .card-body .post-summary {
+      -webkit-line-clamp: 7;
+      max-height: none;
+    }
+  }
+}

@@ -40,6 +40,7 @@ params:
     # Enable and configure blog posts
     blog:
       enable: true
+      title: Blogs # label shown in the navbar (defaults to "Posts")
       showAuthor: true # shows the post author (defaults true)
 
     toc:
@@ -55,4 +56,9 @@ markup:
     startLevel: 2
     endLevel: 8
     ordered: false
+
+# Allow Hugo to render HTML content pages (e.g. posts written as index.html)
+security:
+  allowContent:
+    - '.*'
 

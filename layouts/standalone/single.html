@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ .Title }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify }}{{ end }}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify }}{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:image" content="{{ (partial "helpers/get-hero.html" .) | absURL }}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1a1a1a;--soft:#3d3d3d;--muted:#6b6b6b;--hair:#e6e6e6;--link:#0b57d0;
+    --tldr-bg:#f7f8fa;
+    --sans:"DM Serif Text",Georgia,"Times New Roman",serif;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth;}
+  body{margin:0;background:#fff;color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.72;}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px;}
+
+  h1{font-size:2.35rem;line-height:1.18;font-weight:700;letter-spacing:-0.01em;margin:0 0 .55rem;}
+  h2{font-size:1.62rem;line-height:1.24;font-weight:700;letter-spacing:-0.01em;margin:2.8rem 0 .75rem;scroll-margin-top:2rem;}
+  h3{font-size:1.22rem;line-height:1.3;font-weight:600;margin:1.8rem 0 .45rem;}
+  .secnum{margin-right:.6em;}
+  p{margin:0 0 1.1rem;}
+  a{color:var(--link);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  strong{font-weight:600;}
+  em,i{font-style:italic;}
+  blockquote{margin:1.3rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:3px solid var(--hair);color:var(--soft);font-style:italic;}
+
+  header.wrap{padding-top:5.5rem;}
+  .venue{font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 1rem;}
+  .subtitle{font-size:1.1rem;line-height:1.45;color:var(--soft);margin:0 0 1.2rem;}
+  .authors{font-size:.98rem;color:var(--ink);margin:0 0 .25rem;}
+  .affil{font-size:.92rem;color:var(--muted);margin:0 0 .9rem;}
+  .meta-links{font-size:.92rem;margin:0 0 .4rem;}
+  .meta-links a{margin-right:1.1rem;}
+  .meta-links a::before{content:"[ ";color:var(--muted);}
+  .meta-links a::after{content:" ]";color:var(--muted);}
+
+  hr.rule{border:none;border-top:1px solid var(--hair);max-width:672px;margin:2.2rem auto 0;}
+
+  .tldr{background:var(--tldr-bg);border:1px solid var(--hair);border-radius:8px;padding:1.1rem 1.3rem;margin:1.9rem 0 0;font-size:.98rem;line-height:1.62;color:var(--soft);}
+  .tldr .lbl{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.45rem;}
+  .tldr p{margin:0;}
+
+  .toc{position:fixed;top:50%;right:calc(50% - 610px);transform:translateY(-50%);width:210px;margin:0;padding:.4rem 0;background:#fff;font-size:.95rem;line-height:1.45;z-index:20;}
+  .toc .lbl{font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem;}
+  .toc ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--hair);counter-reset:toc;}
+  .toc li{margin:0;counter-increment:toc;}
+  .toc a{display:block;padding:.3rem 0 .3rem .85rem;margin-left:-1px;border-left:2px solid transparent;color:var(--muted);text-decoration:none;transition:color .15s,border-color .15s;}
+  .toc a::before{content:counter(toc) "\2002";color:#b9b9b9;}
+  .toc a:hover{color:var(--ink);text-decoration:none;}
+  .toc a.active{color:var(--link);border-left-color:var(--link);}
+  .toc a.active::before{color:var(--link);}
+  @media(max-width:1300px){.toc{display:none;}}
+
+  figure{margin:1.9rem 0;}
+  figure img{display:block;width:100%;max-width:100%;height:auto;margin:0 auto;}
+  figure.narrow img{max-width:76%;}
+  figcaption{font-size:.85rem;color:var(--muted);line-height:1.5;margin-top:.65rem;text-align:center;}
+  figcaption b{color:var(--soft);font-weight:600;}
+
+  .vidgrid{display:grid;gap:.8rem;margin:1.6rem 0 .4rem;}
+  .vidgrid.three{grid-template-columns:repeat(3,1fr);}
+  .vidgrid.two{grid-template-columns:repeat(2,1fr);}
+  .vidcell video{width:100%;height:auto;display:block;background:#0c0c0c;border:1px solid var(--hair);}
+  .vidcell .tag{font-size:.74rem;font-weight:600;color:var(--muted);margin-bottom:.4rem;}
+  .vidcell.good .tag{color:#1a7f4b;}
+  .vidcell.bad .tag{color:#b3411e;}
+  .vidcell.ours .tag{color:var(--link);}
+
+  .frames{display:flex;align-items:flex-end;justify-content:center;gap:.6rem;margin:1.6rem 0 .4rem;}
+  .frames .cell{flex:1 1 0;min-width:0;}
+  .frames .dots{flex:0 0 auto;align-self:center;font-size:1.5rem;letter-spacing:.1em;color:var(--muted);padding-bottom:1.2rem;}
+  .frames .tok{position:relative;display:block;line-height:0;border:1px solid var(--hair);}
+  .frames img{width:100%;height:auto;display:block;}
+  .frames .tok::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:
+      repeating-linear-gradient(to right,rgba(255,255,255,.55) 0 1px,transparent 1px 8.333%),
+      repeating-linear-gradient(to bottom,rgba(255,255,255,.55) 0 1px,transparent 1px 8.333%);}
+  .frames .ft{text-align:center;font-size:.8rem;color:var(--muted);margin-top:.3rem;}
+
+  .modes{margin:1.2rem 0;padding:0;list-style:none;counter-reset:m;}
+  .modes li{padding:.8rem 0;border-top:1px solid var(--hair);}
+  .modes li:last-child{border-bottom:1px solid var(--hair);}
+  .modes .h{font-weight:600;}
+
+  .openq{list-style:none;padding:0;margin:1.1rem 0;}
+  .openq li{padding:.7rem 0 .7rem 1.3rem;border-top:1px solid var(--hair);position:relative;color:var(--soft);}
+  .openq li:last-child{border-bottom:1px solid var(--hair);}
+  .openq li::before{content:"?";position:absolute;left:0;top:.7rem;color:var(--link);font-weight:700;}
+
+  .solbox{border:1px solid var(--hair);border-left:3px solid var(--link);border-radius:6px;padding:1.1rem 1.3rem;margin:1.6rem 0;background:#fcfcfd;}
+  .solbox h3{margin-top:0;}
+
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:1.6rem 0 .4rem;}
+  .pair img{width:100%;height:auto;display:block;border:1px solid var(--hair);}
+  .pair .cap{font-size:.74rem;font-weight:600;color:var(--muted);margin-bottom:.4rem;}
+
+  .add-y,.add-r,.add-g{background:transparent;}
+
+  pre.bibtex{background:#f3f1ea;border:1px solid var(--hair);border-radius:8px;padding:1.1rem 1.3rem;margin:1.4rem 0;overflow-x:auto;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13.5px;line-height:1.6;color:var(--soft);white-space:pre;}
+
+  .bibtex-block{position:relative;}
+  .bibtex-block pre.bibtex{padding-top:2.4rem;}
+  .copy-btn{position:absolute;top:1.4rem;right:.7rem;z-index:2;font-family:var(--sans);font-size:.74rem;font-weight:600;letter-spacing:.02em;color:var(--muted);background:rgba(255,255,255,.9);border:1px solid var(--hair);border-radius:6px;padding:.28rem .7rem;cursor:pointer;transition:color .15s,border-color .15s,background .15s;}
+  .copy-btn:hover{color:var(--ink);border-color:#cfcfcf;}
+  .copy-btn.copied{color:#1a7f4b;border-color:#9ccdb1;}
+
+  footer{margin-top:2.6rem;padding:1.6rem 0 4rem;color:var(--muted);font-size:.88rem;border-top:1px solid var(--hair);}
+
+  /* Link back to the main site (added for site integration) */
+  .site-back{position:fixed;top:1.1rem;left:1.3rem;z-index:30;font-size:.82rem;font-weight:600;letter-spacing:.02em;color:var(--muted);background:rgba(255,255,255,.85);backdrop-filter:saturate(1.1) blur(2px);padding:.3rem .6rem;border:1px solid var(--hair);border-radius:6px;}
+  .site-back:hover{color:var(--ink);text-decoration:none;border-color:#cfcfcf;}
+  @media(max-width:900px){.site-back{position:static;display:inline-block;margin:1rem 0 0 24px;}}
+
+  @media (max-width:640px){
+    .vidgrid.three,.vidgrid.two{grid-template-columns:1fr;}
+    .frames{grid-template-columns:repeat(2,1fr);}
+    .pair{grid-template-columns:1fr;}
+    figure.narrow img{max-width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<a class="site-back" href="{{ "/" | relLangURL }}">&larr; Haocheng Xi</a>
+
+{{ .Content }}
+
+<script>
+(function(){
+  var links = [].slice.call(document.querySelectorAll('.toc a'));
+  var heads = [].slice.call(document.querySelectorAll('h2[id]'));
+  if(!links.length || !heads.length) return;
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  var ticking = false;
+  function update(){
+    ticking = false;
+    var thresh = window.innerHeight * 0.3;
+    var cur = heads[0].id;
+    for(var i=0;i<heads.length;i++){
+      if(heads[i].getBoundingClientRect().top <= thresh) cur = heads[i].id;
+    }
+    links.forEach(function(a){ a.classList.remove('active'); });
+    if(map[cur]) map[cur].classList.add('active');
+  }
+  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  update();
+})();
+
+// Copy-to-clipboard for BibTeX blocks
+(function(){
+  var btns = [].slice.call(document.querySelectorAll('.copy-btn'));
+  btns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var target = document.getElementById(btn.getAttribute('data-target'));
+      if(!target) return;
+      var text = target.innerText;
+      var done = function(){
+        var label = btn.textContent;
+        btn.textContent = 'Copied';
+        btn.classList.add('copied');
+        setTimeout(function(){ btn.textContent = label; btn.classList.remove('copied'); }, 1600);
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(done, function(){});
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); done(); } catch(e){}
+        document.body.removeChild(ta);
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
