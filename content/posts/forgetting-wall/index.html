@@ -15,6 +15,7 @@ tags:
 <header class="wrap">
   <p class="venue">A perspective on long-horizon video generation</p>
   <h1>The Forgetting Wall in video and world models</h1>
+  <p class="byline">Quant VideoGen Team<span class="sep">·</span>June 7, 2026</p>
 
   <div class="tldr">
     <div class="lbl">Summary</div>
@@ -22,7 +23,7 @@ tags:
     
     <br><br>
 
-    What ultimately limits long video generation is not only how well the model can predict the next frame, but how much of its history it can afford to keep and use. In this blog, we discuss what the Forgetting Wall is, why it is hard, how it actually fails in long video generation, and what possible solutions look like — from sliding windows to compression. At the end, we point to one thing we tried: <a href="https://arxiv.org/abs/2602.02958">QuantVideoGen</a>.</p>
+    What ultimately limits long video generation is not only how well the model can predict the next frame, but how much of its history it can afford to keep and use. In this blog, we discuss what the Forgetting Wall is, why it is hard, how it actually fails in long video generation, and what possible solutions look like — from sliding windows to compression. At the end, we point to one thing we tried: <a href="https://arxiv.org/abs/2602.02958">QuantVideoGen</a> <a class="cite" href="#ref-1">[1]</a>.</p>
   </div>
 
   <nav class="toc">
@@ -43,14 +44,14 @@ tags:
 <section class="wrap">
   <h2 id="notcompute"><span class="secnum">1</span><span class="add-g">Long video generation isn’t a compute problem</span></h2>
   <p>If you ask why we can't yet generate long, coherent video, the most common answer is some version of “we need more compute” — bigger models, longer training, more frames per second of generation. That answer isn't exactly wrong, but it points at the wrong wall.</p>
-  <p>For a while, the hard part of video generation was really per-frame quality, and that has largely been solved, so individual frames now look great. <span class="add-y">The problem is, a clip can score near the top on per-frame quality and still fail badly on world consistency, and the two turn out to be largely uncorrelated.</span> The frontier has moved to <em>length</em> and <em>interactivity</em>: generating minute-scale clips, and building world models you can steer and move around inside. However, when you push on length, the failure you hit is not that the model runs out of compute. It's that the model <em>forgets</em>. The character who walked off-screen comes back wrong. The room quietly rearranges itself. Turn the camera away in a world model and turn it back, and the world has been reinvented.</p>
+  <p>For a while, the hard part of video generation was really per-frame quality, and that has largely been solved, so individual frames now look great <a class="cite" href="#ref-2">[2]</a><a class="cite" href="#ref-3">[3]</a>. <span class="add-y">The problem is, a clip can score near the top on per-frame quality and still fail badly on world consistency, and the two turn out to be largely uncorrelated.</span> The frontier has moved to <em>length</em> and <em>interactivity</em>: generating minute-scale clips, and building world models you can steer and move around inside <a class="cite" href="#ref-4">[4]</a>. However, when you push on length, the failure you hit is not that the model runs out of compute. It's that the model <em>forgets</em>. The character who walked off-screen comes back wrong. The room quietly rearranges itself. Turn the camera away in a world model and turn it back, and the world has been reinvented.</p>
   <p>Those aren't quality bugs. They're <strong>memory</strong> bugs. The Forgetting Wall for long-horizon video is the model's ability to remember its own past, and that turns out to be a surprisingly hard constraint.</p>
 </section>
 
 <!-- ============ 2 ============ -->
 <section class="wrap">
   <h2 id="whatis"><span class="secnum">2</span>What “memory” actually is here</h2>
-  <p>Let's be concrete about what memory means for these models. An autoregressive video model generates frame by frame, and each new frame attends to what came before through the transformer's attention. To do that, it stores a key and a value for every past token (the <em>KV cache</em>). The KV cache is the model's memory of the video so far. If a detail isn't in the cache, the model has no way to be consistent with it.</p>
+  <p>Let's be concrete about what memory means for these models. An autoregressive video model generates frame by frame <a class="cite" href="#ref-5">[5]</a>, and each new frame attends to what came before through the transformer's attention. To do that, it stores a key and a value for every past token (the <em>KV cache</em>). The KV cache is the model's memory of the video so far. If a detail isn't in the cache, the model has no way to be consistent with it.</p>
   <p>The problem is how that cache scales. It grows linearly with the number of tokens generated — and video is brutally token-hungry. A single frame is worth thousands of tokens, so a clip that is “only” a few hundred frames long carries a KV cache equivalent to a text context of <em>millions</em> of tokens. This is the same long-context problem that has consumed LLM research for years, but video arrives at the wall much faster and hits it much harder. <span class="add-y">And not all of that history plays the same role: nearby frames carry the fine continuity of motion, while distant ones mostly sit there as context the model must occasionally recall — an asymmetry we'll come back to.</span></p>
 
   <figure>
@@ -94,14 +95,14 @@ tags:
   <p>The difficulty isn't only that memory is expensive. It's that saving memory and staying consistent pull in opposite directions. Nobody has fully solved this, but it's worth seeing the whole map, because the proposals on the table are really different ways of confronting the dilemma from Section&nbsp;3. They fall into <span class="add-g">several</span> families.</p>
 
   <h3><span class="secnum">4.1</span>Look at less of the past</h3>
-  <p>The most direct idea is to <span class="add-g">store less of the past</span>. <strong>Sliding-window and local attention</strong> only look back a fixed distance: memory is bounded, but the model is blind to anything older than the window. <strong>Attention sinks and streaming methods</strong> keep a few anchor tokens alongside the window so generation stays stable as it slides — a fix for stability, not for long-range recall. <strong>KV eviction</strong> and <strong>learned sparse routing</strong> try to route each query to just the slice of history it needs. <span class="add-g">They all rely on the same assumption: that whatever they drop will not be needed later. The hard part is that this is impossible to predict in advance — there is no reliable way to tell, at the moment you drop a token, whether some much later frame will turn out to depend on it. So every fixed rule for what to discard is really a bet about a future the model cannot see, and over a long horizon that bet is one that long-range dependencies routinely lose.</span></p>
+  <p>The most direct idea is to <span class="add-g">store less of the past</span>. <strong>Sliding-window and local attention</strong> only look back a fixed distance <a class="cite" href="#ref-5">[5]</a>: memory is bounded, but the model is blind to anything older than the window. <strong>Attention sinks and streaming methods</strong> keep a few anchor tokens alongside the window so generation stays stable as it slides — a fix for stability, not for long-range recall <a class="cite" href="#ref-6">[6]</a><a class="cite" href="#ref-7">[7]</a>. <strong>KV eviction</strong> and <strong>learned sparse routing</strong> try to route each query to just the slice of history it needs <a class="cite" href="#ref-8">[8]</a>. <span class="add-g">They all rely on the same assumption: that whatever they drop will not be needed later. The hard part is that this is impossible to predict in advance — there is no reliable way to tell, at the moment you drop a token, whether some much later frame will turn out to depend on it. So every fixed rule for what to discard is really a bet about a future the model cannot see, and over a long horizon that bet is one that long-range dependencies routinely lose.</span></p>
 
   <figure>
     <img src="media/fig41.svg" alt="Attention patterns: sliding window, attention sink, and KV eviction. Each row is a generation step; each column a past token in the KV cache." loading="lazy" decoding="async">
   </figure>
 
   <h3><span class="secnum">4.2</span>Summarize the past into a fixed state</h3>
-  <p>A second family changes the math so memory stops growing at all. <strong>Linear attention and state-space models</strong> fold the entire history into a fixed-size state, so cost stays constant no matter how long the video runs. <span class="add-g">Sana-Video is a concrete example. It builds its video generator on linear attention instead of the usual quadratic attention, so rather than caching a key and value for every past token, it keeps a single fixed-size state and updates it as each new frame arrives. Memory then stays flat as the clip grows longer.</span> It's an elegant ceiling on memory, but a fixed state is a lossy summary: the precise details that long-range consistency depends on are often the first thing a bounded summary washes out.</p>
+  <p>A second family changes the math so memory stops growing at all. <strong>Linear attention and state-space models</strong> <a class="cite" href="#ref-9">[9]</a> fold the entire history into a fixed-size state, so cost stays constant no matter how long the video runs. <span class="add-g">Sana-Video <a class="cite" href="#ref-10">[10]</a> is a concrete example. It builds its video generator on linear attention instead of the usual quadratic attention, so rather than caching a key and value for every past token, it keeps a single fixed-size state and updates it as each new frame arrives. Memory then stays flat as the clip grows longer.</span> It's an elegant ceiling on memory, but a fixed state is a lossy summary: the precise details that long-range consistency depends on are often the first thing a bounded summary washes out.</p>
 
   <figure>
     <img src="media/fig42.svg" alt="Linear attention: at steps 1, 3, 5 the query column times a single 1x1 running state reproduces causal attention; the state never grows." loading="lazy" decoding="async">
@@ -114,10 +115,10 @@ tags:
     <img src="media/fig43.svg" alt="Block-wise KV quantization: 1, 3, 5 blocks. The whole causal history is kept; diagonal (current) blocks stay full precision while older blocks are quantized, and the KV cache strip grows with each block." loading="lazy" decoding="async">
   </figure>
 
-  <p>And you can't simply borrow the compressors built for text. They were designed for one-dimensional token streams, not for video's spatiotemporal structure — so a strong LLM KV-quantizer might degrade (Figure&nbsp;4). The opportunity is real, but it has to be taken on video's own terms.</p>
+  <p>And you can't simply borrow the compressors built for text <a class="cite" href="#ref-11">[11]</a>. They were designed for one-dimensional token streams, not for video's spatiotemporal structure — so a strong LLM KV-quantizer might degrade (Figure&nbsp;4). The opportunity is real, but it has to be taken on video's own terms.</p>
 
   <div class="solbox">
-    <h3>One attempt: QuantVideoGen (QVG)</h3>
+    <h3>One attempt: QuantVideoGen (QVG) <a class="cite" href="#ref-1">[1]</a></h3>
     <p>QVG is our take on this third family: a KV-cache quantization method built around video's structure rather than borrowed from text. It first <em>subtracts what neighboring tokens share</em> (Semantic-Aware Smoothing) and then <em>refines the leftover residual coarse-to-fine</em> (Progressive Residual Quantization), which lets a pretrained model run on a 2-bit KV cache — up to 7× less memory at under 4% latency overhead, with quality essentially intact. It's training-free and open-source; details are in the <a href="https://arxiv.org/abs/2602.02958">paper</a> and <a href="https://github.com/svg-project/Quant-VideoGen">code</a>.</p>
   </div>
 
@@ -148,7 +149,7 @@ tags:
   </figure>
 
   <h3><span class="secnum">4.4</span><span class="add-g">Other directions</span></h3>
-  <p><span class="add-g">There are a few other directions too. One is to <strong>shrink the cache</strong> by adopting a more aggressive video VAE to encode each frame into far fewer latent tokens. Deep-compression autoencoders such as DC-AE reach compression ratios about 4× higher than earlier VAEs, and since the KV cache scales inversely with the compression ratio, that 4× cuts the cache to roughly a quarter. The other is to <strong>relocate</strong> the cache by keeping the full KV history in abundant CPU / host memory and stream each slice back to the GPU when attention needs it. Nothing is forgotten or approximated, but moving the cache across the PCIe bus on every step is slow, so for real-time, interactive generation the latency is usually prohibitive.</span></p>
+  <p><span class="add-g">There are a few other directions too. One is to <strong>shrink the cache</strong> by adopting a more aggressive video VAE to encode each frame into far fewer latent tokens. Deep-compression autoencoders such as DC-AE <a class="cite" href="#ref-12">[12]</a> reach compression ratios about 4× higher than earlier VAEs, and since the KV cache scales inversely with the compression ratio, that 4× cuts the cache to roughly a quarter <a class="cite" href="#ref-13">[13]</a>. The other is to <strong>relocate</strong> the cache by keeping the full KV history in abundant CPU / host memory and stream each slice back to the GPU when attention needs it. Nothing is forgotten or approximated, but moving the cache across the PCIe bus on every step is slow, so for real-time, interactive generation the latency is usually prohibitive.</span></p>
 </section>
 
 <!-- ============ 6 ============ -->
@@ -157,6 +158,26 @@ tags:
   <p>As video models become world models (interactive, long-lived, and something an agent can act inside), <em>memory</em> becomes the defining constraint, playing the same role for world models that context length plays for LLMs. How much of the past a model can afford to remember sets a hard ceiling on how long, coherent, and controllable its world can be.</p>
   <p>The answer is probably not a single trick. Recent frames need high-resolution local memory. Distant history may need to be compressed, summarized, or retrieved only when it matters. Spatial structure may eventually live in a more explicit world representation. In other words, future video models will likely need a memory hierarchy, not just a longer cache.</p>
   <p>But before we get there, one thing seems clear: forgetting is too damaging. If long video is to stay consistent, the model needs a way to keep far more of its past than today's systems can afford.</p>
+</section>
+
+<!-- ============ REFERENCES ============ -->
+<section class="wrap">
+  <h2 id="refs">References</h2>
+  <ol class="refs">
+    <li id="ref-1">Xi, Haocheng, et al. “Quant VideoGen: Auto-Regressive Long Video Generation via 2-Bit KV-Cache Quantization.” <em>arXiv preprint</em>, 2026. <a href="https://arxiv.org/abs/2602.02958">arXiv:2602.02958</a>.</li>
+    <li id="ref-2">Wan Team. “Wan: Open and Advanced Large-Scale Video Generative Models.” <em>arXiv preprint</em>, 2025. <a href="https://arxiv.org/abs/2503.20314">arXiv:2503.20314</a>.</li>
+    <li id="ref-3">Seedance Team. “Seedance 2.0: Advancing Video Generation for World Complexity.” <em>arXiv preprint</em>, 2026. <a href="https://arxiv.org/abs/2604.14148">arXiv:2604.14148</a>.</li>
+    <li id="ref-4">Bruce, Jake, et al. “Genie: Generative Interactive Environments.” <em>ICML</em>, 2024. <a href="https://arxiv.org/abs/2402.15391">arXiv:2402.15391</a>.</li>
+    <li id="ref-5">Huang, Xun, et al. “Self Forcing: Bridging the Train-Test Gap in Autoregressive Video Diffusion.” <em>NeurIPS</em>, 2025. <a href="https://arxiv.org/abs/2506.08009">arXiv:2506.08009</a>.</li>
+    <li id="ref-6">Xiao, Guangxuan, et al. “Efficient Streaming Language Models with Attention Sinks.” <em>ICLR</em>, 2024. <a href="https://arxiv.org/abs/2309.17453">arXiv:2309.17453</a>.</li>
+    <li id="ref-7">Liu, Kunhao, et al. “Rolling Forcing: Autoregressive Long Video Diffusion in Real Time.” <em>arXiv preprint</em>, 2025. <a href="https://arxiv.org/abs/2509.25161">arXiv:2509.25161</a>.</li>
+    <li id="ref-8">Zhang, Lvmin, and Maneesh Agrawala. “Packing Input Frame Context in Next-Frame Prediction Models for Video Generation.” <em>arXiv preprint</em>, 2025. <a href="https://arxiv.org/abs/2504.12626">arXiv:2504.12626</a>.</li>
+    <li id="ref-9">Gu, Albert, and Tri Dao. “Mamba: Linear-Time Sequence Modeling with Selective State Spaces.” <em>arXiv preprint</em>, 2023. <a href="https://arxiv.org/abs/2312.00752">arXiv:2312.00752</a>.</li>
+    <li id="ref-10">Chen, Junsong, et al. “SANA-Video: Efficient Video Generation with Block Linear Diffusion Transformer.” <em>arXiv preprint</em>, 2025. <a href="https://arxiv.org/abs/2509.24695">arXiv:2509.24695</a>.</li>
+    <li id="ref-11">Liu, Zirui, et al. “KIVI: A Tuning-Free Asymmetric 2bit Quantization for KV Cache.” <em>ICML</em>, 2024. <a href="https://arxiv.org/abs/2402.02750">arXiv:2402.02750</a>.</li>
+    <li id="ref-12">Chen, Junyu, et al. “Deep Compression Autoencoder for Efficient High-Resolution Diffusion Models.” <em>arXiv preprint</em>, 2024. <a href="https://arxiv.org/abs/2410.10733">arXiv:2410.10733</a>.</li>
+    <li id="ref-13">He, Wenkun, et al. “DC-Gen: Post-Training Diffusion Acceleration with Deeply Compressed Latent Space.” <em>arXiv preprint</em>, 2025. <a href="https://arxiv.org/abs/2509.25180">arXiv:2509.25180</a>.</li>
+  </ol>
 </section>
 
 <!-- ============ CITATION ============ -->
