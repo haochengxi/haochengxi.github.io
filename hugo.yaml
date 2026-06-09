@@ -1,3 +1,8 @@
+# Canonical site URL. Required with a scheme so `hugo server` and the toha
+# navbar build correct links (an empty baseURL makes the "Blogs" link resolve
+# to /localhost:1313/posts). CI overrides this via --baseURL for GitHub Pages.
+baseURL: "https://haochengxi.github.io/"
+
 # Use Hugo modules to add theme
 module:
   imports:
