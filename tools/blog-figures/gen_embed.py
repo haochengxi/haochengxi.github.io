@@ -19,7 +19,8 @@ def rect(x,y,w,h,fill,line=LINE,sw=1.3,rx=2):
 
 # Horizontal, centered legend. items: list of (fill, label, outline?) tuples.
 LEG_SW=12; LEG_TGAP=5; LEG_IGAP=20; LEG_CHARW=6.4; LEG_FONT=12; LEG_H=22
-LEG_TOP=28  # vertical room reserved above the figure when the legend sits on top
+LEG_TOP=38  # vertical room reserved above the figure when the legend sits on top
+            # (gap between the legend swatches and the diagram below)
 def legend(items, W, y):
     widths=[LEG_SW+LEG_TGAP+len(lbl)*LEG_CHARW for (_,lbl,_) in items]
     total=sum(widths)+LEG_IGAP*(len(items)-1)
@@ -53,7 +54,7 @@ def fig41():
     W=3*pw+2*gap; H=TOP+titleh+pw
     o=[f'<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">']
     o.append(legend([(RECENT,"recent (kept)",False),(RETAIN,"retained",False),
-                     (SINK,"attention sink",False),(BG,"evicted / not stored",True)], W, 6))
+                     (SINK,"attention sink",False)], W, 6))
     for k,(title,mode) in enumerate(panels):
         x0=k*(pw+gap)
         o.append(f'<text x="{x0+pw/2}" y="{TOP+16}" font-size="13" font-weight="600" text-anchor="middle" fill="{INK}">{title}</text>')
@@ -103,7 +104,7 @@ def fig43():
     W=3*side+2*gap; H=TOP+ph
     o=[f'<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">']
     o.append(legend([(FULL,"full precision (current block)",False),
-                     (QUANT,"quantized (older blocks)",False),(BG,"not yet generated",True)], W, 6))
+                     (QUANT,"quantized (older blocks)",False)], W, 6))
     for idx,b in enumerate((1,3,5)):
         x0=idx*(side+gap); rows=b*BLK
         o.append(f'<g transform="translate({x0},{TOP})">')

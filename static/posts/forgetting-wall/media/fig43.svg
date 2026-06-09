@@ -1,9 +1,9 @@
-<svg viewBox="0 0 596 246" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
-<rect x="25.299999999999955" y="6" width="12" height="12" rx="2" fill="#2D9CDB" stroke="#2D9CDB" stroke-width="1"/>
-<text x="42.299999999999955" y="16" font-size="12" fill="#555">full precision (current block)</text>
-<rect x="254.29999999999995" y="6" width="12" height="12" rx="2" fill="#AFD9F1" stroke="#AFD9F1" stroke-width="1"/>
-<text x="271.29999999999995" y="16" font-size="12" fill="#555">quantized (older blocks)</text>
-<g transform="translate(0,28)">
+<svg viewBox="0 0 596 256" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
+<rect x="98.2" y="6" width="12" height="12" rx="2" fill="#2D9CDB" stroke="#2D9CDB" stroke-width="1"/>
+<text x="115.2" y="16" font-size="12" fill="#555">full precision (current block)</text>
+<rect x="327.2" y="6" width="12" height="12" rx="2" fill="#AFD9F1" stroke="#AFD9F1" stroke-width="1"/>
+<text x="344.2" y="16" font-size="12" fill="#555">quantized (older blocks)</text>
+<g transform="translate(0,38)">
 <rect x="0" y="0" width="12" height="12" rx="2" fill="#2D9CDB" stroke="#ffffff" stroke-width="1.1"/>
 <rect x="12" y="0" width="12" height="12" rx="2" fill="#F4F1EA" stroke="#ffffff" stroke-width="1.1"/>
 <rect x="24" y="0" width="12" height="12" rx="2" fill="#F4F1EA" stroke="#ffffff" stroke-width="1.1"/>
@@ -264,7 +264,7 @@
 <line x1="144" y1="206" x2="144" y2="218" stroke="#ffffff" stroke-width="2.4"/>
 <line x1="180" y1="206" x2="180" y2="218" stroke="#ffffff" stroke-width="2.4"/>
 </g>
-<g transform="translate(208,28)">
+<g transform="translate(208,38)">
 <rect x="0" y="0" width="12" height="12" rx="2" fill="#2D9CDB" stroke="#ffffff" stroke-width="1.1"/>
 <rect x="12" y="0" width="12" height="12" rx="2" fill="#F4F1EA" stroke="#ffffff" stroke-width="1.1"/>
 <rect x="24" y="0" width="12" height="12" rx="2" fill="#F4F1EA" stroke="#ffffff" stroke-width="1.1"/>
@@ -525,7 +525,7 @@
 <line x1="144" y1="206" x2="144" y2="218" stroke="#ffffff" stroke-width="2.4"/>
 <line x1="180" y1="206" x2="180" y2="218" stroke="#ffffff" stroke-width="2.4"/>
 </g>
-<g transform="translate(416,28)">
+<g transform="translate(416,38)">
 <rect x="0" y="0" width="12" height="12" rx="2" fill="#2D9CDB" stroke="#ffffff" stroke-width="1.1"/>
 <rect x="12" y="0" width="12" height="12" rx="2" fill="#F4F1EA" stroke="#ffffff" stroke-width="1.1"/>
 <rect x="24" y="0" width="12" height="12" rx="2" fill="#F4F1EA" stroke="#ffffff" stroke-width="1.1"/>
