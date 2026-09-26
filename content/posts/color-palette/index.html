@@ -1,0 +1,509 @@
+---
+title: "MosaiChunk · 20 × 12 调色盘"
+date: 2026-09-26
+type: raw-html
+summary: "20 个色系 × 12 档深浅，共 240 色；点击色块即可复制 HEX 色号。"
+description: "20 个色系 × 12 档深浅，共 240 色；点击色块即可复制 HEX 色号。"
+tags:
+  - color palette
+  - visualization
+---
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="description" content="20 个色系 × 12 档深浅，共 240 色；点击色块即可复制 HEX 色号。">
+<title>MosaiChunk · 20 × 12 调色盘</title>
+<style>
+:root{color-scheme:light;--ink:#30384f;--muted:#657084;--rule:#e8eaee;--label:138px;--gap:6px}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--ink);font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:1580px;margin:auto;padding:0 28px 36px}
+.page-header{position:sticky;top:0;z-index:2;background:rgba(255,255,255,.98);padding:26px 0 14px;border-bottom:1px solid var(--rule)}
+.site-back{display:inline-block;margin-bottom:14px;color:var(--muted);font-size:13px;text-decoration:none}
+.site-back:hover{text-decoration:underline}
+.site-back:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+@media print{.site-back{display:none}}
+.title-row{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
+h1{font-size:25px;font-weight:600;letter-spacing:-.6px;margin:0}
+.subtitle{margin:0;font-size:14px;color:var(--muted)}
+.selection{display:flex;align-items:center;gap:12px;min-height:38px;margin-top:14px;font-size:13px;flex-wrap:wrap}
+.selection-preview{width:34px;height:28px;border-radius:5px;background:#f0f1f3;flex:none}
+#selection-name{min-width:150px}
+#selection-hex{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px;user-select:all}
+#copy-status{margin-left:auto;color:var(--muted);font-size:12px}
+.scale-row,.palette-row{display:grid;grid-template-columns:var(--label) minmax(0,1fr);column-gap:20px;align-items:center}
+.scale-row{padding:18px 0 10px;font-size:11px;color:var(--muted)}
+.scale-caption{font-size:12px}
+.scale-ticks,.swatches{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap)}
+.scale-ticks span{text-align:center;font-variant-numeric:tabular-nums}
+.palette-row{margin-bottom:12px}
+.row-label{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:500;margin:0;min-width:0}
+.family-index{font-size:11px;color:#7c8594;font-variant-numeric:tabular-nums}
+.family-name small{display:block;margin-top:4px;font-size:11px;font-weight:400;letter-spacing:.2px;color:var(--muted)}
+.swatch{appearance:none;width:100%;height:60px;min-width:0;border:0;border-radius:6px;background:var(--swatch);color:var(--swatch-ink);padding:0 2px;cursor:pointer;position:relative;transition:transform .12s ease,box-shadow .12s ease}
+.swatch code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11px;letter-spacing:-.15px;font-weight:500;pointer-events:none}
+.swatch:hover{transform:translateY(-2px);box-shadow:0 3px 7px #30384f20}
+.swatch:focus-visible{outline:2px solid #30384f;outline-offset:3px;z-index:1}
+.swatch[aria-pressed="true"]{box-shadow:inset 0 0 0 2px #fff,0 0 0 2px #30384f;z-index:1}
+.copy-buffer{position:fixed;top:0;left:-10000px;width:1px;height:1px;opacity:0}
+noscript{display:block;margin-bottom:12px;font-size:13px;color:var(--muted)}
+@media(min-width:1350px){.swatch code{font-size:12px}}
+@media(max-width:1050px){
+  main{padding-left:20px;padding-right:20px}
+  .scale-row{grid-template-columns:1fr;gap:8px}
+  .scale-caption{display:none}
+  .palette-row{grid-template-columns:1fr;gap:10px;margin-bottom:19px}
+  .family-name{display:flex;gap:10px;align-items:baseline}
+  .family-name small{display:inline;margin:0}
+  .swatch{height:56px}
+}
+@media(max-width:680px){
+  main{padding-left:16px;padding-right:16px}
+  .page-header{padding-top:18px}
+  h1{font-size:22px}
+  .title-row{gap:7px}
+  .subtitle{font-size:12px}
+  .selection{gap:8px}
+  #selection-name{min-width:0}
+  #copy-status{flex-basis:100%;margin:0}
+  .scale-row{display:none}
+  #palette{padding-top:18px}
+  .swatches{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .swatch{height:52px}
+  .swatch code{font-size:11px}
+}
+@media(max-width:390px){
+  .swatches{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media(prefers-reduced-motion:reduce){.swatch{transition:none}}
+@media print{
+  @page{size:A3 landscape;margin:12mm}
+  main{max-width:none;padding:0}
+  .page-header{position:static;padding-top:0}
+  .selection{display:none}
+  .palette-row{break-inside:avoid;margin-bottom:7px}
+  .swatch{height:33px}
+  *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<main>
+  <header class="page-header">
+    <a class="site-back" href="../">&larr; Blogs</a>
+    <div class="title-row"><h1>调色盘</h1><p class="subtitle">20 个色系 × 12 档深浅 · 共 240 色</p></div>
+    <div class="selection">
+      <span id="selection-preview" class="selection-preview" aria-hidden="true"></span>
+      <span id="selection-name">点击任意色块</span>
+      <code id="selection-hex">—</code>
+      <span id="copy-status" role="status" aria-live="polite">点击复制 HEX 色号</span>
+    </div>
+  </header>
+  <div class="scale-row" aria-hidden="true">
+    <span class="scale-caption">深 → 浅</span>
+    <div class="scale-ticks"><span>01 · 深</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span><span>07</span><span>08</span><span>09</span><span>10</span><span>11</span><span>12 · 浅</span></div>
+  </div>
+  <noscript>全部色号已显示；启用 JavaScript 后可点击复制。</noscript>
+  <div id="palette">
+    <section class="palette-row" aria-labelledby="label-amber">
+      <h2 id="label-amber" class="row-label"><span class="family-index">01</span><span class="family-name">暖金<small>Amber</small></span></h2>
+      <div class="swatches" aria-label="暖金，12 档从深到浅">
+        <button class="swatch" type="button" aria-pressed="false" aria-label="暖金 Amber，第 1 档，#956D2E，点击复制" data-family="暖金 · Amber" data-step="1" data-hex="#956D2E" style="--swatch:#956d2e;--swatch-ink:#ffffff"><code>#956D2E</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="暖金 Amber，第 2 档，#A17734，点击复制" data-family="暖金 · Amber" data-step="2" data-hex="#A17734" style="--swatch:#a17734;--swatch-ink:#000000"><code>#A17734</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="暖金 Amber，第 3 档，#AD823A，点击复制" data-family="暖金 · Amber" data-step="3" data-hex="#AD823A" style="--swatch:#ad823a;--swatch-ink:#000000"><code>#AD823A</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="暖金 Amber，第 4 档，#B98C40，点击复制" data-family="暖金 · Amber" data-step="4" data-hex="#B98C40" style="--swatch:#b98c40;--swatch-ink:#000000"><code>#B98C40</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="暖金 Amber，第 5 档，#C59646，点击复制" data-family="暖金 · Amber" data-step="5" data-hex="#C59646" style="--swatch:#c59646;--swatch-ink:#000000"><code>#C59646</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="暖金 Amber，第 6 档，#CFA358，点击复制" data-family="暖金 · Amber" data-step="6" data-hex="#CFA358" style="--swatch:#cfa358;--swatch-ink:#000000"><code>#CFA358</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="暖金 Amber，第 7 档，#D9B16B，点击复制" data-family="暖金 · Amber" data-step="7" data-hex="#D9B16B" style="--swatch:#d9b16b;--swatch-ink:#000000"><code>#D9B16B</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="暖金 Amber，第 8 档，#E3BE7D，点击复制" data-family="暖金 · Amber" data-step="8" data-hex="#E3BE7D" style="--swatch:#e3be7d;--swatch-ink:#000000"><code>#E3BE7D</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="暖金 Amber，第 9 档，#E7C68D，点击复制" data-family="暖金 · Amber" data-step="9" data-hex="#E7C68D" style="--swatch:#e7c68d;--swatch-ink:#000000"><code>#E7C68D</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="暖金 Amber，第 10 档，#EACF9D，点击复制" data-family="暖金 · Amber" data-step="10" data-hex="#EACF9D" style="--swatch:#eacf9d;--swatch-ink:#000000"><code>#EACF9D</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="暖金 Amber，第 11 档，#EED7AC，点击复制" data-family="暖金 · Amber" data-step="11" data-hex="#EED7AC" style="--swatch:#eed7ac;--swatch-ink:#000000"><code>#EED7AC</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="暖金 Amber，第 12 档，#F1DFBC，点击复制" data-family="暖金 · Amber" data-step="12" data-hex="#F1DFBC" style="--swatch:#f1dfbc;--swatch-ink:#000000"><code>#F1DFBC</code></button>
+      </div>
+    </section>
+    <section class="palette-row" aria-labelledby="label-ochre">
+      <h2 id="label-ochre" class="row-label"><span class="family-index">02</span><span class="family-name">赭黄<small>Ochre</small></span></h2>
+      <div class="swatches" aria-label="赭黄，12 档从深到浅">
+        <button class="swatch" type="button" aria-pressed="false" aria-label="赭黄 Ochre，第 1 档，#78642F，点击复制" data-family="赭黄 · Ochre" data-step="1" data-hex="#78642F" style="--swatch:#78642f;--swatch-ink:#ffffff"><code>#78642F</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="赭黄 Ochre，第 2 档，#826E35，点击复制" data-family="赭黄 · Ochre" data-step="2" data-hex="#826E35" style="--swatch:#826e35;--swatch-ink:#ffffff"><code>#826E35</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="赭黄 Ochre，第 3 档，#8D783C，点击复制" data-family="赭黄 · Ochre" data-step="3" data-hex="#8D783C" style="--swatch:#8d783c;--swatch-ink:#000000"><code>#8D783C</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="赭黄 Ochre，第 4 档，#978142，点击复制" data-family="赭黄 · Ochre" data-step="4" data-hex="#978142" style="--swatch:#978142;--swatch-ink:#000000"><code>#978142</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="赭黄 Ochre，第 5 档，#A18B48，点击复制" data-family="赭黄 · Ochre" data-step="5" data-hex="#A18B48" style="--swatch:#a18b48;--swatch-ink:#000000"><code>#A18B48</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="赭黄 Ochre，第 6 档，#AD9956，点击复制" data-family="赭黄 · Ochre" data-step="6" data-hex="#AD9956" style="--swatch:#ad9956;--swatch-ink:#000000"><code>#AD9956</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="赭黄 Ochre，第 7 档，#BAA663，点击复制" data-family="赭黄 · Ochre" data-step="7" data-hex="#BAA663" style="--swatch:#baa663;--swatch-ink:#000000"><code>#BAA663</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="赭黄 Ochre，第 8 档，#C6B471，点击复制" data-family="赭黄 · Ochre" data-step="8" data-hex="#C6B471" style="--swatch:#c6b471;--swatch-ink:#000000"><code>#C6B471</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="赭黄 Ochre，第 9 档，#CFBF82，点击复制" data-family="赭黄 · Ochre" data-step="9" data-hex="#CFBF82" style="--swatch:#cfbf82;--swatch-ink:#000000"><code>#CFBF82</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="赭黄 Ochre，第 10 档，#D7CA94，点击复制" data-family="赭黄 · Ochre" data-step="10" data-hex="#D7CA94" style="--swatch:#d7ca94;--swatch-ink:#000000"><code>#D7CA94</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="赭黄 Ochre，第 11 档，#E0D4A5，点击复制" data-family="赭黄 · Ochre" data-step="11" data-hex="#E0D4A5" style="--swatch:#e0d4a5;--swatch-ink:#000000"><code>#E0D4A5</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="赭黄 Ochre，第 12 档，#E8DFB6，点击复制" data-family="赭黄 · Ochre" data-step="12" data-hex="#E8DFB6" style="--swatch:#e8dfb6;--swatch-ink:#000000"><code>#E8DFB6</code></button>
+      </div>
+    </section>
+    <section class="palette-row" aria-labelledby="label-sand">
+      <h2 id="label-sand" class="row-label"><span class="family-index">03</span><span class="family-name">砂岩<small>Sand</small></span></h2>
+      <div class="swatches" aria-label="砂岩，12 档从深到浅">
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砂岩 Sand，第 1 档，#78624D，点击复制" data-family="砂岩 · Sand" data-step="1" data-hex="#78624D" style="--swatch:#78624d;--swatch-ink:#ffffff"><code>#78624D</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砂岩 Sand，第 2 档，#826C56，点击复制" data-family="砂岩 · Sand" data-step="2" data-hex="#826C56" style="--swatch:#826c56;--swatch-ink:#ffffff"><code>#826C56</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砂岩 Sand，第 3 档，#8C7660，点击复制" data-family="砂岩 · Sand" data-step="3" data-hex="#8C7660" style="--swatch:#8c7660;--swatch-ink:#000000"><code>#8C7660</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砂岩 Sand，第 4 档，#968069，点击复制" data-family="砂岩 · Sand" data-step="4" data-hex="#968069" style="--swatch:#968069;--swatch-ink:#000000"><code>#968069</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砂岩 Sand，第 5 档，#A08A72，点击复制" data-family="砂岩 · Sand" data-step="5" data-hex="#A08A72" style="--swatch:#a08a72;--swatch-ink:#000000"><code>#A08A72</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砂岩 Sand，第 6 档，#AD9981，点击复制" data-family="砂岩 · Sand" data-step="6" data-hex="#AD9981" style="--swatch:#ad9981;--swatch-ink:#000000"><code>#AD9981</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砂岩 Sand，第 7 档，#BBA990，点击复制" data-family="砂岩 · Sand" data-step="7" data-hex="#BBA990" style="--swatch:#bba990;--swatch-ink:#000000"><code>#BBA990</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砂岩 Sand，第 8 档，#C8B89F，点击复制" data-family="砂岩 · Sand" data-step="8" data-hex="#C8B89F" style="--swatch:#c8b89f;--swatch-ink:#000000"><code>#C8B89F</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砂岩 Sand，第 9 档，#D0C2AB，点击复制" data-family="砂岩 · Sand" data-step="9" data-hex="#D0C2AB" style="--swatch:#d0c2ab;--swatch-ink:#000000"><code>#D0C2AB</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砂岩 Sand，第 10 档，#D9CCB7，点击复制" data-family="砂岩 · Sand" data-step="10" data-hex="#D9CCB7" style="--swatch:#d9ccb7;--swatch-ink:#000000"><code>#D9CCB7</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砂岩 Sand，第 11 档，#E1D5C2，点击复制" data-family="砂岩 · Sand" data-step="11" data-hex="#E1D5C2" style="--swatch:#e1d5c2;--swatch-ink:#000000"><code>#E1D5C2</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砂岩 Sand，第 12 档，#E9DFCE，点击复制" data-family="砂岩 · Sand" data-step="12" data-hex="#E9DFCE" style="--swatch:#e9dfce;--swatch-ink:#000000"><code>#E9DFCE</code></button>
+      </div>
+    </section>
+    <section class="palette-row" aria-labelledby="label-apricot">
+      <h2 id="label-apricot" class="row-label"><span class="family-index">04</span><span class="family-name">杏橙<small>Apricot</small></span></h2>
+      <div class="swatches" aria-label="杏橙，12 档从深到浅">
+        <button class="swatch" type="button" aria-pressed="false" aria-label="杏橙 Apricot，第 1 档，#925E39，点击复制" data-family="杏橙 · Apricot" data-step="1" data-hex="#925E39" style="--swatch:#925e39;--swatch-ink:#ffffff"><code>#925E39</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="杏橙 Apricot，第 2 档，#9D6841，点击复制" data-family="杏橙 · Apricot" data-step="2" data-hex="#9D6841" style="--swatch:#9d6841;--swatch-ink:#ffffff"><code>#9D6841</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="杏橙 Apricot，第 3 档，#A97349，点击复制" data-family="杏橙 · Apricot" data-step="3" data-hex="#A97349" style="--swatch:#a97349;--swatch-ink:#000000"><code>#A97349</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="杏橙 Apricot，第 4 档，#B47D50，点击复制" data-family="杏橙 · Apricot" data-step="4" data-hex="#B47D50" style="--swatch:#b47d50;--swatch-ink:#000000"><code>#B47D50</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="杏橙 Apricot，第 5 档，#BF8758，点击复制" data-family="杏橙 · Apricot" data-step="5" data-hex="#BF8758" style="--swatch:#bf8758;--swatch-ink:#000000"><code>#BF8758</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="杏橙 Apricot，第 6 档，#CA9667，点击复制" data-family="杏橙 · Apricot" data-step="6" data-hex="#CA9667" style="--swatch:#ca9667;--swatch-ink:#000000"><code>#CA9667</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="杏橙 Apricot，第 7 档，#D5A476，点击复制" data-family="杏橙 · Apricot" data-step="7" data-hex="#D5A476" style="--swatch:#d5a476;--swatch-ink:#000000"><code>#D5A476</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="杏橙 Apricot，第 8 档，#E0B385，点击复制" data-family="杏橙 · Apricot" data-step="8" data-hex="#E0B385" style="--swatch:#e0b385;--swatch-ink:#000000"><code>#E0B385</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="杏橙 Apricot，第 9 档，#E5BE95，点击复制" data-family="杏橙 · Apricot" data-step="9" data-hex="#E5BE95" style="--swatch:#e5be95;--swatch-ink:#000000"><code>#E5BE95</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="杏橙 Apricot，第 10 档，#EAC9A4，点击复制" data-family="杏橙 · Apricot" data-step="10" data-hex="#EAC9A4" style="--swatch:#eac9a4;--swatch-ink:#000000"><code>#EAC9A4</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="杏橙 Apricot，第 11 档，#EED3B4，点击复制" data-family="杏橙 · Apricot" data-step="11" data-hex="#EED3B4" style="--swatch:#eed3b4;--swatch-ink:#000000"><code>#EED3B4</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="杏橙 Apricot，第 12 档，#F3DEC3，点击复制" data-family="杏橙 · Apricot" data-step="12" data-hex="#F3DEC3" style="--swatch:#f3dec3;--swatch-ink:#000000"><code>#F3DEC3</code></button>
+      </div>
+    </section>
+    <section class="palette-row" aria-labelledby="label-terracotta">
+      <h2 id="label-terracotta" class="row-label"><span class="family-index">05</span><span class="family-name">砖红<small>Terracotta</small></span></h2>
+      <div class="swatches" aria-label="砖红，12 档从深到浅">
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砖红 Terracotta，第 1 档，#90564C，点击复制" data-family="砖红 · Terracotta" data-step="1" data-hex="#90564C" style="--swatch:#90564c;--swatch-ink:#ffffff"><code>#90564C</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砖红 Terracotta，第 2 档，#9C6053，点击复制" data-family="砖红 · Terracotta" data-step="2" data-hex="#9C6053" style="--swatch:#9c6053;--swatch-ink:#ffffff"><code>#9C6053</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砖红 Terracotta，第 3 档，#A7695B，点击复制" data-family="砖红 · Terracotta" data-step="3" data-hex="#A7695B" style="--swatch:#a7695b;--swatch-ink:#000000"><code>#A7695B</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砖红 Terracotta，第 4 档，#B37362，点击复制" data-family="砖红 · Terracotta" data-step="4" data-hex="#B37362" style="--swatch:#b37362;--swatch-ink:#000000"><code>#B37362</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砖红 Terracotta，第 5 档，#BE7C69，点击复制" data-family="砖红 · Terracotta" data-step="5" data-hex="#BE7C69" style="--swatch:#be7c69;--swatch-ink:#000000"><code>#BE7C69</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砖红 Terracotta，第 6 档，#C98B79，点击复制" data-family="砖红 · Terracotta" data-step="6" data-hex="#C98B79" style="--swatch:#c98b79;--swatch-ink:#000000"><code>#C98B79</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砖红 Terracotta，第 7 档，#D49A89，点击复制" data-family="砖红 · Terracotta" data-step="7" data-hex="#D49A89" style="--swatch:#d49a89;--swatch-ink:#000000"><code>#D49A89</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砖红 Terracotta，第 8 档，#DFA999，点击复制" data-family="砖红 · Terracotta" data-step="8" data-hex="#DFA999" style="--swatch:#dfa999;--swatch-ink:#000000"><code>#DFA999</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砖红 Terracotta，第 9 档，#E3B4A6，点击复制" data-family="砖红 · Terracotta" data-step="9" data-hex="#E3B4A6" style="--swatch:#e3b4a6;--swatch-ink:#000000"><code>#E3B4A6</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砖红 Terracotta，第 10 档，#E8BFB2，点击复制" data-family="砖红 · Terracotta" data-step="10" data-hex="#E8BFB2" style="--swatch:#e8bfb2;--swatch-ink:#000000"><code>#E8BFB2</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砖红 Terracotta，第 11 档，#ECC9BF，点击复制" data-family="砖红 · Terracotta" data-step="11" data-hex="#ECC9BF" style="--swatch:#ecc9bf;--swatch-ink:#000000"><code>#ECC9BF</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="砖红 Terracotta，第 12 档，#F0D4CB，点击复制" data-family="砖红 · Terracotta" data-step="12" data-hex="#F0D4CB" style="--swatch:#f0d4cb;--swatch-ink:#000000"><code>#F0D4CB</code></button>
+      </div>
+    </section>
+    <section class="palette-row" aria-labelledby="label-coral">
+      <h2 id="label-coral" class="row-label"><span class="family-index">06</span><span class="family-name">珊瑚<small>Coral</small></span></h2>
+      <div class="swatches" aria-label="珊瑚，12 档从深到浅">
+        <button class="swatch" type="button" aria-pressed="false" aria-label="珊瑚 Coral，第 1 档，#935A58，点击复制" data-family="珊瑚 · Coral" data-step="1" data-hex="#935A58" style="--swatch:#935a58;--swatch-ink:#ffffff"><code>#935A58</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="珊瑚 Coral，第 2 档，#9E6461，点击复制" data-family="珊瑚 · Coral" data-step="2" data-hex="#9E6461" style="--swatch:#9e6461;--swatch-ink:#ffffff"><code>#9E6461</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="珊瑚 Coral，第 3 档，#A96E69，点击复制" data-family="珊瑚 · Coral" data-step="3" data-hex="#A96E69" style="--swatch:#a96e69;--swatch-ink:#000000"><code>#A96E69</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="珊瑚 Coral，第 4 档，#B37872，点击复制" data-family="珊瑚 · Coral" data-step="4" data-hex="#B37872" style="--swatch:#b37872;--swatch-ink:#000000"><code>#B37872</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="珊瑚 Coral，第 5 档，#BE827A，点击复制" data-family="珊瑚 · Coral" data-step="5" data-hex="#BE827A" style="--swatch:#be827a;--swatch-ink:#000000"><code>#BE827A</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="珊瑚 Coral，第 6 档，#C99188，点击复制" data-family="珊瑚 · Coral" data-step="6" data-hex="#C99188" style="--swatch:#c99188;--swatch-ink:#000000"><code>#C99188</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="珊瑚 Coral，第 7 档，#D4A097，点击复制" data-family="珊瑚 · Coral" data-step="7" data-hex="#D4A097" style="--swatch:#d4a097;--swatch-ink:#000000"><code>#D4A097</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="珊瑚 Coral，第 8 档，#DFAFA5，点击复制" data-family="珊瑚 · Coral" data-step="8" data-hex="#DFAFA5" style="--swatch:#dfafa5;--swatch-ink:#000000"><code>#DFAFA5</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="珊瑚 Coral，第 9 档，#E4B9B0，点击复制" data-family="珊瑚 · Coral" data-step="9" data-hex="#E4B9B0" style="--swatch:#e4b9b0;--swatch-ink:#000000"><code>#E4B9B0</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="珊瑚 Coral，第 10 档，#E9C4BB，点击复制" data-family="珊瑚 · Coral" data-step="10" data-hex="#E9C4BB" style="--swatch:#e9c4bb;--swatch-ink:#000000"><code>#E9C4BB</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="珊瑚 Coral，第 11 档，#EDCEC5，点击复制" data-family="珊瑚 · Coral" data-step="11" data-hex="#EDCEC5" style="--swatch:#edcec5;--swatch-ink:#000000"><code>#EDCEC5</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="珊瑚 Coral，第 12 档，#F2D8D0，点击复制" data-family="珊瑚 · Coral" data-step="12" data-hex="#F2D8D0" style="--swatch:#f2d8d0;--swatch-ink:#000000"><code>#F2D8D0</code></button>
+      </div>
+    </section>
+    <section class="palette-row" aria-labelledby="label-rose">
+      <h2 id="label-rose" class="row-label"><span class="family-index">07</span><span class="family-name">玫瑰<small>Rose</small></span></h2>
+      <div class="swatches" aria-label="玫瑰，12 档从深到浅">
+        <button class="swatch" type="button" aria-pressed="false" aria-label="玫瑰 Rose，第 1 档，#895567，点击复制" data-family="玫瑰 · Rose" data-step="1" data-hex="#895567" style="--swatch:#895567;--swatch-ink:#ffffff"><code>#895567</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="玫瑰 Rose，第 2 档，#946072，点击复制" data-family="玫瑰 · Rose" data-step="2" data-hex="#946072" style="--swatch:#946072;--swatch-ink:#ffffff"><code>#946072</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="玫瑰 Rose，第 3 档，#9F6B7D，点击复制" data-family="玫瑰 · Rose" data-step="3" data-hex="#9F6B7D" style="--swatch:#9f6b7d;--swatch-ink:#000000"><code>#9F6B7D</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="玫瑰 Rose，第 4 档，#AA7587，点击复制" data-family="玫瑰 · Rose" data-step="4" data-hex="#AA7587" style="--swatch:#aa7587;--swatch-ink:#000000"><code>#AA7587</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="玫瑰 Rose，第 5 档，#B58092，点击复制" data-family="玫瑰 · Rose" data-step="5" data-hex="#B58092" style="--swatch:#b58092;--swatch-ink:#000000"><code>#B58092</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="玫瑰 Rose，第 6 档，#C18FA0，点击复制" data-family="玫瑰 · Rose" data-step="6" data-hex="#C18FA0" style="--swatch:#c18fa0;--swatch-ink:#000000"><code>#C18FA0</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="玫瑰 Rose，第 7 档，#CC9EAF，点击复制" data-family="玫瑰 · Rose" data-step="7" data-hex="#CC9EAF" style="--swatch:#cc9eaf;--swatch-ink:#000000"><code>#CC9EAF</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="玫瑰 Rose，第 8 档，#D8ADBD，点击复制" data-family="玫瑰 · Rose" data-step="8" data-hex="#D8ADBD" style="--swatch:#d8adbd;--swatch-ink:#000000"><code>#D8ADBD</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="玫瑰 Rose，第 9 档，#DEB8C7，点击复制" data-family="玫瑰 · Rose" data-step="9" data-hex="#DEB8C7" style="--swatch:#deb8c7;--swatch-ink:#000000"><code>#DEB8C7</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="玫瑰 Rose，第 10 档，#E4C4D0，点击复制" data-family="玫瑰 · Rose" data-step="10" data-hex="#E4C4D0" style="--swatch:#e4c4d0;--swatch-ink:#000000"><code>#E4C4D0</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="玫瑰 Rose，第 11 档，#E9CFDA，点击复制" data-family="玫瑰 · Rose" data-step="11" data-hex="#E9CFDA" style="--swatch:#e9cfda;--swatch-ink:#000000"><code>#E9CFDA</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="玫瑰 Rose，第 12 档，#EFDAE3，点击复制" data-family="玫瑰 · Rose" data-step="12" data-hex="#EFDAE3" style="--swatch:#efdae3;--swatch-ink:#000000"><code>#EFDAE3</code></button>
+      </div>
+    </section>
+    <section class="palette-row" aria-labelledby="label-mauve">
+      <h2 id="label-mauve" class="row-label"><span class="family-index">08</span><span class="family-name">灰粉<small>Mauve</small></span></h2>
+      <div class="swatches" aria-label="灰粉，12 档从深到浅">
+        <button class="swatch" type="button" aria-pressed="false" aria-label="灰粉 Mauve，第 1 档，#7F546F，点击复制" data-family="灰粉 · Mauve" data-step="1" data-hex="#7F546F" style="--swatch:#7f546f;--swatch-ink:#ffffff"><code>#7F546F</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="灰粉 Mauve，第 2 档，#8B5D79，点击复制" data-family="灰粉 · Mauve" data-step="2" data-hex="#8B5D79" style="--swatch:#8b5d79;--swatch-ink:#ffffff"><code>#8B5D79</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="灰粉 Mauve，第 3 档，#976782，点击复制" data-family="灰粉 · Mauve" data-step="3" data-hex="#976782" style="--swatch:#976782;--swatch-ink:#ffffff"><code>#976782</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="灰粉 Mauve，第 4 档，#A2708C，点击复制" data-family="灰粉 · Mauve" data-step="4" data-hex="#A2708C" style="--swatch:#a2708c;--swatch-ink:#000000"><code>#A2708C</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="灰粉 Mauve，第 5 档，#AE7995，点击复制" data-family="灰粉 · Mauve" data-step="5" data-hex="#AE7995" style="--swatch:#ae7995;--swatch-ink:#000000"><code>#AE7995</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="灰粉 Mauve，第 6 档，#BA89A2，点击复制" data-family="灰粉 · Mauve" data-step="6" data-hex="#BA89A2" style="--swatch:#ba89a2;--swatch-ink:#000000"><code>#BA89A2</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="灰粉 Mauve，第 7 档，#C698B0，点击复制" data-family="灰粉 · Mauve" data-step="7" data-hex="#C698B0" style="--swatch:#c698b0;--swatch-ink:#000000"><code>#C698B0</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="灰粉 Mauve，第 8 档，#D2A8BD，点击复制" data-family="灰粉 · Mauve" data-step="8" data-hex="#D2A8BD" style="--swatch:#d2a8bd;--swatch-ink:#000000"><code>#D2A8BD</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="灰粉 Mauve，第 9 档，#D9B4C7，点击复制" data-family="灰粉 · Mauve" data-step="9" data-hex="#D9B4C7" style="--swatch:#d9b4c7;--swatch-ink:#000000"><code>#D9B4C7</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="灰粉 Mauve，第 10 档，#E0C1D0，点击复制" data-family="灰粉 · Mauve" data-step="10" data-hex="#E0C1D0" style="--swatch:#e0c1d0;--swatch-ink:#000000"><code>#E0C1D0</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="灰粉 Mauve，第 11 档，#E7CDDA，点击复制" data-family="灰粉 · Mauve" data-step="11" data-hex="#E7CDDA" style="--swatch:#e7cdda;--swatch-ink:#000000"><code>#E7CDDA</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="灰粉 Mauve，第 12 档，#EED9E3，点击复制" data-family="灰粉 · Mauve" data-step="12" data-hex="#EED9E3" style="--swatch:#eed9e3;--swatch-ink:#000000"><code>#EED9E3</code></button>
+      </div>
+    </section>
+    <section class="palette-row" aria-labelledby="label-plum">
+      <h2 id="label-plum" class="row-label"><span class="family-index">09</span><span class="family-name">梅紫<small>Plum</small></span></h2>
+      <div class="swatches" aria-label="梅紫，12 档从深到浅">
+        <button class="swatch" type="button" aria-pressed="false" aria-label="梅紫 Plum，第 1 档，#70506C，点击复制" data-family="梅紫 · Plum" data-step="1" data-hex="#70506C" style="--swatch:#70506c;--swatch-ink:#ffffff"><code>#70506C</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="梅紫 Plum，第 2 档，#7A5976，点击复制" data-family="梅紫 · Plum" data-step="2" data-hex="#7A5976" style="--swatch:#7a5976;--swatch-ink:#ffffff"><code>#7A5976</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="梅紫 Plum，第 3 档，#846280，点击复制" data-family="梅紫 · Plum" data-step="3" data-hex="#846280" style="--swatch:#846280;--swatch-ink:#ffffff"><code>#846280</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="梅紫 Plum，第 4 档，#8E6A8A，点击复制" data-family="梅紫 · Plum" data-step="4" data-hex="#8E6A8A" style="--swatch:#8e6a8a;--swatch-ink:#ffffff"><code>#8E6A8A</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="梅紫 Plum，第 5 档，#987394，点击复制" data-family="梅紫 · Plum" data-step="5" data-hex="#987394" style="--swatch:#987394;--swatch-ink:#000000"><code>#987394</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="梅紫 Plum，第 6 档，#A582A1，点击复制" data-family="梅紫 · Plum" data-step="6" data-hex="#A582A1" style="--swatch:#a582a1;--swatch-ink:#000000"><code>#A582A1</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="梅紫 Plum，第 7 档，#B392AD，点击复制" data-family="梅紫 · Plum" data-step="7" data-hex="#B392AD" style="--swatch:#b392ad;--swatch-ink:#000000"><code>#B392AD</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="梅紫 Plum，第 8 档，#C0A1BA，点击复制" data-family="梅紫 · Plum" data-step="8" data-hex="#C0A1BA" style="--swatch:#c0a1ba;--swatch-ink:#000000"><code>#C0A1BA</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="梅紫 Plum，第 9 档，#C9AEC4，点击复制" data-family="梅紫 · Plum" data-step="9" data-hex="#C9AEC4" style="--swatch:#c9aec4;--swatch-ink:#000000"><code>#C9AEC4</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="梅紫 Plum，第 10 档，#D2BBCD，点击复制" data-family="梅紫 · Plum" data-step="10" data-hex="#D2BBCD" style="--swatch:#d2bbcd;--swatch-ink:#000000"><code>#D2BBCD</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="梅紫 Plum，第 11 档，#DBC7D7，点击复制" data-family="梅紫 · Plum" data-step="11" data-hex="#DBC7D7" style="--swatch:#dbc7d7;--swatch-ink:#000000"><code>#DBC7D7</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="梅紫 Plum，第 12 档，#E4D4E0，点击复制" data-family="梅紫 · Plum" data-step="12" data-hex="#E4D4E0" style="--swatch:#e4d4e0;--swatch-ink:#000000"><code>#E4D4E0</code></button>
+      </div>
+    </section>
+    <section class="palette-row" aria-labelledby="label-purple">
+      <h2 id="label-purple" class="row-label"><span class="family-index">10</span><span class="family-name">柔紫<small>Purple</small></span></h2>
+      <div class="swatches" aria-label="柔紫，12 档从深到浅">
+        <button class="swatch" type="button" aria-pressed="false" aria-label="柔紫 Purple，第 1 档，#65518F，点击复制" data-family="柔紫 · Purple" data-step="1" data-hex="#65518F" style="--swatch:#65518f;--swatch-ink:#ffffff"><code>#65518F</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="柔紫 Purple，第 2 档，#705C9A，点击复制" data-family="柔紫 · Purple" data-step="2" data-hex="#705C9A" style="--swatch:#705c9a;--swatch-ink:#ffffff"><code>#705C9A</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="柔紫 Purple，第 3 档，#7B66A5，点击复制" data-family="柔紫 · Purple" data-step="3" data-hex="#7B66A5" style="--swatch:#7b66a5;--swatch-ink:#ffffff"><code>#7B66A5</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="柔紫 Purple，第 4 档，#8671B0，点击复制" data-family="柔紫 · Purple" data-step="4" data-hex="#8671B0" style="--swatch:#8671b0;--swatch-ink:#000000"><code>#8671B0</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="柔紫 Purple，第 5 档，#917BBB，点击复制" data-family="柔紫 · Purple" data-step="5" data-hex="#917BBB" style="--swatch:#917bbb;--swatch-ink:#000000"><code>#917BBB</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="柔紫 Purple，第 6 档，#9F8AC5，点击复制" data-family="柔紫 · Purple" data-step="6" data-hex="#9F8AC5" style="--swatch:#9f8ac5;--swatch-ink:#000000"><code>#9F8AC5</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="柔紫 Purple，第 7 档，#AC9AD0，点击复制" data-family="柔紫 · Purple" data-step="7" data-hex="#AC9AD0" style="--swatch:#ac9ad0;--swatch-ink:#000000"><code>#AC9AD0</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="柔紫 Purple，第 8 档，#BAA9DA，点击复制" data-family="柔紫 · Purple" data-step="8" data-hex="#BAA9DA" style="--swatch:#baa9da;--swatch-ink:#000000"><code>#BAA9DA</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="柔紫 Purple，第 9 档，#C4B5DF，点击复制" data-family="柔紫 · Purple" data-step="9" data-hex="#C4B5DF" style="--swatch:#c4b5df;--swatch-ink:#000000"><code>#C4B5DF</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="柔紫 Purple，第 10 档，#CDC1E5，点击复制" data-family="柔紫 · Purple" data-step="10" data-hex="#CDC1E5" style="--swatch:#cdc1e5;--swatch-ink:#000000"><code>#CDC1E5</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="柔紫 Purple，第 11 档，#D7CDEA，点击复制" data-family="柔紫 · Purple" data-step="11" data-hex="#D7CDEA" style="--swatch:#d7cdea;--swatch-ink:#000000"><code>#D7CDEA</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="柔紫 Purple，第 12 档，#E0D9EF，点击复制" data-family="柔紫 · Purple" data-step="12" data-hex="#E0D9EF" style="--swatch:#e0d9ef;--swatch-ink:#000000"><code>#E0D9EF</code></button>
+      </div>
+    </section>
+    <section class="palette-row" aria-labelledby="label-iris">
+      <h2 id="label-iris" class="row-label"><span class="family-index">11</span><span class="family-name">鸢尾<small>Iris</small></span></h2>
+      <div class="swatches" aria-label="鸢尾，12 档从深到浅">
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鸢尾 Iris，第 1 档，#545E8F，点击复制" data-family="鸢尾 · Iris" data-step="1" data-hex="#545E8F" style="--swatch:#545e8f;--swatch-ink:#ffffff"><code>#545E8F</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鸢尾 Iris，第 2 档，#5F6A9A，点击复制" data-family="鸢尾 · Iris" data-step="2" data-hex="#5F6A9A" style="--swatch:#5f6a9a;--swatch-ink:#ffffff"><code>#5F6A9A</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鸢尾 Iris，第 3 档，#6A75A5，点击复制" data-family="鸢尾 · Iris" data-step="3" data-hex="#6A75A5" style="--swatch:#6a75a5;--swatch-ink:#000000"><code>#6A75A5</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鸢尾 Iris，第 4 档，#7581AF，点击复制" data-family="鸢尾 · Iris" data-step="4" data-hex="#7581AF" style="--swatch:#7581af;--swatch-ink:#000000"><code>#7581AF</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鸢尾 Iris，第 5 档，#808CBA，点击复制" data-family="鸢尾 · Iris" data-step="5" data-hex="#808CBA" style="--swatch:#808cba;--swatch-ink:#000000"><code>#808CBA</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鸢尾 Iris，第 6 档，#8F9BC5，点击复制" data-family="鸢尾 · Iris" data-step="6" data-hex="#8F9BC5" style="--swatch:#8f9bc5;--swatch-ink:#000000"><code>#8F9BC5</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鸢尾 Iris，第 7 档，#9EA9CF，点击复制" data-family="鸢尾 · Iris" data-step="7" data-hex="#9EA9CF" style="--swatch:#9ea9cf;--swatch-ink:#000000"><code>#9EA9CF</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鸢尾 Iris，第 8 档，#ADB8DA，点击复制" data-family="鸢尾 · Iris" data-step="8" data-hex="#ADB8DA" style="--swatch:#adb8da;--swatch-ink:#000000"><code>#ADB8DA</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鸢尾 Iris，第 9 档，#B9C3E0，点击复制" data-family="鸢尾 · Iris" data-step="9" data-hex="#B9C3E0" style="--swatch:#b9c3e0;--swatch-ink:#000000"><code>#B9C3E0</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鸢尾 Iris，第 10 档，#C5CEE6，点击复制" data-family="鸢尾 · Iris" data-step="10" data-hex="#C5CEE6" style="--swatch:#c5cee6;--swatch-ink:#000000"><code>#C5CEE6</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鸢尾 Iris，第 11 档，#D1D8EB，点击复制" data-family="鸢尾 · Iris" data-step="11" data-hex="#D1D8EB" style="--swatch:#d1d8eb;--swatch-ink:#000000"><code>#D1D8EB</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鸢尾 Iris，第 12 档，#DDE3F1，点击复制" data-family="鸢尾 · Iris" data-step="12" data-hex="#DDE3F1" style="--swatch:#dde3f1;--swatch-ink:#000000"><code>#DDE3F1</code></button>
+      </div>
+    </section>
+    <section class="palette-row" aria-labelledby="label-blue">
+      <h2 id="label-blue" class="row-label"><span class="family-index">12</span><span class="family-name">雾蓝<small>Blue</small></span></h2>
+      <div class="swatches" aria-label="雾蓝，12 档从深到浅">
+        <button class="swatch" type="button" aria-pressed="false" aria-label="雾蓝 Blue，第 1 档，#4E6E98，点击复制" data-family="雾蓝 · Blue" data-step="1" data-hex="#4E6E98" style="--swatch:#4e6e98;--swatch-ink:#ffffff"><code>#4E6E98</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="雾蓝 Blue，第 2 档，#5879A2，点击复制" data-family="雾蓝 · Blue" data-step="2" data-hex="#5879A2" style="--swatch:#5879a2;--swatch-ink:#000000"><code>#5879A2</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="雾蓝 Blue，第 3 档，#6283AC，点击复制" data-family="雾蓝 · Blue" data-step="3" data-hex="#6283AC" style="--swatch:#6283ac;--swatch-ink:#000000"><code>#6283AC</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="雾蓝 Blue，第 4 档，#6C8EB6，点击复制" data-family="雾蓝 · Blue" data-step="4" data-hex="#6C8EB6" style="--swatch:#6c8eb6;--swatch-ink:#000000"><code>#6C8EB6</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="雾蓝 Blue，第 5 档，#7698C0，点击复制" data-family="雾蓝 · Blue" data-step="5" data-hex="#7698C0" style="--swatch:#7698c0;--swatch-ink:#000000"><code>#7698C0</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="雾蓝 Blue，第 6 档，#86A4C9，点击复制" data-family="雾蓝 · Blue" data-step="6" data-hex="#86A4C9" style="--swatch:#86a4c9;--swatch-ink:#000000"><code>#86A4C9</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="雾蓝 Blue，第 7 档，#97B0D3，点击复制" data-family="雾蓝 · Blue" data-step="7" data-hex="#97B0D3" style="--swatch:#97b0d3;--swatch-ink:#000000"><code>#97B0D3</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="雾蓝 Blue，第 8 档，#A7BCDC，点击复制" data-family="雾蓝 · Blue" data-step="8" data-hex="#A7BCDC" style="--swatch:#a7bcdc;--swatch-ink:#000000"><code>#A7BCDC</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="雾蓝 Blue，第 9 档，#B3C5E1，点击复制" data-family="雾蓝 · Blue" data-step="9" data-hex="#B3C5E1" style="--swatch:#b3c5e1;--swatch-ink:#000000"><code>#B3C5E1</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="雾蓝 Blue，第 10 档，#BFCEE6，点击复制" data-family="雾蓝 · Blue" data-step="10" data-hex="#BFCEE6" style="--swatch:#bfcee6;--swatch-ink:#000000"><code>#BFCEE6</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="雾蓝 Blue，第 11 档，#CBD7EB，点击复制" data-family="雾蓝 · Blue" data-step="11" data-hex="#CBD7EB" style="--swatch:#cbd7eb;--swatch-ink:#000000"><code>#CBD7EB</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="雾蓝 Blue，第 12 档，#D7E0F0，点击复制" data-family="雾蓝 · Blue" data-step="12" data-hex="#D7E0F0" style="--swatch:#d7e0f0;--swatch-ink:#000000"><code>#D7E0F0</code></button>
+      </div>
+    </section>
+    <section class="palette-row" aria-labelledby="label-denim">
+      <h2 id="label-denim" class="row-label"><span class="family-index">13</span><span class="family-name">蓝灰<small>Denim</small></span></h2>
+      <div class="swatches" aria-label="蓝灰，12 档从深到浅">
+        <button class="swatch" type="button" aria-pressed="false" aria-label="蓝灰 Denim，第 1 档，#4C6778，点击复制" data-family="蓝灰 · Denim" data-step="1" data-hex="#4C6778" style="--swatch:#4c6778;--swatch-ink:#ffffff"><code>#4C6778</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="蓝灰 Denim，第 2 档，#577283，点击复制" data-family="蓝灰 · Denim" data-step="2" data-hex="#577283" style="--swatch:#577283;--swatch-ink:#ffffff"><code>#577283</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="蓝灰 Denim，第 3 档，#627E8E，点击复制" data-family="蓝灰 · Denim" data-step="3" data-hex="#627E8E" style="--swatch:#627e8e;--swatch-ink:#000000"><code>#627E8E</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="蓝灰 Denim，第 4 档，#6C8999，点击复制" data-family="蓝灰 · Denim" data-step="4" data-hex="#6C8999" style="--swatch:#6c8999;--swatch-ink:#000000"><code>#6C8999</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="蓝灰 Denim，第 5 档，#7794A4，点击复制" data-family="蓝灰 · Denim" data-step="5" data-hex="#7794A4" style="--swatch:#7794a4;--swatch-ink:#000000"><code>#7794A4</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="蓝灰 Denim，第 6 档，#88A3B1，点击复制" data-family="蓝灰 · Denim" data-step="6" data-hex="#88A3B1" style="--swatch:#88a3b1;--swatch-ink:#000000"><code>#88A3B1</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="蓝灰 Denim，第 7 档，#98B1BD，点击复制" data-family="蓝灰 · Denim" data-step="7" data-hex="#98B1BD" style="--swatch:#98b1bd;--swatch-ink:#000000"><code>#98B1BD</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="蓝灰 Denim，第 8 档，#A9C0CA，点击复制" data-family="蓝灰 · Denim" data-step="8" data-hex="#A9C0CA" style="--swatch:#a9c0ca;--swatch-ink:#000000"><code>#A9C0CA</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="蓝灰 Denim，第 9 档，#B6CAD3，点击复制" data-family="蓝灰 · Denim" data-step="9" data-hex="#B6CAD3" style="--swatch:#b6cad3;--swatch-ink:#000000"><code>#B6CAD3</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="蓝灰 Denim，第 10 档，#C3D4DB，点击复制" data-family="蓝灰 · Denim" data-step="10" data-hex="#C3D4DB" style="--swatch:#c3d4db;--swatch-ink:#000000"><code>#C3D4DB</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="蓝灰 Denim，第 11 档，#CFDDE4，点击复制" data-family="蓝灰 · Denim" data-step="11" data-hex="#CFDDE4" style="--swatch:#cfdde4;--swatch-ink:#000000"><code>#CFDDE4</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="蓝灰 Denim，第 12 档，#DCE7EC，点击复制" data-family="蓝灰 · Denim" data-step="12" data-hex="#DCE7EC" style="--swatch:#dce7ec;--swatch-ink:#000000"><code>#DCE7EC</code></button>
+      </div>
+    </section>
+    <section class="palette-row" aria-labelledby="label-cyan">
+      <h2 id="label-cyan" class="row-label"><span class="family-index">14</span><span class="family-name">青蓝<small>Cyan</small></span></h2>
+      <div class="swatches" aria-label="青蓝，12 档从深到浅">
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青蓝 Cyan，第 1 档，#346B7F，点击复制" data-family="青蓝 · Cyan" data-step="1" data-hex="#346B7F" style="--swatch:#346b7f;--swatch-ink:#ffffff"><code>#346B7F</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青蓝 Cyan，第 2 档，#40788B，点击复制" data-family="青蓝 · Cyan" data-step="2" data-hex="#40788B" style="--swatch:#40788b;--swatch-ink:#ffffff"><code>#40788B</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青蓝 Cyan，第 3 档，#4B8497，点击复制" data-family="青蓝 · Cyan" data-step="3" data-hex="#4B8497" style="--swatch:#4b8497;--swatch-ink:#000000"><code>#4B8497</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青蓝 Cyan，第 4 档，#5791A3，点击复制" data-family="青蓝 · Cyan" data-step="4" data-hex="#5791A3" style="--swatch:#5791a3;--swatch-ink:#000000"><code>#5791A3</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青蓝 Cyan，第 5 档，#629DAF，点击复制" data-family="青蓝 · Cyan" data-step="5" data-hex="#629DAF" style="--swatch:#629daf;--swatch-ink:#000000"><code>#629DAF</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青蓝 Cyan，第 6 档，#75ACBB，点击复制" data-family="青蓝 · Cyan" data-step="6" data-hex="#75ACBB" style="--swatch:#75acbb;--swatch-ink:#000000"><code>#75ACBB</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青蓝 Cyan，第 7 档，#88BAC7，点击复制" data-family="青蓝 · Cyan" data-step="7" data-hex="#88BAC7" style="--swatch:#88bac7;--swatch-ink:#000000"><code>#88BAC7</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青蓝 Cyan，第 8 档，#9BC9D3，点击复制" data-family="青蓝 · Cyan" data-step="8" data-hex="#9BC9D3" style="--swatch:#9bc9d3;--swatch-ink:#000000"><code>#9BC9D3</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青蓝 Cyan，第 9 档，#A8D0D9，点击复制" data-family="青蓝 · Cyan" data-step="9" data-hex="#A8D0D9" style="--swatch:#a8d0d9;--swatch-ink:#000000"><code>#A8D0D9</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青蓝 Cyan，第 10 档，#B5D7DE，点击复制" data-family="青蓝 · Cyan" data-step="10" data-hex="#B5D7DE" style="--swatch:#b5d7de;--swatch-ink:#000000"><code>#B5D7DE</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青蓝 Cyan，第 11 档，#C1DEE4，点击复制" data-family="青蓝 · Cyan" data-step="11" data-hex="#C1DEE4" style="--swatch:#c1dee4;--swatch-ink:#000000"><code>#C1DEE4</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青蓝 Cyan，第 12 档，#CEE5E9，点击复制" data-family="青蓝 · Cyan" data-step="12" data-hex="#CEE5E9" style="--swatch:#cee5e9;--swatch-ink:#000000"><code>#CEE5E9</code></button>
+      </div>
+    </section>
+    <section class="palette-row" aria-labelledby="label-teal">
+      <h2 id="label-teal" class="row-label"><span class="family-index">15</span><span class="family-name">青绿<small>Teal</small></span></h2>
+      <div class="swatches" aria-label="青绿，12 档从深到浅">
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青绿 Teal，第 1 档，#3D706C，点击复制" data-family="青绿 · Teal" data-step="1" data-hex="#3D706C" style="--swatch:#3d706c;--swatch-ink:#ffffff"><code>#3D706C</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青绿 Teal，第 2 档，#487B76，点击复制" data-family="青绿 · Teal" data-step="2" data-hex="#487B76" style="--swatch:#487b76;--swatch-ink:#ffffff"><code>#487B76</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青绿 Teal，第 3 档，#538680，点击复制" data-family="青绿 · Teal" data-step="3" data-hex="#538680" style="--swatch:#538680;--swatch-ink:#000000"><code>#538680</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青绿 Teal，第 4 档，#5D9089，点击复制" data-family="青绿 · Teal" data-step="4" data-hex="#5D9089" style="--swatch:#5d9089;--swatch-ink:#000000"><code>#5D9089</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青绿 Teal，第 5 档，#689B93，点击复制" data-family="青绿 · Teal" data-step="5" data-hex="#689B93" style="--swatch:#689b93;--swatch-ink:#000000"><code>#689B93</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青绿 Teal，第 6 档，#7BAAA0，点击复制" data-family="青绿 · Teal" data-step="6" data-hex="#7BAAA0" style="--swatch:#7baaa0;--swatch-ink:#000000"><code>#7BAAA0</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青绿 Teal，第 7 档，#8DB9AD，点击复制" data-family="青绿 · Teal" data-step="7" data-hex="#8DB9AD" style="--swatch:#8db9ad;--swatch-ink:#000000"><code>#8DB9AD</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青绿 Teal，第 8 档，#A0C8BA，点击复制" data-family="青绿 · Teal" data-step="8" data-hex="#A0C8BA" style="--swatch:#a0c8ba;--swatch-ink:#000000"><code>#A0C8BA</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青绿 Teal，第 9 档，#ADD0C3，点击复制" data-family="青绿 · Teal" data-step="9" data-hex="#ADD0C3" style="--swatch:#add0c3;--swatch-ink:#000000"><code>#ADD0C3</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青绿 Teal，第 10 档，#BBD8CC，点击复制" data-family="青绿 · Teal" data-step="10" data-hex="#BBD8CC" style="--swatch:#bbd8cc;--swatch-ink:#000000"><code>#BBD8CC</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青绿 Teal，第 11 档，#C8E0D5，点击复制" data-family="青绿 · Teal" data-step="11" data-hex="#C8E0D5" style="--swatch:#c8e0d5;--swatch-ink:#000000"><code>#C8E0D5</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="青绿 Teal，第 12 档，#D5E8DE，点击复制" data-family="青绿 · Teal" data-step="12" data-hex="#D5E8DE" style="--swatch:#d5e8de;--swatch-ink:#000000"><code>#D5E8DE</code></button>
+      </div>
+    </section>
+    <section class="palette-row" aria-labelledby="label-green">
+      <h2 id="label-green" class="row-label"><span class="family-index">16</span><span class="family-name">松绿<small>Green</small></span></h2>
+      <div class="swatches" aria-label="松绿，12 档从深到浅">
+        <button class="swatch" type="button" aria-pressed="false" aria-label="松绿 Green，第 1 档，#287455，点击复制" data-family="松绿 · Green" data-step="1" data-hex="#287455" style="--swatch:#287455;--swatch-ink:#ffffff"><code>#287455</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="松绿 Green，第 2 档，#327C5D，点击复制" data-family="松绿 · Green" data-step="2" data-hex="#327C5D" style="--swatch:#327c5d;--swatch-ink:#ffffff"><code>#327C5D</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="松绿 Green，第 3 档，#3B8464，点击复制" data-family="松绿 · Green" data-step="3" data-hex="#3B8464" style="--swatch:#3b8464;--swatch-ink:#000000"><code>#3B8464</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="松绿 Green，第 4 档，#458C6C，点击复制" data-family="松绿 · Green" data-step="4" data-hex="#458C6C" style="--swatch:#458c6c;--swatch-ink:#000000"><code>#458C6C</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="松绿 Green，第 5 档，#4E9473，点击复制" data-family="松绿 · Green" data-step="5" data-hex="#4E9473" style="--swatch:#4e9473;--swatch-ink:#000000"><code>#4E9473</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="松绿 Green，第 6 档，#64A484，点击复制" data-family="松绿 · Green" data-step="6" data-hex="#64A484" style="--swatch:#64a484;--swatch-ink:#000000"><code>#64A484</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="松绿 Green，第 7 档，#7BB594，点击复制" data-family="松绿 · Green" data-step="7" data-hex="#7BB594" style="--swatch:#7bb594;--swatch-ink:#000000"><code>#7BB594</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="松绿 Green，第 8 档，#91C5A5，点击复制" data-family="松绿 · Green" data-step="8" data-hex="#91C5A5" style="--swatch:#91c5a5;--swatch-ink:#000000"><code>#91C5A5</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="松绿 Green，第 9 档，#9CCBAC，点击复制" data-family="松绿 · Green" data-step="9" data-hex="#9CCBAC" style="--swatch:#9ccbac;--swatch-ink:#000000"><code>#9CCBAC</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="松绿 Green，第 10 档，#A6D1B3，点击复制" data-family="松绿 · Green" data-step="10" data-hex="#A6D1B3" style="--swatch:#a6d1b3;--swatch-ink:#000000"><code>#A6D1B3</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="松绿 Green，第 11 档，#B1D7B9，点击复制" data-family="松绿 · Green" data-step="11" data-hex="#B1D7B9" style="--swatch:#b1d7b9;--swatch-ink:#000000"><code>#B1D7B9</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="松绿 Green，第 12 档，#BBDDC0，点击复制" data-family="松绿 · Green" data-step="12" data-hex="#BBDDC0" style="--swatch:#bbddc0;--swatch-ink:#000000"><code>#BBDDC0</code></button>
+      </div>
+    </section>
+    <section class="palette-row" aria-labelledby="label-sage">
+      <h2 id="label-sage" class="row-label"><span class="family-index">17</span><span class="family-name">鼠尾草<small>Sage</small></span></h2>
+      <div class="swatches" aria-label="鼠尾草，12 档从深到浅">
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鼠尾草 Sage，第 1 档，#5C7059，点击复制" data-family="鼠尾草 · Sage" data-step="1" data-hex="#5C7059" style="--swatch:#5c7059;--swatch-ink:#ffffff"><code>#5C7059</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鼠尾草 Sage，第 2 档，#677B62，点击复制" data-family="鼠尾草 · Sage" data-step="2" data-hex="#677B62" style="--swatch:#677b62;--swatch-ink:#000000"><code>#677B62</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鼠尾草 Sage，第 3 档，#72866B，点击复制" data-family="鼠尾草 · Sage" data-step="3" data-hex="#72866B" style="--swatch:#72866b;--swatch-ink:#000000"><code>#72866B</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鼠尾草 Sage，第 4 档，#7C9173，点击复制" data-family="鼠尾草 · Sage" data-step="4" data-hex="#7C9173" style="--swatch:#7c9173;--swatch-ink:#000000"><code>#7C9173</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鼠尾草 Sage，第 5 档，#879C7C，点击复制" data-family="鼠尾草 · Sage" data-step="5" data-hex="#879C7C" style="--swatch:#879c7c;--swatch-ink:#000000"><code>#879C7C</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鼠尾草 Sage，第 6 档，#96A989，点击复制" data-family="鼠尾草 · Sage" data-step="6" data-hex="#96A989" style="--swatch:#96a989;--swatch-ink:#000000"><code>#96A989</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鼠尾草 Sage，第 7 档，#A6B795，点击复制" data-family="鼠尾草 · Sage" data-step="7" data-hex="#A6B795" style="--swatch:#a6b795;--swatch-ink:#000000"><code>#A6B795</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鼠尾草 Sage，第 8 档，#B5C4A2，点击复制" data-family="鼠尾草 · Sage" data-step="8" data-hex="#B5C4A2" style="--swatch:#b5c4a2;--swatch-ink:#000000"><code>#B5C4A2</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鼠尾草 Sage，第 9 档，#C0CDAE，点击复制" data-family="鼠尾草 · Sage" data-step="9" data-hex="#C0CDAE" style="--swatch:#c0cdae;--swatch-ink:#000000"><code>#C0CDAE</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鼠尾草 Sage，第 10 档，#CCD6BB，点击复制" data-family="鼠尾草 · Sage" data-step="10" data-hex="#CCD6BB" style="--swatch:#ccd6bb;--swatch-ink:#000000"><code>#CCD6BB</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鼠尾草 Sage，第 11 档，#D7DFC7，点击复制" data-family="鼠尾草 · Sage" data-step="11" data-hex="#D7DFC7" style="--swatch:#d7dfc7;--swatch-ink:#000000"><code>#D7DFC7</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="鼠尾草 Sage，第 12 档，#E2E8D3，点击复制" data-family="鼠尾草 · Sage" data-step="12" data-hex="#E2E8D3" style="--swatch:#e2e8d3;--swatch-ink:#000000"><code>#E2E8D3</code></button>
+      </div>
+    </section>
+    <section class="palette-row" aria-labelledby="label-olive">
+      <h2 id="label-olive" class="row-label"><span class="family-index">18</span><span class="family-name">橄榄<small>Olive</small></span></h2>
+      <div class="swatches" aria-label="橄榄，12 档从深到浅">
+        <button class="swatch" type="button" aria-pressed="false" aria-label="橄榄 Olive，第 1 档，#6B7057，点击复制" data-family="橄榄 · Olive" data-step="1" data-hex="#6B7057" style="--swatch:#6b7057;--swatch-ink:#ffffff"><code>#6B7057</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="橄榄 Olive，第 2 档，#757A5F，点击复制" data-family="橄榄 · Olive" data-step="2" data-hex="#757A5F" style="--swatch:#757a5f;--swatch-ink:#000000"><code>#757A5F</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="橄榄 Olive，第 3 档，#7F8368，点击复制" data-family="橄榄 · Olive" data-step="3" data-hex="#7F8368" style="--swatch:#7f8368;--swatch-ink:#000000"><code>#7F8368</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="橄榄 Olive，第 4 档，#888D70，点击复制" data-family="橄榄 · Olive" data-step="4" data-hex="#888D70" style="--swatch:#888d70;--swatch-ink:#000000"><code>#888D70</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="橄榄 Olive，第 5 档，#929678，点击复制" data-family="橄榄 · Olive" data-step="5" data-hex="#929678" style="--swatch:#929678;--swatch-ink:#000000"><code>#929678</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="橄榄 Olive，第 6 档，#A0A286，点击复制" data-family="橄榄 · Olive" data-step="6" data-hex="#A0A286" style="--swatch:#a0a286;--swatch-ink:#000000"><code>#A0A286</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="橄榄 Olive，第 7 档，#AFAF94，点击复制" data-family="橄榄 · Olive" data-step="7" data-hex="#AFAF94" style="--swatch:#afaf94;--swatch-ink:#000000"><code>#AFAF94</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="橄榄 Olive，第 8 档，#BDBBA2，点击复制" data-family="橄榄 · Olive" data-step="8" data-hex="#BDBBA2" style="--swatch:#bdbba2;--swatch-ink:#000000"><code>#BDBBA2</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="橄榄 Olive，第 9 档，#C6C4AE，点击复制" data-family="橄榄 · Olive" data-step="9" data-hex="#C6C4AE" style="--swatch:#c6c4ae;--swatch-ink:#000000"><code>#C6C4AE</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="橄榄 Olive，第 10 档，#CECDBA，点击复制" data-family="橄榄 · Olive" data-step="10" data-hex="#CECDBA" style="--swatch:#cecdba;--swatch-ink:#000000"><code>#CECDBA</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="橄榄 Olive，第 11 档，#D7D5C6，点击复制" data-family="橄榄 · Olive" data-step="11" data-hex="#D7D5C6" style="--swatch:#d7d5c6;--swatch-ink:#000000"><code>#D7D5C6</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="橄榄 Olive，第 12 档，#DFDED2，点击复制" data-family="橄榄 · Olive" data-step="12" data-hex="#DFDED2" style="--swatch:#dfded2;--swatch-ink:#000000"><code>#DFDED2</code></button>
+      </div>
+    </section>
+    <section class="palette-row" aria-labelledby="label-graphite">
+      <h2 id="label-graphite" class="row-label"><span class="family-index">19</span><span class="family-name">石墨灰<small>Graphite</small></span></h2>
+      <div class="swatches" aria-label="石墨灰，12 档从深到浅">
+        <button class="swatch" type="button" aria-pressed="false" aria-label="石墨灰 Graphite，第 1 档，#666C74，点击复制" data-family="石墨灰 · Graphite" data-step="1" data-hex="#666C74" style="--swatch:#666c74;--swatch-ink:#ffffff"><code>#666C74</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="石墨灰 Graphite，第 2 档，#727880，点击复制" data-family="石墨灰 · Graphite" data-step="2" data-hex="#727880" style="--swatch:#727880;--swatch-ink:#000000"><code>#727880</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="石墨灰 Graphite，第 3 档，#7E848D，点击复制" data-family="石墨灰 · Graphite" data-step="3" data-hex="#7E848D" style="--swatch:#7e848d;--swatch-ink:#000000"><code>#7E848D</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="石墨灰 Graphite，第 4 档，#8A9099，点击复制" data-family="石墨灰 · Graphite" data-step="4" data-hex="#8A9099" style="--swatch:#8a9099;--swatch-ink:#000000"><code>#8A9099</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="石墨灰 Graphite，第 5 档，#969CA5，点击复制" data-family="石墨灰 · Graphite" data-step="5" data-hex="#969CA5" style="--swatch:#969ca5;--swatch-ink:#000000"><code>#969CA5</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="石墨灰 Graphite，第 6 档，#A2A8B0，点击复制" data-family="石墨灰 · Graphite" data-step="6" data-hex="#A2A8B0" style="--swatch:#a2a8b0;--swatch-ink:#000000"><code>#A2A8B0</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="石墨灰 Graphite，第 7 档，#AFB3BA，点击复制" data-family="石墨灰 · Graphite" data-step="7" data-hex="#AFB3BA" style="--swatch:#afb3ba;--swatch-ink:#000000"><code>#AFB3BA</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="石墨灰 Graphite，第 8 档，#BBBFC5，点击复制" data-family="石墨灰 · Graphite" data-step="8" data-hex="#BBBFC5" style="--swatch:#bbbfc5;--swatch-ink:#000000"><code>#BBBFC5</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="石墨灰 Graphite，第 9 档，#C5C9CE，点击复制" data-family="石墨灰 · Graphite" data-step="9" data-hex="#C5C9CE" style="--swatch:#c5c9ce;--swatch-ink:#000000"><code>#C5C9CE</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="石墨灰 Graphite，第 10 档，#D0D2D6，点击复制" data-family="石墨灰 · Graphite" data-step="10" data-hex="#D0D2D6" style="--swatch:#d0d2d6;--swatch-ink:#000000"><code>#D0D2D6</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="石墨灰 Graphite，第 11 档，#DADCDF，点击复制" data-family="石墨灰 · Graphite" data-step="11" data-hex="#DADCDF" style="--swatch:#dadcdf;--swatch-ink:#000000"><code>#DADCDF</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="石墨灰 Graphite，第 12 档，#E4E5E7，点击复制" data-family="石墨灰 · Graphite" data-step="12" data-hex="#E4E5E7" style="--swatch:#e4e5e7;--swatch-ink:#000000"><code>#E4E5E7</code></button>
+      </div>
+    </section>
+    <section class="palette-row" aria-labelledby="label-slate">
+      <h2 id="label-slate" class="row-label"><span class="family-index">20</span><span class="family-name">冷灰<small>Slate</small></span></h2>
+      <div class="swatches" aria-label="冷灰，12 档从深到浅">
+        <button class="swatch" type="button" aria-pressed="false" aria-label="冷灰 Slate，第 1 档，#515F6B，点击复制" data-family="冷灰 · Slate" data-step="1" data-hex="#515F6B" style="--swatch:#515f6b;--swatch-ink:#ffffff"><code>#515F6B</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="冷灰 Slate，第 2 档，#5D6C78，点击复制" data-family="冷灰 · Slate" data-step="2" data-hex="#5D6C78" style="--swatch:#5d6c78;--swatch-ink:#ffffff"><code>#5D6C78</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="冷灰 Slate，第 3 档，#687885，点击复制" data-family="冷灰 · Slate" data-step="3" data-hex="#687885" style="--swatch:#687885;--swatch-ink:#000000"><code>#687885</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="冷灰 Slate，第 4 档，#748591，点击复制" data-family="冷灰 · Slate" data-step="4" data-hex="#748591" style="--swatch:#748591;--swatch-ink:#000000"><code>#748591</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="冷灰 Slate，第 5 档，#7F919E，点击复制" data-family="冷灰 · Slate" data-step="5" data-hex="#7F919E" style="--swatch:#7f919e;--swatch-ink:#000000"><code>#7F919E</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="冷灰 Slate，第 6 档，#91A1AC，点击复制" data-family="冷灰 · Slate" data-step="6" data-hex="#91A1AC" style="--swatch:#91a1ac;--swatch-ink:#000000"><code>#91A1AC</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="冷灰 Slate，第 7 档，#A2B1BB，点击复制" data-family="冷灰 · Slate" data-step="7" data-hex="#A2B1BB" style="--swatch:#a2b1bb;--swatch-ink:#000000"><code>#A2B1BB</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="冷灰 Slate，第 8 档，#B4C1C9，点击复制" data-family="冷灰 · Slate" data-step="8" data-hex="#B4C1C9" style="--swatch:#b4c1c9;--swatch-ink:#000000"><code>#B4C1C9</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="冷灰 Slate，第 9 档，#BFCBD2，点击复制" data-family="冷灰 · Slate" data-step="9" data-hex="#BFCBD2" style="--swatch:#bfcbd2;--swatch-ink:#000000"><code>#BFCBD2</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="冷灰 Slate，第 10 档，#CAD4DA，点击复制" data-family="冷灰 · Slate" data-step="10" data-hex="#CAD4DA" style="--swatch:#cad4da;--swatch-ink:#000000"><code>#CAD4DA</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="冷灰 Slate，第 11 档，#D5DEE3，点击复制" data-family="冷灰 · Slate" data-step="11" data-hex="#D5DEE3" style="--swatch:#d5dee3;--swatch-ink:#000000"><code>#D5DEE3</code></button>
+        <button class="swatch" type="button" aria-pressed="false" aria-label="冷灰 Slate，第 12 档，#E0E7EB，点击复制" data-family="冷灰 · Slate" data-step="12" data-hex="#E0E7EB" style="--swatch:#e0e7eb;--swatch-ink:#000000"><code>#E0E7EB</code></button>
+      </div>
+    </section>
+  </div>
+</main>
+<script>
+(() => {
+  "use strict";
+  const board = document.getElementById("palette");
+  const preview = document.getElementById("selection-preview");
+  const name = document.getElementById("selection-name");
+  const hex = document.getElementById("selection-hex");
+  const status = document.getElementById("copy-status");
+  let selected = null;
+  let requestId = 0;
+
+  async function copyHex(value) {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(value);
+        return true;
+      }
+    } catch (_) {}
+    const previousFocus = document.activeElement;
+    const buffer = document.createElement("textarea");
+    buffer.className = "copy-buffer";
+    buffer.value = value;
+    buffer.setAttribute("readonly", "");
+    document.body.appendChild(buffer);
+    buffer.select();
+    let copied = false;
+    try {
+      copied = Boolean(document.execCommand("copy"));
+    } catch (_) {}
+    buffer.remove();
+    if (previousFocus && typeof previousFocus.focus === "function") {
+      previousFocus.focus({preventScroll:true});
+    }
+    return copied;
+  }
+
+  board.addEventListener("click", async (event) => {
+    const button = event.target.closest("button[data-hex]");
+    if (!button || !board.contains(button)) return;
+    const currentRequest = ++requestId;
+    if (selected) selected.setAttribute("aria-pressed", "false");
+    selected = button;
+    selected.setAttribute("aria-pressed", "true");
+    preview.style.backgroundColor = button.dataset.hex;
+    name.textContent = button.dataset.family + " · " + button.dataset.step + "/12";
+    hex.textContent = button.dataset.hex;
+    status.textContent = "正在复制…";
+    const copied = await copyHex(button.dataset.hex);
+    if (currentRequest === requestId) {
+      status.textContent = copied ? "已复制 " + button.dataset.hex : "浏览器未允许复制；可选中上方色号手动复制";
+    }
+  });
+})();
+</script>
+</body>
+</html>
+
