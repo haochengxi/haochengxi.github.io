@@ -11,7 +11,7 @@ section:
 
 degrees:
 # ============================================ UC Berkeley ============================================
-- name: "Ph.D. in Computer Science, advised by Prof. Kurt Keutzer"
+- name: "Ph.D. in Computer Science"
   timeframe: Sep 2024 - Present
   institution:
     name: University of California, Berkeley
@@ -24,6 +24,8 @@ degrees:
     outOf: 4
 
   customSections:
+  - name: Advisor
+    content: "[Prof. Kurt Keutzer](https://people.eecs.berkeley.edu/~keutzer/)"
   - name: Honors
     content: Citadel Fellowship (2026)
 
@@ -66,7 +68,7 @@ degrees:
 #      content: ""
 
 # ============================================ Tsinghua University ============================================
-- name: "B.Eng. in Computer Science & Technology, Yao Class. Advised by Prof. Jianfei Chen and Prof. Jun Zhu"
+- name: "B.Eng. in Computer Science & Technology, Yao Class"
   timeframe: Sep 2020 - Jun 2024
   institution:
     name: Tsinghua University
@@ -79,6 +81,8 @@ degrees:
     outOf: 4
 
   customSections:
+  - name: Advisors
+    content: "[Prof. Jianfei Chen](https://ml.cs.tsinghua.edu.cn/~jianfei/) and [Prof. Jun Zhu](https://ml.cs.tsinghua.edu.cn/~jun/index.shtml)"
   - name: Honors
     content: >-
       Fellowship of Tsinghua Xuetang Talents Program (among the top 300 of 3,000 students each year);

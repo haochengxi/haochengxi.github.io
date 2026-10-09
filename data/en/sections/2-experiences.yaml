@@ -21,7 +21,7 @@ experiences:
     url: "https://www.nvidia.com/en-us/"
     location: San Jose, CA, USA
     logo: images/nvidia_logo.png
-    overview: Research internship at NVIDIA, advised by Prof. Song Han (MIT Han Lab).
+    overview: Research internship at NVIDIA, advised by [Prof. Song Han](https://hanlab.mit.edu/songhan) (MIT Han Lab).
 
   positions:
   - designation: Research Intern
@@ -38,7 +38,7 @@ experiences:
     logo: images/nvidia_logo.png
     # darkLogo: /images/experiences/company-dark.png #(optional), Can optionally show a different logo for dark theme
     # company overview
-    overview: Research on FP8 training for large language models, advised by Prof. Song Han.
+    overview: Research on FP8 training for large language models, advised by [Prof. Song Han](https://hanlab.mit.edu/songhan).
 
   positions:
   - designation: Research Intern

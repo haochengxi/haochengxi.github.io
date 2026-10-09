@@ -29,18 +29,25 @@ publications:
   - name: Haocheng Xi
     url: "#"
   - name: Yiming Xie
+    url: "https://ymingxie.github.io/"
   - name: Hexu Zhao
+    url: "https://tarzanzhao.github.io/"
   - name: Yiwen Zhang
+    url: "https://therealevan.github.io/"
   - name: Michael Liu
+    url: "mailto:liu.michael@berkeley.edu"
   - name: Thomas Creavin
+    url: "https://www.creavin.ie/"
   - name: Kurt Keutzer
     url: https://people.eecs.berkeley.edu/~keutzer/
   - name: Xiuyu Li
     url: https://xiuyuli.com/
   - name: Zhaoyang Lv
+    url: "https://lvzhaoyang.github.io/"
   - name: Chenfeng Xu
     url: https://www.chenfengx.com/
   - name: Haiwen Feng
+    url: "https://havenfeng.github.io/"
   paper:
     summary: >-
       Video-native hybrid attention for livestream video generation.
@@ -56,13 +63,19 @@ publications:
     url: "https://arxiv.org/abs/2610.02153"
   authors:
   - name: Yiwen Zhang
+    url: "https://therealevan.github.io/"
   - name: Haocheng Xi
     url: "#"
   - name: Michael Tian-Yue Liu
+    url: "mailto:liu.michael@berkeley.edu"
   - name: Alexei A. Efros
+    url: "https://people.eecs.berkeley.edu/~efros/"
   - name: Hadar Averbuch-Elor
+    url: "https://www.cs.cornell.edu/~he93/"
   - name: Qianqian Wang
+    url: "https://qianqianwang68.github.io/"
   - name: Haiwen Feng
+    url: "https://havenfeng.github.io/"
   paper:
     summary: >-
       Compositing spatio-temporal memory for autoregressive video generation.
@@ -78,20 +91,29 @@ publications:
     url: "https://arxiv.org/abs/2609.38166"
   authors:
   - name: Yi Pan*
+    url: "https://conless.dev/"
   - name: Haocheng Xi*
     url: "#"
   - name: Kan Zhu
+    url: "https://kanzhu.netlify.app/"
   - name: Xingyang Li
+    url: "https://xingyangli.com/"
   - name: Yibo Wu
+    url: "https://www.linkedin.com/in/yibo-wu-226200219"
   - name: Mayank Mishra
+    url: "https://www.mayank.site/"
   - name: Hongtao Zhang
+    url: "https://taooceros.vercel.app/"
   - name: William X. Zheng
+    url: "https://xinze-zheng.github.io/"
   - name: Baris Kasikci
+    url: "https://homes.cs.washington.edu/~baris/"
   - name: Song Han
     url: https://hanlab.mit.edu/songhan
   - name: Kurt Keutzer
     url: https://people.eecs.berkeley.edu/~keutzer/
   - name: Rishabh Iyer
+    url: "https://rishabh246.github.io/"
   - name: Ion Stoica
     url: https://people.eecs.berkeley.edu/~istoica/
   paper:
@@ -109,14 +131,19 @@ publications:
     - name: Haocheng Xi
       url: "#"
     - name: Harman Singh
+      url: "https://harmandotpy.github.io/"
     - name: Yuezhou Hu
+      url: "https://yuezhouhu.github.io/"
     - name: Coleman Hooper
       url: https://www.linkedin.com/in/coleman-hooper-165061193/
     - name: Rishabh Tiwari
       url: https://www.rishabhtiwari.org/
     - name: Aditya Tomar
+      url: "https://www.adityatomar.org/"
     - name: Minjae Lee
+      url: "https://mjbooo.github.io/"
     - name: Wonjun Kang
+      url: "https://wonjunn.github.io/"
     - name: Michael W. Mahoney
       url: https://www.stat.berkeley.edu/~mmahoney/
     - name: Chenfeng Xu
@@ -151,6 +178,7 @@ publications:
     - name: Muyang Li
       url: https://lmxyy.me/
     - name: Xiaoze Fan
+      url: "https://jasonfxz.top/"
     - name: Jintao Zhang
       url: https://jintaozhang.github.io/
     - name: Han Cai
@@ -195,15 +223,19 @@ publications:
     - name: Han Cai
       url: https://han-cai.github.io/
     - name: Xingyang Li
+      url: "https://xingyangli.com/"
     - name: Yujun Lin
       url: https://yujunlin.com/
     - name: Zhuoyang Zhang
+      url: "https://zhuoyangz.com/"
     - name: Jintao Zhang
       url: https://jintaozhang.github.io/
     - name: Xiuyu Li
       url: https://xiuyuli.com/
     - name: Zhiying Xu
+      url: "https://xuzhiying9510.github.io/"
     - name: Jun Wu
+      url: "https://www.amazon.science/author/jun-wu"
     - name: Chenfeng Xu
       url: https://www.chenfengx.com/
     - name: Ion Stoica
@@ -231,6 +263,7 @@ publications:
     - name: Haocheng Xi
       url: "#"
     - name: Charlie Ruan
+      url: "https://www.charlieruan.com/"
     - name: Peiyuan Liao
     - name: Yujun Lin
       url: https://yujunlin.com/
@@ -263,7 +296,9 @@ publications:
     url: "https://arxiv.org/abs/2511.07399"
   authors:
     - name: Tianrui Feng
+      url: "https://jerryfeng2003.github.io/"
     - name: Zhi Li
+      url: "https://scholar.google.com/citations?user=C6kPjgwAAAAJ"
     - name: Shuo Yang
       url: https://andy-yang-1.github.io/
     - name: Haocheng Xi
@@ -273,7 +308,9 @@ publications:
     - name: Xiuyu Li
       url: https://xiuyuli.com/
     - name: Lvmin Zhang
+      url: "https://lllyasviel.github.io/lvmin_zhang/"
     - name: Keting Yang
+      url: "https://www.linkedin.com/in/keting-yang"
     - name: Kelly Peng
       url: https://www.linkedin.com/in/kelly-peng-182680256/
     - name: Song Han
@@ -283,6 +320,7 @@ publications:
     - name: Kurt Keutzer
       url: https://people.eecs.berkeley.edu/~keutzer/
     - name: Akio Kodaira
+      url: "https://scholar.google.com/citations?user=15X3cioAAAAJ"
     - name: Chenfeng Xu
       url: https://www.chenfengx.com/
 
@@ -348,6 +386,7 @@ publications:
     url: "https://arxiv.org/abs/2502.20853"
   authors:
   - name: Yuxiang Chen
+    url: "https://github.com/cyx0406"
   - name: Haocheng Xi
     url: "#"
   - name: Jun Zhu
@@ -371,6 +410,7 @@ publications:
   - name: Haocheng Xi*
     url: "#"
   - name: Aditya Tomar*
+    url: "https://www.adityatomar.org/"
   - name: Coleman Hooper
     url: https://www.linkedin.com/in/coleman-hooper-165061193/
   - name: Sehoon Kim
@@ -478,10 +518,14 @@ publications:
   - name: Haocheng Xi
     url: "#"
   - name: Yuxiang Chen
+    url: "https://github.com/cyx0406"
   - name: Kang Zhao
   - name: Kai Jun Teh
+    url: "https://dblp.org/pid/384/4278.html"
   - name: Jianfei Chen
+    url: "https://ml.cs.tsinghua.edu.cn/~jianfei/"
   - name: Jun Zhu
+    url: "https://ml.cs.tsinghua.edu.cn/~jun/index.shtml"
 
   paper:
     summary: We propose a new method for efficient and accurate transformer pretraining with INT8 data flow and per-block quantization.
@@ -502,6 +546,7 @@ publications:
   - name: Haocheng Xi
     url: "#"
   - name: Changhao Li
+    url: "https://lichangh20.github.io/"
   - name: Jianfei Chen
     url: https://ml.cs.tsinghua.edu.cn/~jianfei/
   - name: Jun Zhu
