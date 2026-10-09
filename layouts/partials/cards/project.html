@@ -1,83 +1,29 @@
-<div class="col-sm-12 col-md-6 col-lg-4 p-2 filtr-item" data-category='all, {{ delimit  .tags ","}}'>
-  {{ $hasRepo := and .repo (ne .repo "#") }}
-  {{ $primaryURL := cond .url .url (cond $hasRepo .repo "") }}
-  <div class="card mt-1">
-    <div class="card">
-      <a href="{{ if $primaryURL }}{{ $primaryURL }}{{ else }}javascript:void(0){{ end }}" {{ if $primaryURL }}target="_blank" rel="noopener" {{ end }}>
-        {{ if .image }}
-        <div class="card-head">
-          {{ $imageImage:= resources.Get .image}}
-          {{ if $imageImage }}
-          {{/* svg don't support "Fit" operation */}}
-          {{ if ne $imageImage.MediaType.SubType "svg" }}
-          {{ $imageImage = $imageImage.Fit "500x500" }}
-          {{ end }}
-          <img class="card-img-top" src="{{ $imageImage.RelPermalink }}" alt="{{ .name }}" loading="lazy" {{ if ne
-            $imageImage.MediaType.SubType "svg" }}width="{{ $imageImage.Width }}" height="{{ $imageImage.Height }}" {{
-            end }} />
-          {{ end }}
-        </div>
-        {{ end }}
-        <div class="card-header">
-          <div>
-            <div class="d-flex">
-              {{ if .logo }}
-
-              {{ if eq (len (findRE ".*/.*" .logo) ) 0 }}
-
-              <i style="padding-right: 0.25em" class="{{.logo}} h4"></i>
-
-              {{ else }}
-
-              {{ $logoImage:= resources.Get .logo}}
-              {{ if $logoImage }}
-              {{/* svg don't support "Fit" operation */}}
-              {{ if ne $logoImage.MediaType.SubType "svg" }}
-              {{ $logoImage = $logoImage.Fit "24x24" }}
-              {{ end }}
-              <img class="card-img-xs" src="{{ $logoImage.RelPermalink }}" alt="{{ .name }}" {{ if ne
-                $logoImage.MediaType.SubType "svg" }}width="{{ $logoImage.Width }}" height="{{ $logoImage.Height }}" {{
-                end }} />
-              {{ end }}
-              {{ end }}
-
-              {{ end }}
-
-              <h5 class="card-title mb-0">{{ .name }}</h5>
-            </div>
-            <div class="sub-title">
-              <span>{{ .role }}</span>
-              <span>{{ .timeline }}</span>
-            </div>
-          </div>
-        </div>
-      </a>
-      <div class="card-body text-justify pt-1 pb-2">
-        <p>{{ .summary | markdownify }}</p>
-        <!-- Display project card technology tags -->
-        <div class="project-card-footer">
-          {{ if .tags }}
-          <div class="project-tags-holder">
-            {{ range $index,$tag:= .tags }}
-            <span class="btn badge btn-info">
-              {{ $tag }}
-            </span>
-            {{ end }}
-          </div>
-          {{ end }}
-          <div class="project-btn-holder">
-            {{ if $hasRepo }}
-            <span>
-              <a class="btn btn-outline-info btn-sm project-btn" href="{{ .repo }}" target="_blank" rel="noopener">GitHub</a>
-            </span>
-            {{ else if .url }}
-            <span>
-              <a class="btn btn-outline-info btn-sm" href="{{ .url }}" target="#">{{ i18n "project_details" }}</a>
-            </span>
-            {{ end }}
-          </div>
-        </div>
-      </div>
+{{ $hasRepo := and .repo (ne .repo "#") }}
+{{ $primaryURL := .url | default .website | default (cond $hasRepo .repo "") }}
+<article class="card project-card" data-category="{{ delimit .tags "," }}">
+  {{ with resources.Get .image }}
+    {{ $original := . }}
+    {{ $thumbnail := . }}
+    {{ if ne .MediaType.SubType "svg" }}
+      {{ $thumbnail = .Fit "1000x700 webp" }}
+    {{ end }}
+    <a class="project-figure" href="{{ $original.RelPermalink }}" target="_blank" rel="noopener" aria-label="View figure for {{ $.name }}">
+      <img src="{{ $thumbnail.RelPermalink }}" alt="{{ $.imageAlt | default (printf "%s — overview from the paper" $.name) }}" loading="lazy" decoding="async" {{ if ne .MediaType.SubType "svg" }}width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}"{{ end }} />
+    </a>
+  {{ end }}
+  <div class="project-heading">
+    <h3 class="project-title">{{ with $primaryURL }}<a href="{{ . }}" target="_blank" rel="noopener">{{ end }}{{ .name }}{{ if $primaryURL }}</a>{{ end }}</h3>
+    <div class="project-meta"><span>{{ .role }}</span><span>{{ .timeline }}</span></div>
+  </div>
+  <div class="project-summary">{{ .summary | markdownify }}</div>
+  <div class="project-footer">
+    <div class="project-tags" aria-label="Research areas">
+      {{ range .tags }}<span class="badge btn-info">{{ . }}</span>{{ end }}
+    </div>
+    <div class="project-links">
+      {{ with .url }}<a class="btn btn-outline-info btn-sm" href="{{ . }}" target="_blank" rel="noopener">Paper</a>{{ end }}
+      {{ if $hasRepo }}<a class="btn btn-outline-info btn-sm" href="{{ .repo }}" target="_blank" rel="noopener">Code</a>{{ end }}
+      {{ with .website }}<a class="btn btn-outline-info btn-sm" href="{{ . }}" target="_blank" rel="noopener">Website</a>{{ end }}
     </div>
   </div>
-</div>
+</article>

@@ -33,6 +33,6 @@ contactInfo:
 
 # a summary of what you do
 summary:
-- I am a MLsys researcher in UC Berkeley
-- I am interested in efficient training and inference of LLMs of Diffusion models
-- Welcome to contact me!
+- I am a PhD student at UC Berkeley
+- I study efficient training and inference of language and video generation models
+- My research focuses on quantization and sparsity

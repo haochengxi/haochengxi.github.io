@@ -20,7 +20,87 @@ buttons:
 
 # your publications
 publications:
-- title: "LoSA: Locality Aware Sparse Attention for Block-Wise Diffusion Language Models"
+- title: "Video DeltaNet: A Video-Native Hybrid Attention for Livestream Video Generation"
+  publishedIn:
+    name: arXiv preprint
+    date: "2026"
+    url: "https://arxiv.org/abs/2609.20744"
+  authors:
+  - name: Haocheng Xi
+    url: "#"
+  - name: Yiming Xie
+  - name: Hexu Zhao
+  - name: Yiwen Zhang
+  - name: Michael Liu
+  - name: Thomas Creavin
+  - name: Kurt Keutzer
+    url: https://people.eecs.berkeley.edu/~keutzer/
+  - name: Xiuyu Li
+    url: https://xiuyuli.com/
+  - name: Zhaoyang Lv
+  - name: Chenfeng Xu
+    url: https://www.chenfengx.com/
+  - name: Haiwen Feng
+  paper:
+    summary: >-
+      Video-native hybrid attention for livestream video generation.
+      [Code](https://github.com/OpenVDN/vdn-minimax-h3) · [Project website](https://openvdn.github.io/)
+    url: "https://arxiv.org/abs/2609.20744"
+  categories: ["inference"]
+  tags: ["hybrid attention", "livestream video generation"]
+
+- title: "MosaiChunk: Compositing Spatio-Temporal Memory for Autoregressive Video Generation"
+  publishedIn:
+    name: arXiv preprint
+    date: "2026"
+    url: "https://arxiv.org/abs/2610.02153"
+  authors:
+  - name: Yiwen Zhang
+  - name: Haocheng Xi
+    url: "#"
+  - name: Michael Tian-Yue Liu
+  - name: Alexei A. Efros
+  - name: Hadar Averbuch-Elor
+  - name: Qianqian Wang
+  - name: Haiwen Feng
+  paper:
+    summary: >-
+      Compositing spatio-temporal memory for autoregressive video generation.
+      [Code](https://github.com/mosaichunk/MosaiChunk) · [Project website](https://mosaichunk.github.io/)
+    url: "https://arxiv.org/abs/2610.02153"
+  categories: ["inference"]
+  tags: ["autoregressive video generation", "spatio-temporal memory"]
+
+- title: "LeapQuant: Efficient Linear Attention with Accurate Recurrent State Quantization"
+  publishedIn:
+    name: arXiv preprint
+    date: "2026"
+    url: "https://arxiv.org/abs/2609.38166"
+  authors:
+  - name: Yi Pan*
+  - name: Haocheng Xi*
+    url: "#"
+  - name: Kan Zhu
+  - name: Xingyang Li
+  - name: Yibo Wu
+  - name: Mayank Mishra
+  - name: Hongtao Zhang
+  - name: William X. Zheng
+  - name: Baris Kasikci
+  - name: Song Han
+    url: https://hanlab.mit.edu/songhan
+  - name: Kurt Keutzer
+    url: https://people.eecs.berkeley.edu/~keutzer/
+  - name: Rishabh Iyer
+  - name: Ion Stoica
+    url: https://people.eecs.berkeley.edu/~istoica/
+  paper:
+    summary: Efficient linear attention through accurate quantization of recurrent states.
+    url: "https://arxiv.org/abs/2609.38166"
+  categories: ["quantization", "inference"]
+  tags: ["linear attention", "recurrent state quantization"]
+
+- title: "LoSA: Locality Aware Sparse Attention in Diffusion Language Models"
   publishedIn:
     name: ICML 2026
     date: Apr 2026
@@ -58,7 +138,7 @@ publications:
 
 - title: "Flash-KMeans: Fast and Memory-Efficient Exact K-Means"
   publishedIn:
-    name: Arxiv 2026
+    name: NeurIPS 2026
     date: Mar 2026
     url: "https://arxiv.org/abs/2603.09229"
   authors:
@@ -104,9 +184,9 @@ publications:
     date: Feb 2026
     url: "https://arxiv.org/abs/2602.02958"
   authors:
-    - name: Haocheng Xi
+    - name: Haocheng Xi*
       url: "#"
-    - name: Shuo Yang
+    - name: Shuo Yang*
       url: https://andy-yang-1.github.io/
     - name: Yilong Zhao
       url: https://happierpig.github.io/
@@ -176,9 +256,9 @@ publications:
   tags: ["FP8 reinforcement learning", "LLM reasoning"]
 
 
-- title: "StreamDiffusionV2: A Streaming System for Dynamic and Interactive Video Generation"
+- title: "StreamDiffusion V2: A Streaming System for Dynamic and Interactive Video Generation"
   publishedIn:
-    name: MLSys 2026 (Best Paper Award)
+    name: MLSys 2026 (Best Research Paper Award)
     date: Nov 2025
     url: "https://arxiv.org/abs/2511.07399"
   authors:
@@ -261,6 +341,25 @@ publications:
   tags: ["efficient video generation", "sparse attention"]
 
 
+- title: "Oscillation-Reduced MXFP4 Training for Vision Transformers"
+  publishedIn:
+    name: ICML 2025
+    date: Feb 2025
+    url: "https://arxiv.org/abs/2502.20853"
+  authors:
+  - name: Yuxiang Chen
+  - name: Haocheng Xi
+    url: "#"
+  - name: Jun Zhu
+    url: https://ml.cs.tsinghua.edu.cn/~jun/index.shtml
+  - name: Jianfei Chen
+    url: https://ml.cs.tsinghua.edu.cn/~jianfei/
+  paper:
+    summary: Oscillation-reduced MXFP4 training for vision transformers.
+    url: "https://arxiv.org/abs/2502.20853"
+  categories: ["quantization", "training"]
+  tags: ["MXFP4 training", "vision transformers"]
+
 - title: "QuantSpec: Self-Speculative Decoding with Hierarchical Quantized KV Cache"
   publishedIn:
     name: ICML 2025
@@ -271,7 +370,7 @@ publications:
     url: https://www.rishabhtiwari.org/
   - name: Haocheng Xi*
     url: "#"
-  - name: Aditya Tomar
+  - name: Aditya Tomar*
   - name: Coleman Hooper
     url: https://www.linkedin.com/in/coleman-hooper-165061193/
   - name: Sehoon Kim
@@ -340,7 +439,7 @@ publications:
   categories: ["sparsity", "inference"]
   tags: ["efficient video generation", "sparse attention"]
 
-- title: "COAT: Compressing Optimizer states and Activation for Memory-Efficient FP8 Training"
+- title: "COAT: Compressing Optimizer states and Activations for Memory-Efficient FP8 Training"
   publishedIn:
     name: ICLR 2025
     date: Oct 2024

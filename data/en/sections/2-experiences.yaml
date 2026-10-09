@@ -10,38 +10,43 @@ section:
 # Your experiences
 experiences:
 - company:
-    name: Nvidia.
+    name: Stealth Company
+  positions:
+  - designation: Intern
+    start: May 2026
+    end: Aug 2026
+
+- company:
+    name: NVIDIA Research
     url: "https://www.nvidia.com/en-us/"
     location: San Jose, CA, USA
     logo: images/nvidia_logo.png
-    overview: Research internship at NVIDIA, advised by Prof.Song Han (MIT Han Lab).
+    overview: Research internship at NVIDIA, advised by Prof. Song Han (MIT Han Lab).
 
   positions:
   - designation: Research Intern
     start: May 2025
-    end: Aug 2025
+    end: Apr 2026
     responsibilities:
     - Conducted research on efficient training and inference for large generative models, including video diffusion and low-precision (FP8) workflows.
     - Collaborated with MIT Han Lab and NVIDIA researchers on systems for scalable model deployment.
 
 - company:
-    name: Nvidia.
+    name: NVIDIA Research
     url: "https://www.nvidia.com/en-us/"
     location: Beijing, China
     logo: images/nvidia_logo.png
     # darkLogo: /images/experiences/company-dark.png #(optional), Can optionally show a different logo for dark theme
     # company overview
-    overview: Conduct Research about FP8 Training for Large Language Models. Advised by Prof.Song Han.
+    overview: Research on FP8 training for large language models, advised by Prof. Song Han.
 
   positions:
   - designation: Research Intern
-    start: Feb 2024
+    start: Mar 2024
     # don't provide end date if you are currently working there. It will be replaced by "Present"
     end: Aug 2024
     # give some points about what was your responsibilities at the company.
     responsibilities:
-    - Propose a Memory Efficient FP8 Training method, [COAT](https://arxiv.org/abs/2410.19313) that Compress Optimizer
-      states and Activations for FP8 Training.
-    - Publish a first author paper and is accepted by ICLR 2025. Code is open-sourced at [code](https://github.com/NVlabs/COAT)
-    - Participate in [NVILA Project](https://arxiv.org/abs/2412.04468), responsible for the FP8 training of vision language models.
-
+    - Proposed [COAT](https://arxiv.org/abs/2410.19313), a memory-efficient FP8 training method that compresses optimizer states and activations.
+    - Published a first-author paper accepted at ICLR 2025, with [open-source code](https://github.com/NVlabs/COAT).
+    - Contributed FP8 training for vision-language models to the [NVILA project](https://arxiv.org/abs/2412.04468).

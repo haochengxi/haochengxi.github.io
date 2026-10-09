@@ -7,21 +7,26 @@ section:
   template: sections/about.html # allows you to point to a specific template.
 
 # your designation
-designation: MLsys Researcher
+designation: PhD Student · ML Systems Researcher
 # your company information
 company:
   name: University of California, Berkeley
   url: "https://bair.berkeley.edu/"
 
 # a summary about you
-summary: 'I am a second-year PhD student in UC Berkeley, advised by [Prof.Kurt Keutzer](https://people.eecs.berkeley.edu/~keutzer/). 
-          My research interest is about efficient 
-          training and inference of large language models and diffusion models. 
-          I graduate from Yao Class, Tsinghua University, led by [Prof.Andrew Yao](https://iiis.tsinghua.edu.cn/yao/).
-          <br><br>
-          I work closely with [Prof.Song Han](https://hanlab.mit.edu/songhan) in MIT. 
-          Back in Tsinghua University, I was fortunate to be advised by [Prof.Jianfei Chen](https://ml.cs.tsinghua.edu.cn/~jianfei/) and 
-          [Prof.Jun Zhu](https://ml.cs.tsinghua.edu.cn/~jun/index.shtml). I was also fortunate to be advised by [Prof.Sheng Wang](https://homes.cs.washington.edu/~swang/) in University of Washington.'
+summary: >-
+  I am a PhD student in Computer Science at [Berkeley AI Research (BAIR)](https://bair.berkeley.edu/),
+  UC Berkeley, advised by [Prof. Kurt Keutzer](https://people.eecs.berkeley.edu/~keutzer/).
+  My research focuses on efficient machine learning, especially quantization and sparsity,
+  to compress and accelerate language models and video generation models while preserving accuracy and robustness.
+  <br><br>
+  I graduated from the Yao Class at Tsinghua University, led by [Prof. Andrew Yao](https://iiis.tsinghua.edu.cn/yao/).
+  I work closely with [Prof. Song Han](https://hanlab.mit.edu/songhan) at MIT.
+  At Tsinghua, I was fortunate to be advised by [Prof. Jianfei Chen](https://ml.cs.tsinghua.edu.cn/~jianfei/)
+  and [Prof. Jun Zhu](https://ml.cs.tsinghua.edu.cn/~jun/index.shtml).
+  I was also a visiting student at the University of Washington, advised by [Prof. Sheng Wang](https://homes.cs.washington.edu/~swang/).
+  <br><br>
+  I received the Citadel Fellowship in 2026, and our StreamDiffusion V2 work received the Best Research Paper Award at MLSys 2026.
 
 # your social links
 # give as many as you want. use font-awesome for the icons.

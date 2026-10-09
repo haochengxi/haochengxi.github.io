@@ -11,8 +11,8 @@ section:
 
 degrees:
 # ============================================ UC Berkeley ============================================
-- name: "Ph.D in Computer Science, advised by Prof.Kurt Keutzer"
-  timeframe: 2024-Present
+- name: "Ph.D. in Computer Science, advised by Prof. Kurt Keutzer"
+  timeframe: Sep 2024 - Present
   institution:
     name: University of California, Berkeley
     url: "https://bair.berkeley.edu/"
@@ -23,16 +23,28 @@ degrees:
     achieved: 4
     outOf: 4
 
+  customSections:
+  - name: Honors
+    content: Citadel Fellowship (2026)
+
   publications: #(optional)
-  - title: "[ICML 2026] LoSA: Locality Aware Sparse Attention for Block-Wise Diffusion Language Models"
+  - title: "[arXiv 2026] Video DeltaNet: A Video-Native Hybrid Attention for Livestream Video Generation"
+    url: "https://arxiv.org/abs/2609.20744"
+  - title: "[arXiv 2026] MosaiChunk: Compositing Spatio-Temporal Memory for Autoregressive Video Generation"
+    url: "https://arxiv.org/abs/2610.02153"
+  - title: "[arXiv 2026] LeapQuant: Efficient Linear Attention with Accurate Recurrent State Quantization"
+    url: "https://arxiv.org/abs/2609.38166"
+  - title: "[NeurIPS 2026] Flash-KMeans: Fast and Memory-Efficient Exact K-Means"
+    url: "https://arxiv.org/abs/2603.09229"
+  - title: "[ICML 2026] LoSA: Locality Aware Sparse Attention in Diffusion Language Models"
     url: "https://arxiv.org/abs/2604.12056"
   - title: "[ICML 2026] Quant VideoGen: Auto-Regressive Long Video Generation via 2-Bit KV-Cache Quantization"
     url: "https://arxiv.org/abs/2602.02958"
   - title: "[Arxiv 2026] Jet-RL: Enabling On-Policy FP8 Reinforcement Learning with Unified Training and Rollout Precision Flow"
     url: "https://arxiv.org/abs/2601.14243"
-  - title: "[MLSys 2026 Best Paper] StreamDiffusionV2: A Streaming System for Dynamic and Interactive Video Generation"
+  - title: "[MLSys 2026 Best Research Paper] StreamDiffusion V2: A Streaming System for Dynamic and Interactive Video Generation"
     url: "https://arxiv.org/abs/2511.07399"
-  - title: "[NeurIPS 2025] Sparse VideoGen 2: Accelerate Video Generation with Sparse Attention via Semantic-Aware Permutation"
+  - title: "[NeurIPS 2025 Spotlight] Sparse VideoGen 2: Accelerate Video Generation with Sparse Attention via Semantic-Aware Permutation"
     url: "https://arxiv.org/abs/2505.18875"
   - title: "[ICML 2025] SpargeAttn: Accurate Sparse Attention Accelerating Any Model Inference"
     url: "https://arxiv.org/abs/2502.18137"
@@ -42,11 +54,11 @@ degrees:
     url: "https://arxiv.org/abs/2502.01776"
   - title: "[CVPR 2025] NVILA: Efficient Frontier Visual Language Models"
     url: "https://arxiv.org/abs/2412.04468"
-  - title: "[ICLR 2025] COAT: Compressing Optimizer states and Activation for Memory-Efficient FP8 Training"
+  - title: "[ICLR 2025] COAT: Compressing Optimizer states and Activations for Memory-Efficient FP8 Training"
     url: "https://arxiv.org/abs/2410.19313"
 
   extracurricularActivities: #(optional), supports markdown
-  - "Sports - Soccer, Badminton, Pooling."
+  - "Sports - Soccer, Badminton, Pool."
   - "Photography"
 
 #  customSections: #(optional)
@@ -54,8 +66,8 @@ degrees:
 #      content: ""
 
 # ============================================ Tsinghua University ============================================
-- name: "B.E. in Yao Class, Computer Science. Advised by Prof.Jianfei Chen and Prof.Jun Zhu"
-  timeframe: 2020-2024
+- name: "B.Eng. in Computer Science & Technology, Yao Class. Advised by Prof. Jianfei Chen and Prof. Jun Zhu"
+  timeframe: Sep 2020 - Jun 2024
   institution:
     name: Tsinghua University
     url: "https://www.tsinghua.edu.cn/en/"
@@ -66,18 +78,43 @@ degrees:
     achieved: 3.83
     outOf: 4
 
+  customSections:
+  - name: Honors
+    content: >-
+      Fellowship of Tsinghua Xuetang Talents Program (among the top 300 of 3,000 students each year);
+      Athletic Excellence Scholarship (2022).
+
   publications: #(optional)
   - title: "[NeurIPS 2023] Training Transformers with 4-bit Integers"
     url: "https://arxiv.org/abs/2306.11987"
-  - title: "[ICML 2024] Jetfire: Efficient and Accurate Transformer Pretraining with INT8 Data Flow and Per-Block Quantization"
+  - title: "[ICML 2024 Spotlight] Jetfire: Efficient and Accurate Transformer Pretraining with INT8 Data Flow and Per-Block Quantization"
     url: "https://arxiv.org/abs/2403.12422"
   - title: "[ICML 2025] Oscillation-Reduced MXFP4 Training for Vision Transformers"
     url: "https://arxiv.org/abs/2502.20853"
 
 #  extracurricularActivities: #(optional), supports markdown
-#  - "Sports - Soccer, Badminton, Pooling."
+#  - "Sports - Soccer, Badminton, Pool."
 #  - "Photography"
 
 #  customSections: #(optional)
 #    - name: Advisor
 #      content: ""
+
+# ============================================ University of Washington ============================================
+- name: "Visiting Student, Paul G. Allen School of Computer Science & Engineering"
+  timeframe: Feb 2023 - Aug 2023
+  institution:
+    name: University of Washington
+  customSections:
+  - name: Advisor
+    content: "[Prof. Sheng Wang](https://homes.cs.washington.edu/~swang/)"
+
+# ============================================ Beijing No. 8 High School ============================================
+- name: "Experimental Class for Gifted and Talented Youth, Excellent Graduate"
+  timeframe: Sep 2015 - Jul 2020
+  institution:
+    name: Beijing No. 8 High School
+    url: "https://www.no8ms.bj.cn/cms/ccjy/seb/"
+  customSections:
+  - name: Honors
+    content: First Prize, National Senior High School Mathematics Competition (2019)
